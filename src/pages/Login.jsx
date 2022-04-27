@@ -30,8 +30,16 @@ export default function Login() {
   const handleChangeLogin = ({ target: { name, value } }) => {
     setLogin({ ...login, [name]: value });
   };
-  const handleClick = () => {
+  const handleClick = (e) => {
     e.preventDefault();
+    const mealsToken = 1;
+    const cocktailsToken = 1;
+    localStorage.setItem('mealsToken', JSON.stringify(mealsToken));
+    localStorage.setItem('cocktailsToken', JSON.stringify(cocktailsToken));
+    localStorage.setItem(
+      'user',
+      JSON.stringify([{ email }]),
+    );
   };
 
   return (
