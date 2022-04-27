@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import EmailValidator from 'email-validator';
+import { useHistory } from 'react-router-dom';
 import Input from '../components/Input';
 
 export default function Login() {
@@ -10,6 +11,7 @@ export default function Login() {
   });
 
   const { email, password, disabledButton } = login;
+  const history = useHistory();
 
   const validLogin = () => {
     const numberValid = 6;
@@ -30,8 +32,17 @@ export default function Login() {
   const handleChangeLogin = ({ target: { name, value } }) => {
     setLogin({ ...login, [name]: value });
   };
-  const handleClick = () => {
+  const handleClick = (e) => {
     e.preventDefault();
+    const mealsToken = 1;
+    const cocktailsToken = 1;
+    localStorage.setItem('mealsToken', JSON.stringify(mealsToken));
+    localStorage.setItem('cocktailsToken', JSON.stringify(cocktailsToken));
+    localStorage.setItem(
+      'user',
+      JSON.stringify({ email }),
+    );
+    history.push('/foods');
   };
 
   return (
