@@ -4,7 +4,7 @@ import Header from '../components/Header';
 export default function FavoriteRecipies() {
   return (
     <div>
-      <Header title="Favorite Recipies" searchsearchEnabled={ false } />
+      <Header title="Favorite Recipes" searchEnabled={ false } />
     </div>
   );
 }

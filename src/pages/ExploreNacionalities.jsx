@@ -4,7 +4,7 @@ import Header from '../components/Header';
 export default function ExploreNacionalities() {
   return (
     <div>
-      <Header title="Explore Nationalities" searchEnabled={ false } />
+      <Header title="Explore Nationalities" searchEnabled />
     </div>
   );
 }

@@ -42,12 +42,7 @@ export default function RouteApp() {
         <Route
           exact
           path="/explore/foods/nationalities"
-          compronent={ ExploreNacionalities }
-        />
-        <Route
-          exact
-          path="/explore/drinks/nationalities"
-          compronent={ ExploreNacionalities }
+          component={ ExploreNacionalities }
         />
         {/* paginas complementares */}
         <Route exact path="/profile" component={ Profile } />
@@ -55,7 +50,7 @@ export default function RouteApp() {
         <Route
           exact
           path="/favorite-recipes"
-          components={ FavoriteRecipies }
+          component={ FavoriteRecipies }
         />
       </Switch>
     </section>
