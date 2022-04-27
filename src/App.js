@@ -2,7 +2,7 @@ import React from 'react';
 // import { Route, Switch } from 'react-router-dom';
 
 // import Recepie from './pages/Recepie';
-import './App.css';
+// import './App.css';
 // import rockGlass from './images/rockGlass.svg';
 // import Login from './pages/Login';
 // import rockGlass from './images/rockGlass.svg';
