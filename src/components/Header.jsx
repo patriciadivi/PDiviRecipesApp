@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
+import { ACTIVE_SEARCH_BAR } from '../Redux/actions/actionTypes';
 
 export default function Header({ title, searchEnabled }) {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ export default function Header({ title, searchEnabled }) {
       { searchEnabled && (
         <Button
           type="button"
-          onClick={ () => dispatch({ type: 'ACTIVE_SEARCH_BAR' }) }
+          onClick={ () => dispatch({ type: ACTIVE_SEARCH_BAR }) }
         >
           <img
             data-testid="search-top-btn"
