@@ -1,16 +1,19 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Login from './pages/Login';
-import Foods from './pages/Foods';
-import Drinks from './pages/Drinks';
+
 // import Recepie from './pages/Recepie';
 import './App.css';
 // import rockGlass from './images/rockGlass.svg';
 // import Login from './pages/Login';
 // import rockGlass from './images/rockGlass.svg';
-import RouteApp from './routes/RouteApp';
+// import RouteApp from './routes/RouteApp';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Profile from './pages/Profile';
+import DoneRecipes from './pages/DoneRecipes';
+import Login from './pages/Login';
+import Foods from './pages/Foods';
+import Drinks from './pages/Drinks';
+import Explore from './pages/Explore';
 
 function App() {
   return (
@@ -28,8 +31,8 @@ function App() {
     <Route exact path="/drinks/{id-da-receita}/in-progress"
     component={ InProgress } /> */}
         {/* explore */}
-        {/* <Route exact path="/explore" component={ Explore } />
-    <Route exact path="/explore/foods" component={ ExploreFoods } />
+        <Route exact path="/explore" component={ Explore } />
+        {/* <Route exact path="/explore/foods" component={ ExploreFoods } />
     <Route exact path="/explore/drinks" component={ ExploreDrinks } /> */}
         {/* utilizar alguma prop para diferenciar se o componente vai ser chamado para foods ou ingredients
     ou utilizar o path para identificar qual deve ser buscado pela API. */}
@@ -39,26 +42,17 @@ function App() {
     compronent={ Nationalities } /> */}
         {/* paginas complementares */}
         <Route exact path="/profile" component={ Profile } />
-        {/* <Route exact path="/done-recepies" component={ DoneRecepies } /> */}
+        <Route exact path="/done-recepies" component={ DoneRecipes } />
         {/* <Route exact path="/favorite-recepies"
     components={ FavoriteRecepies } /> */}
       </Switch>
-      <div
+      {/* <div
         className="meals"
       >
         <div>
           <RouteApp />
         </div>
-        {/* <span className="logo">TRYBE</span>
-    <object
-      className="rocksGlass"
-      type="image/svg+xml"
-      data={ rockGlass }
-    >
-      Glass
-    </object> */}
-
-      </div>
+      </div> */}
     </>
   );
 }
