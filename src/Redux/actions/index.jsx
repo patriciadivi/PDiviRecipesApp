@@ -2,7 +2,7 @@ import fetchGenericRecepies from '../../services/fetchGenericRecepies';
 import {
   USER_LOGIN, USER_LOGOUT01,
   ACTIVE_SEARCH_BAR,
-  SAVE_RECEPIES,
+  SAVE_SEARCHED_RECEPIES,
   LOADING } from './actionTypes';
 
 export const minhaAction = (value) => ({ type: USER_LOGIN, value });
@@ -14,7 +14,7 @@ export const loading = () => ({
 });
 
 export const saveRecepies = (payload) => ({
-  type: SAVE_RECEPIES, payload,
+  type: SAVE_SEARCHED_RECEPIES, payload,
 });
 
 export function actFetchGenericRecepies() {
