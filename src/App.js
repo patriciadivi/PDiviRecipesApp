@@ -6,6 +6,9 @@ import Drinks from './pages/Drinks';
 // import Recepie from './pages/Recepie';
 import './App.css';
 // import rockGlass from './images/rockGlass.svg';
+// import Login from './pages/Login';
+// import rockGlass from './images/rockGlass.svg';
+import RouteApp from './routes/RouteApp';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Profile from './pages/Profile';
 
@@ -39,6 +42,21 @@ function App() {
       {/* <Route exact path="/favorite-recepies"
       components={ FavoriteRecepies } /> */}
     </Switch>
+    <div className="meals">
+      <div>
+        <RouteApp />
+      </div>
+
+      {/* <span className="logo">TRYBE</span>
+      <object
+        className="rocksGlass"
+        type="image/svg+xml"
+        data={ rockGlass }
+      >
+        Glass
+      </object> */}
+
+    </div>
   );
 }
 
