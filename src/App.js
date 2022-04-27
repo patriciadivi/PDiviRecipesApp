@@ -7,6 +7,7 @@ import Drinks from './pages/Drinks';
 import './App.css';
 // import rockGlass from './images/rockGlass.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -23,19 +24,20 @@ function App() {
       <Route exact path="/drinks/{id-da-receita}/in-progress"
       component={ InProgress } /> */}
       {/* explore */}
-      {/* <Route exact path="/explore" compronent={ Explore } />
-      <Route exact path="/explore/foods" compronent={ ExploreFoods } />
-      <Route exact path="/explore/drinks" compronent={ ExploreDrinks } /> */}
+      {/* <Route exact path="/explore" component={ Explore } />
+      <Route exact path="/explore/foods" component={ ExploreFoods } />
+      <Route exact path="/explore/drinks" component={ ExploreDrinks } /> */}
       {/* utilizar alguma prop para diferenciar se o componente vai ser chamado para foods ou ingredients
       ou utilizar o path para identificar qual deve ser buscado pela API. */}
-      {/* <Route exact path="/explore/foods/ingredients" compronent={ Ingrdients } />
-      <Route exact path="/explore/drinks/ingredients" compronent={ Ingrdients } />
+      {/* <Route exact path="/explore/foods/ingredients" component={ Ingrdients } />
+      <Route exact path="/explore/drinks/ingredients" component={ Ingrdients } />
       <Route exact path="/explore/drinks/nationalities"
       compronent={ Nationalities } /> */}
       {/* paginas complementares */}
-      {/* <Route exact path="/profile" compronent={ Profile } />
-      <Route exact path="/done-recepies" compronent={ DoneRecepies } />
-      <Route exact path="/favorite-recepies" components={ FavoriteRecepies } /> */}
+      <Route exact path="/profile" component={ Profile } />
+      {/* <Route exact path="/done-recepies" component={ DoneRecepies } /> */}
+      {/* <Route exact path="/favorite-recepies"
+      components={ FavoriteRecepies } /> */}
     </Switch>
   );
 }
