@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function SearchBar() {
   return (
-    <div>
+    <div className="d-flex flex-column align-items-center">
       <input
         data-testid="search-input"
         type="text"
