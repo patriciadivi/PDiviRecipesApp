@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 // import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
@@ -7,6 +8,7 @@ import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 
 export default function Header({ title, searchEnabled }) {
+  const dispatch = useDispatch();
   return (
     <div className="d-flex">
       <Button type="button">
@@ -18,6 +20,7 @@ export default function Header({ title, searchEnabled }) {
       { searchEnabled && (
         <Button
           type="button"
+          onClick={ () => dispatch({ type: 'ACTIVE_SEARCH_BAR' }) }
         >
           <img
             data-testid="search-top-btn"
