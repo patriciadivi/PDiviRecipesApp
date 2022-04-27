@@ -38,7 +38,7 @@ export default function Login() {
     localStorage.setItem('cocktailsToken', JSON.stringify(cocktailsToken));
     localStorage.setItem(
       'user',
-      JSON.stringify([{ email }]),
+      JSON.stringify({ email }),
     );
   };
 
