@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import EmailValidator from 'email-validator';
+import { useHistory } from 'react-router-dom';
 import Input from '../components/Input';
 
 export default function Login() {
@@ -10,6 +11,7 @@ export default function Login() {
   });
 
   const { email, password, disabledButton } = login;
+  const history = useHistory();
 
   const validLogin = () => {
     const numberValid = 6;
@@ -40,6 +42,7 @@ export default function Login() {
       'user',
       JSON.stringify({ email }),
     );
+    history.push('/foods');
   };
 
   return (
