@@ -8,6 +8,7 @@ import RecepieCard from '../components/RecepieCard';
 import { actFetchGenericRecepies } from '../Redux/actions/index';
 import fetchCategories from '../services/fetchCategories';
 import ButtonList from '../components/ButtonList';
+import Footer from '../components/Footer';
 
 export default function Foods() {
   // const page = 'foods';
@@ -27,7 +28,7 @@ export default function Foods() {
   useEffect(() => { getCategories(); }, []);
 
   return (
-    <div>
+    <section className="Foods">
       <Header title="Foods" searchEnabled />
       {searchBarActive && <SearchBar />}
       {buttonList.length > 0 && <ButtonList names={ buttonList } />}
@@ -46,5 +47,9 @@ export default function Foods() {
         </div>
       )}
     </div>
+      <div>
+        <Footer />
+      </div>
+    </section>
   );
 }

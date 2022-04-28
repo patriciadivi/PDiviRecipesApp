@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
 import EmailValidator from 'email-validator';
 import { useHistory } from 'react-router-dom';
 import Input from '../components/Input';
@@ -32,6 +33,7 @@ export default function Login() {
   const handleChangeLogin = ({ target: { name, value } }) => {
     setLogin({ ...login, [name]: value });
   };
+
   const handleClick = (e) => {
     e.preventDefault();
     const mealsToken = 1;

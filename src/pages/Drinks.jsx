@@ -7,6 +7,8 @@ import RecepieCard from '../components/RecepieCard';
 import ButtonList from '../components/ButtonList';
 import { actFetchGenericRecepies } from '../Redux/actions/index';
 import fetchCategories from '../services/fetchCategories';
+import Footer from '../components/Footer';
+
 
 export default function Drinks() {
   const [buttonList, setButtonList] = useState([]);
@@ -43,6 +45,10 @@ export default function Drinks() {
           ))}
         </div>
       )}
+      Drinks
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 }
