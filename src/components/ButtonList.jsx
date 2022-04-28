@@ -8,8 +8,8 @@ export default function ButtonList(props) {
   } = props;
 
   return (
-    <div className="d-flex flex-wrap justify-content-around">
-      <Button variant="light" size="sm">
+    <div className="d-flex flex-wrap justify-content-center">
+      <Button variant="light" size="sm" className="mr-2">
         All
       </Button>
       {names.map((btnName) => (
@@ -17,6 +17,7 @@ export default function ButtonList(props) {
           key={ `btn${btnName.strCategory}` }
           variant="light"
           size="sm"
+          className="mr-2"
           data-testid={ `${btnName.strCategory}-category-filter` }
         >
           {btnName.strCategory}

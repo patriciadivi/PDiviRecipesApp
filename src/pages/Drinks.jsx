@@ -24,7 +24,6 @@ export default function Drinks() {
   useEffect(() => { dispatch(actFetchGenericRecepies('drinks')); }, []);
   useEffect(() => { getCategories(); }, []);
 
-  console.log(buttonList);
   return (
     <div>
       <Header title="Drinks" searchEnabled />
