@@ -23,8 +23,13 @@ export function actFetchGenericRecepies(type) {
     const response = await fetchGenericRecepies(type);
     if (response.status === 'ok') {
       const numberOfRecepies = 12;
-      const recipes = response.data.meals.slice(0, numberOfRecepies);
-      dispatch(saveSearchedRecepies(recipes));
+      let recepies = [];
+      if (type === 'foods') { recepies = response.data.meals.slice(0, numberOfRecepies); }
+      if (type === 'drinks') {
+        recepies = response.data.drinks.slice(0, numberOfRecepies);
+      }
+      // const recipes = response.data.meals.slice(0, numberOfRecepies);
+      dispatch(saveSearchedRecepies(recepies));
     }
   };
 }
