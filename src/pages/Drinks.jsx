@@ -9,7 +9,6 @@ import { actFetchGenericRecepies } from '../Redux/actions/index';
 import fetchCategories from '../services/fetchCategories';
 import Footer from '../components/Footer';
 
-
 export default function Drinks() {
   const [buttonList, setButtonList] = useState([]);
   const searchBarActive = useSelector((state) => state.reducer1.searchBarActive);
@@ -45,7 +44,6 @@ export default function Drinks() {
           ))}
         </div>
       )}
-      Drinks
       <div>
         <Footer />
       </div>

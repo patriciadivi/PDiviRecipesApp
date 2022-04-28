@@ -46,7 +46,6 @@ export default function Foods() {
           ))}
         </div>
       )}
-    </div>
       <div>
         <Footer />
       </div>

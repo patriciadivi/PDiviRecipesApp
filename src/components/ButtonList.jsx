@@ -23,11 +23,10 @@ export default function ButtonList(props) {
           {btnName.strCategory}
         </Button>
       ))}
-      ;
     </div>
   );
 }
 
 ButtonList.propTypes = {
-  names: PropTypes.arrayOf().isRequired,
+  names: PropTypes.arrayOf({ strCategory: PropTypes.string.isRequired }).isRequired,
 };
