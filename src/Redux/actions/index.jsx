@@ -28,7 +28,6 @@ export function actFetchGenericRecepies(type) {
       if (type === 'drinks') {
         recepies = response.data.drinks.slice(0, numberOfRecepies);
       }
-      // const recipes = response.data.meals.slice(0, numberOfRecepies);
       dispatch(saveSearchedRecepies(recepies));
     }
   };

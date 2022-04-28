@@ -24,7 +24,7 @@ export default function Foods() {
     if (status === 'ok') { setButtonList(() => data.meals.slice(0, numOfCategores)); }
   };
 
-  useEffect(() => { dispatch(actFetchGenericRecepies('foods')); }, []);
+  useEffect(() => { dispatch(actFetchGenericRecepies('foods')); }, [dispatch]);
   useEffect(() => { getCategories(); }, []);
 
   return (

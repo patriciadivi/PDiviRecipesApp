@@ -22,7 +22,7 @@ export default function Drinks() {
     if (status === 'ok') { setButtonList(() => data.drinks.slice(0, numOfCategores)); }
   };
 
-  useEffect(() => { dispatch(actFetchGenericRecepies('drinks')); }, []);
+  useEffect(() => { dispatch(actFetchGenericRecepies('drinks')); }, [dispatch]);
   useEffect(() => { getCategories(); }, []);
 
   return (
