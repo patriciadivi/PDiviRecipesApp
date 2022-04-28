@@ -13,18 +13,18 @@ export const loading = () => ({
   type: LOADING,
 });
 
-export const saveRecepies = (payload) => ({
+export const saveSearchedRecepies = (payload) => ({
   type: SAVE_SEARCHED_RECEPIES, payload,
 });
 
-export function actFetchGenericRecepies() {
+export function actFetchGenericRecepies(type) {
   return async (dispatch) => {
     dispatch(loading());
-    const response = await fetchGenericRecepies();
+    const response = await fetchGenericRecepies(type);
     if (response.status === 'ok') {
       const numberOfRecepies = 12;
       const recipes = response.data.meals.slice(0, numberOfRecepies);
-      dispatch(saveRecepies(recipes));
+      dispatch(saveSearchedRecepies(recipes));
     }
   };
 }

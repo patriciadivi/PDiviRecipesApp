@@ -14,12 +14,13 @@ export default function reducer1(state = INITIAL_STATE, action) {
   case LOADING:
     return {
       ...state,
-      loading: !state.loading,
+      loading: true,
     };
   case SAVE_SEARCHED_RECEPIES:
     return {
       ...state,
       searchedRecepies: action.payload,
+      loading: false,
     };
   case ACTIVE_SEARCH_BAR:
     return {
