@@ -42,6 +42,7 @@ export default function Foods() {
               imageSrc={ rec.strMealThumb }
               title={ rec.strMeal }
               index={ index }
+              type="foods"
             />
           ))}
         </div>
