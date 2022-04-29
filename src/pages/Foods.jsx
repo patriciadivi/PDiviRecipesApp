@@ -31,7 +31,7 @@ export default function Foods() {
     <section className="Foods">
       <Header title="Foods" searchEnabled />
       {searchBarActive && <SearchBar />}
-      {buttonList.length > 0 && <ButtonList names={ buttonList } />}
+      {buttonList.length > 0 && <ButtonList names={ buttonList } type="foods" />}
       {loading && <Alert variant="warning">Loading</Alert>}
       {searchedRecepies.length > 0 && !loading && (
         <div className="d-flex flex-wrap justify-content-around">

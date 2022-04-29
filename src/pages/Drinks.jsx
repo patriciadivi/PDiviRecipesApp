@@ -29,7 +29,7 @@ export default function Drinks() {
     <div>
       <Header title="Drinks" searchEnabled />
       {searchBarActive && <SearchBar />}
-      {buttonList.length > 0 && <ButtonList names={ buttonList } />}
+      {buttonList.length > 0 && <ButtonList names={ buttonList } type="drinks" />}
       {loading && <Alert variant="warning">Loading</Alert>}
       {searchedRecepies.length > 0 && !loading && (
         <div className="d-flex flex-wrap justify-content-around">

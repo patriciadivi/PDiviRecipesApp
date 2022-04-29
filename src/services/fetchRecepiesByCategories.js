@@ -1,4 +1,5 @@
-const fetchRecepiesByCategories = async ({ select, category }) => {
+const fetchRecepiesByCategories = async (select, category) => {
+  console.log(select, category);
   let url = '';
   if (select === 'foods') {
     url = `www.themealdb.com/api/json/v1/1/filter.php?c=${category}`;
@@ -6,6 +7,7 @@ const fetchRecepiesByCategories = async ({ select, category }) => {
   if (select === 'drinks') {
     url = `www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`;
   }
+  console.log(url);
   try {
     const resolve = await fetch(url);
     const data = await resolve.json();

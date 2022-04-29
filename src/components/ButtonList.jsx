@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import Button from 'react-bootstrap/Button';
+import fetchRecepiesByCategories from '../services/fetchRecepiesByCategories';
 
 export default function ButtonList(props) {
+  const dispatch = useDispatch();
   const {
     names,
+    type,
   } = props;
 
   return (
@@ -19,6 +23,7 @@ export default function ButtonList(props) {
           size="sm"
           className="mr-2"
           data-testid={ `${btnName.strCategory}-category-filter` }
+          onClick={ () => dispatch(fetchRecepiesByCategories(type, btnName.strCategory)) }
         >
           {btnName.strCategory}
         </Button>
@@ -28,5 +33,10 @@ export default function ButtonList(props) {
 }
 
 ButtonList.propTypes = {
-  names: PropTypes.arrayOf({ strCategory: PropTypes.string.isRequired }).isRequired,
+  names: PropTypes.arrayOf(
+    PropTypes.shape(
+      { strCategory: PropTypes.string.isRequired },
+    ).isRequired,
+  ).isRequired,
+  type: PropTypes.string.isRequired,
 };
