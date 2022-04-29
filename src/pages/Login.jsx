@@ -14,32 +14,32 @@ export default function Login() {
   const { email, password, disabledButton } = login;
   const history = useHistory();
 
-  // const validLogin = () => {
-  //   const numberValid = 6;
-  //   const validEmail = EmailValidator.validate(email); // true ou false
-  //   const valueToInput = password.length > numberValid;
+  const validLogin = () => {
+    const numberValid = 6;
+    const validEmail = EmailValidator.validate(email); // true ou false
+    const valueToInput = password.length > numberValid;
 
-  //   if (valueToInput && validEmail) {
-  //     setLogin({ ...login, disabledButton: false });
-  //   } else {
-  //     setLogin({ ...login, disabledButton: true });
-  //   }
-  // };
+    if (valueToInput && validEmail) {
+      setLogin({ ...login, disabledButton: false });
+    } else {
+      setLogin({ ...login, disabledButton: true });
+    }
+  };
 
   useEffect(() => {
-    const validLogin = () => {
-      const numberValid = 6;
-      const validEmail = EmailValidator.validate(email); // true ou false
-      const valueToInput = password.length > numberValid;
-      if (valueToInput && validEmail) {
-        setLogin({ ...login, disabledButton: false });
-      } else {
-        setLogin({ ...login, disabledButton: true });
-      }
-    };
+    // const validLogin = () => {
+    //   const numberValid = 6;
+    //   const validEmail = EmailValidator.validate(email); // true ou false
+    //   const valueToInput = password.length > numberValid;
+    //   if (valueToInput && validEmail) {
+    //     setLogin({ ...login, disabledButton: false });
+    //   } else {
+    //     setLogin({ ...login, disabledButton: true });
+    //   }
+    // };
 
     validLogin();
-  }, [login, email, password]);
+  }, [email, password]);
 
   const handleChangeLogin = ({ target: { name, value } }) => {
     setLogin({ ...login, [name]: value });
