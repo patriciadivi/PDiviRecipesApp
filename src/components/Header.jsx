@@ -35,5 +35,7 @@ export default function Header({ title, searchEnabled }) {
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
-  searchEnabled: PropTypes.bool.isRequired,
+  searchEnabled: PropTypes.bool,
 };
+
+Header.defaultProps = { searchEnabled: false };
