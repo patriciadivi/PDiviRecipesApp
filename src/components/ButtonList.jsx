@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import Button from 'react-bootstrap/Button';
-import fetchRecepiesByCategories from '../services/fetchRecepiesByCategories';
+import { actFetchRecepiesByCategories } from '../Redux/actions';
+// import { actFetchGenericRecepies } from '../Redux/actions';
 
 export default function ButtonList(props) {
   const dispatch = useDispatch();
@@ -23,7 +24,12 @@ export default function ButtonList(props) {
           size="sm"
           className="mr-2"
           data-testid={ `${btnName.strCategory}-category-filter` }
-          onClick={ () => dispatch(fetchRecepiesByCategories(type, btnName.strCategory)) }
+          onClick={ () => dispatch(
+            actFetchRecepiesByCategories(type, btnName.strCategory),
+          ) }
+          // onClick={ () => dispatch(
+          //   actFetchRecepiesByCategories(type, btnName.strCategory),
+          // ) }
         >
           {btnName.strCategory}
         </Button>
