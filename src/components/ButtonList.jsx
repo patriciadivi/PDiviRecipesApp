@@ -28,6 +28,7 @@ export default function ButtonList(props) {
         variant="light"
         size="sm"
         className="mr-2"
+        data-testid="All-category-filter"
         onClick={ () => handleClick('All') }
       >
         All
