@@ -38,7 +38,6 @@ export function actFetchRecepiesByCategories(type, category) {
   return async (dispatch) => {
     dispatch(loading());
     const response = await fetchRecepiesByCategories(type, category);
-    console.log(response);
     if (response.status === 'ok') {
       const numberOfRecepies = 12;
       let recepies = [];

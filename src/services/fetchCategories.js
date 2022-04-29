@@ -1,7 +1,7 @@
-const fetchCategories = async (select) => {
+const fetchCategories = async (type) => {
   let url = '';
-  if (select === 'foods') { url = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list'; }
-  if (select === 'drinks') { url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list'; }
+  if (type === 'foods') { url = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list'; }
+  if (type === 'drinks') { url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list'; }
   try {
     const resolve = await fetch(url);
     const data = await resolve.json();
