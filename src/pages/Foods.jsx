@@ -9,6 +9,8 @@ import { actFetchGenericRecepies } from '../Redux/actions/index';
 import fetchCategories from '../services/fetchCategories';
 import ButtonList from '../components/ButtonList';
 import Footer from '../components/Footer';
+import '../styles/pages/pagesFoods.css';
+import '../styles/components/Header.css';
 
 export default function Foods() {
   // const page = 'foods';

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import EmailValidator from 'email-validator';
 import { useHistory } from 'react-router-dom';
 import Input from '../components/Input';
+import '../styles/pages/pagesLogin.css';
 
 export default function Login() {
   const [login, setLogin] = useState({
@@ -45,7 +46,7 @@ export default function Login() {
     setLogin({ ...login, [name]: value });
   };
 
-  const handleClick = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const mealsToken = 1;
     const cocktailsToken = 1;
@@ -59,40 +60,45 @@ export default function Login() {
   };
 
   return (
-    <section className="login">
-      <h1>Login</h1>
-      <Input
-        dataTestid="email-input"
-        label="Email: "
-        type="text"
-        onChange={ handleChangeLogin }
-        value={ email }
-        name="email"
-        id="emaildId"
-        placeholder="Digite seu email"
-        required
-      />
+    <section className="containerLogin">
+      <div className="contextBoxLogin">
 
-      <Input
-        dataTestid="password-input"
-        label="Senha: "
-        type="password"
-        onChange={ handleChangeLogin }
-        value={ password }
-        name="password"
-        id="passwordId"
-        placeholder="Digite sua senha"
-        required
-      />
+        <h1>Login</h1>
 
-      <button
-        type="submit"
-        data-testid="login-submit-btn"
-        onClick={ handleClick }
-        disabled={ disabledButton }
-      >
-        Entrar
-      </button>
+        <form onSubmit={ handleSubmit }>
+          <Input
+            dataTestid="email-input"
+            label="Email: "
+            type="text"
+            onChange={ handleChangeLogin }
+            value={ email }
+            name="email"
+            id="emaildId"
+            placeholder="Digite seu email"
+            required
+          />
+
+          <Input
+            dataTestid="password-input"
+            label="Senha: "
+            type="password"
+            onChange={ handleChangeLogin }
+            value={ password }
+            name="password"
+            id="passwordId"
+            placeholder="Digite sua senha"
+            required
+          />
+
+          <button
+            type="submit"
+            data-testid="login-submit-btn"
+            disabled={ disabledButton }
+          >
+            Entrar
+          </button>
+        </form>
+      </div>
     </section>
   );
 }
