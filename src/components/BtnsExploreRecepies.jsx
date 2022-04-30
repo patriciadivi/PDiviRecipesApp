@@ -37,7 +37,7 @@ export default function BtnsExploreRecepies(props) {
         className="mt-3 mx-3"
         // onClick={ () => history.push('/explore/foods') }
       >
-        Suprise me!
+        Surprise me!
       </Button>
     </div>
   );
