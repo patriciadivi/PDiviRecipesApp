@@ -26,7 +26,7 @@ export default function Drinks() {
   useEffect(() => { getCategories(); }, []);
 
   return (
-    <div>
+    <section className="Drinks">
       <Header title="Drinks" searchEnabled />
       {searchBarActive && <SearchBar />}
       {buttonList.length > 0 && <ButtonList names={ buttonList } type="drinks" />}
@@ -48,6 +48,6 @@ export default function Drinks() {
       <div>
         <Footer />
       </div>
-    </div>
+    </section>
   );
 }
