@@ -7,8 +7,11 @@ import '../styles/components/Footer.css';
 
 export default function Footer() {
   return (
-    <section data-testid="footer" className="SectionFooter">
-      <footer className="Footer">
+    <section className="SectionFooter">
+      <footer
+        data-testid="footer"
+        className="Footer"
+      >
         <button type="button">
           <Link to="/drinks">
             <img data-testid="drinks-bottom-btn" src={ drinkIcon } alt="Drinks" />
