@@ -36,9 +36,17 @@ export default function RecepieCard(props) {
 }
 
 RecepieCard.propTypes = {
-  id: PropTypes.string.isRequired,
-  imageSrc: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  index: PropTypes.number.isRequired,
-  type: PropTypes.string.isRequired,
+  id: PropTypes.string,
+  imageSrc: PropTypes.string,
+  title: PropTypes.string,
+  index: PropTypes.number,
+  type: PropTypes.string,
+};
+
+RecepieCard.defaultProps = {
+  id: '',
+  imageSrc: '',
+  title: '',
+  index: 0,
+  type: '',
 };

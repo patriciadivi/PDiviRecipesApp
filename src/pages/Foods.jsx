@@ -7,6 +7,7 @@ import SearchBar from '../components/SearchBar';
 import RecepieCard from '../components/RecepieCard';
 import { actFetchGenericRecepies } from '../Redux/actions/index';
 import fetchCategories from '../services/fetchCategories';
+import randomIdNumber from '../services/randomIdNumber';
 import ButtonList from '../components/ButtonList';
 import Footer from '../components/Footer';
 import '../styles/pages/pagesFoods.css';
@@ -39,7 +40,7 @@ export default function Foods() {
         <div className="d-flex flex-wrap justify-content-around">
           {searchedRecepies.map((rec, index) => (
             <RecepieCard
-              key={ rec.idMeal }
+              key={ `${rec.idMeal}${randomIdNumber()}` }
               id={ rec.idMeal }
               imageSrc={ rec.strMealThumb }
               title={ rec.strMeal }

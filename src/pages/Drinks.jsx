@@ -8,6 +8,7 @@ import ButtonList from '../components/ButtonList';
 import { actFetchGenericRecepies } from '../Redux/actions/index';
 import fetchCategories from '../services/fetchCategories';
 import Footer from '../components/Footer';
+import randomIdNumber from '../services/randomIdNumber';
 
 export default function Drinks() {
   const [buttonList, setButtonList] = useState([]);
@@ -35,7 +36,7 @@ export default function Drinks() {
         <div className="d-flex flex-wrap justify-content-around">
           {searchedRecepies.map((rec, index) => (
             <RecepieCard
-              key={ rec.idDrink }
+              key={ `${rec.idDrink}${randomIdNumber()}` }
               id={ rec.idDrink }
               imageSrc={ rec.strDrinkThumb }
               title={ rec.strDrink }
