@@ -15,3 +15,7 @@ section {
   position: fixed;
   right: 41%;
 }
+
+.footer .d-flex {
+  border: 1px solid darkblue;
+}
