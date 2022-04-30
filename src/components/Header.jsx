@@ -11,7 +11,7 @@ import { ACTIVE_SEARCH_BAR } from '../Redux/actions/actionTypes';
 export default function Header({ title, searchEnabled }) {
   const dispatch = useDispatch();
   return (
-    <div className="d-flex">
+    <div className="d-flex justify-content-center">
       <Button type="button">
         <Link to="/profile">
           <img data-testid="profile-top-btn" src={ profileIcon } alt="Perfil" />
@@ -35,5 +35,7 @@ export default function Header({ title, searchEnabled }) {
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
-  searchEnabled: PropTypes.bool.isRequired,
+  searchEnabled: PropTypes.bool,
 };
+
+Header.defaultProps = { searchEnabled: false };

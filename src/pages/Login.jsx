@@ -28,6 +28,17 @@ export default function Login() {
   };
 
   useEffect(() => {
+    // const validLogin = () => {
+    //   const numberValid = 6;
+    //   const validEmail = EmailValidator.validate(email); // true ou false
+    //   const valueToInput = password.length > numberValid;
+    //   if (valueToInput && validEmail) {
+    //     setLogin({ ...login, disabledButton: false });
+    //   } else {
+    //     setLogin({ ...login, disabledButton: true });
+    //   }
+    // };
+
     validLogin();
   }, [email, password]);
 
