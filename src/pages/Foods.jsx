@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
 import Footer from '../components/Footer';
 import '../styles/pages/pagesFoods.css';
+import '../styles/components/Header.css';
 
 export default function Foods() {
   const searchBarActive = useSelector((state) => state.reducer1.searchBarActive);

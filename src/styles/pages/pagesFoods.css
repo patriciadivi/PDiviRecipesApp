@@ -4,12 +4,16 @@
 }
 
 .Foods {
-  align-items: flex-start;
+
+  /* align-items: flex-start; */
   background-color: rgba(0, 0, 0, 0.9);
   color: wheat;
-  display: flex;
-  font-family: sans-serif;
+
+  /* display: flex; */
+
+  /* font-family: sans-serif; */
   height: 100vh;
-  justify-content: center;
+
+  /* justify-content: center; */
   width: 100%;
 }
