@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import mealIcon from '../images/mealIcon.svg';
 import exploreIcon from '../images/exploreIcon.svg';
 import drinkIcon from '../images/drinkIcon.svg';
-import '../styles/Footer.css';
+import '../styles/components/Footer.css';
 
 export default function Footer() {
   return (
-    <section data-testid="footer" className="footer">
-      <footer>
+    <section data-testid="footer" className="SectionFooter">
+      <footer className="Footer">
         <button type="button">
           <Link to="/drinks">
             <img data-testid="drinks-bottom-btn" src={ drinkIcon } alt="Drinks" />
