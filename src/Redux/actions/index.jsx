@@ -84,13 +84,18 @@ export function actFetchIngredients(type) {
       const numberOfIngredients = 12;
       let ingredients = [];
       if (type === 'foods') {
-        ingredients = response.data.meals.slice(0, numberOfIngredients);
+        ingredients = response.data.meals.slice(0, numberOfIngredients)
+          .map((ing) => [ing.strIngredient,
+            ing.strIngredient.concat('-Small')]);
       }
       if (type === 'drinks') {
-        ingredients = response.data.drinks.slice(0, numberOfIngredients);
+        ingredients = response.data.drinks.slice(0, numberOfIngredients)
+          .map((ing) => [ing.strIngredient1,
+            ing.strIngredient1.concat('-Small')]);
       }
-      console.log(ingredients);
-      dispatch(saveSearchedRecepies(ingredients));
+
+      // console.log(ingredients);
+      dispatch(saveSearchedIngredients(ingredients));
     }
   };
 }

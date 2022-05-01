@@ -2,28 +2,32 @@ import React from 'react';
 // import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
+// import randomIdNumber from '../services/randomIdNumber';
 
-export default function RecepieCard(props) {
+export default function IngredientCard(props) {
   const {
-    id,
-    imageSrc,
     title,
+    urlEndImage,
     index,
-    // type,
+    type,
   } = props;
 
-  return (
+  const urlImage = type === 'foods'
+    ? `https://www.themealdb.com/images/ingredients/${urlEndImage}.png`
+    : `https://www.thecocktaildb.com/images/ingredients/${urlEndImage}.png`;
 
+  return (
     <Card
       style={ { width: '10rem' } }
       className="mt-3"
-      key={ id }
+      // key={ `${title}${randomIdNumber()}` }
       data-testid={ `${index}-ingredient-card` }
+      onClick={ () => console.log(title) }
     >
       {/* <Link to={ `/${type}/${id}` } className="stretched-link" /> */}
       <Card.Img
         variant="top"
-        src={ imageSrc }
+        src={ urlImage }
         data-testid={ `${index}-card-img` }
       />
       <Card.Body>
@@ -35,18 +39,16 @@ export default function RecepieCard(props) {
   );
 }
 
-RecepieCard.propTypes = {
-  id: PropTypes.string,
-  imageSrc: PropTypes.string,
+IngredientCard.propTypes = {
+  urlEndImage: PropTypes.string,
   title: PropTypes.string,
   index: PropTypes.number,
-  // type: PropTypes.string,
+  type: PropTypes.string,
 };
 
-RecepieCard.defaultProps = {
-  id: '',
-  imageSrc: '',
+IngredientCard.defaultProps = {
+  urlEndImage: '',
   title: '',
   index: 0,
-  // type: '',
+  type: '',
 };
