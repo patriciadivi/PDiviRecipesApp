@@ -4,7 +4,6 @@ import Footer from '../components/Footer';
 import BtnsExploreRecepies from '../components/BtnsExploreRecepies';
 import '../styles/components/Header.css';
 
-
 export default function ExploreDrinks() {
   return (
     <div>

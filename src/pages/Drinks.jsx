@@ -11,7 +11,6 @@ import Footer from '../components/Footer';
 import randomIdNumber from '../services/randomIdNumber';
 import '../styles/components/Header.css';
 
-
 export default function Drinks() {
   const [buttonList, setButtonList] = useState([]);
   const searchBarActive = useSelector((state) => state.reducer1.searchBarActive);
