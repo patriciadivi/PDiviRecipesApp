@@ -2,6 +2,8 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+// import { useDispatch } from 'react-redux';
+// import { actFetchSuprise } from '../Redux/actions';
 import fetchSurprise from '../services/fetchSurprise';
 
 export default function BtnsExploreRecepies(props) {
@@ -9,14 +11,12 @@ export default function BtnsExploreRecepies(props) {
     type,
   } = props;
   const history = useHistory();
+  // const dispatch = useDispatch();
 
   const gerRandomRecepie = async () => {
-    const { status, data } = await fetchSurprise(type);
-    if (status === 'ok' && type === 'foods') {
-      history.push(`/${type}/${data.meals.idMeal}`);
-    }
-    if (status === 'ok' && type === 'drinks') {
-      history.push(`/${type}/${data.drinks.idDrink}`);
+    const { status, recepieId } = await fetchSurprise(type);
+    if (status === 'ok') {
+      history.push(`/${type}/${recepieId}`);
     }
   };
 

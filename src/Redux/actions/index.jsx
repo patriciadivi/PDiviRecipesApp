@@ -1,10 +1,14 @@
 import fetchGenericRecepies from '../../services/fetchGenericRecepies';
 import fetchRecepiesByCategories from '../../services/fetchRecepiesByCategories';
+// import fetchSurprise from '../../services/fetchSurprise';
+
 import {
   USER_LOGIN, USER_LOGOUT01,
   ACTIVE_SEARCH_BAR,
   SAVE_SEARCHED_RECEPIES,
-  LOADING } from './actionTypes';
+  LOADING,
+  // SAVE_RECEPIE_ID,
+} from './actionTypes';
 
 export const minhaAction = (value) => ({ type: USER_LOGIN, value });
 export const minhaAction01 = (value) => ({ type: USER_LOGOUT01, value });
@@ -17,6 +21,10 @@ export const loading = () => ({
 export const saveSearchedRecepies = (payload) => ({
   type: SAVE_SEARCHED_RECEPIES, payload,
 });
+
+// export const saveRecepieId = (payload) => ({
+//   type: SAVE_RECEPIE_ID, payload,
+// });
 
 export function actFetchGenericRecepies(type) {
   return async (dispatch) => {
@@ -49,3 +57,15 @@ export function actFetchRecepiesByCategories(type, category) {
     }
   };
 }
+
+// export function actFetchSuprise(type) {
+//   console.log(type);
+//   return async (dispatch) => {
+//     const response = await fetchSurprise(type);
+//     console.log(response);
+//     if (response.status === 'ok') {
+//       console.log(response.recepieId);
+//       dispatch(saveRecepieId(response.recepieId));
+//     }
+//   };
+// }
