@@ -12,21 +12,30 @@ export default function Footer() {
         data-testid="footer"
         className="Footer"
       >
-        <button type="button">
-          <Link to="/drinks">
+        <Link
+          to="/drinks"
+          className="FooterLink"
+        >
+          <button type="button">
             <img data-testid="drinks-bottom-btn" src={ drinkIcon } alt="Drinks" />
-          </Link>
-        </button>
-        <button type="button">
-          <Link to="/explore">
+          </button>
+        </Link>
+        <Link
+          to="/explore"
+          className="FooterLink"
+        >
+          <button type="button">
             <img data-testid="explore-bottom-btn" src={ exploreIcon } alt="Explore" />
-          </Link>
-        </button>
-        <button type="button">
-          <Link to="/foods">
+          </button>
+        </Link>
+        <Link
+          to="/foods"
+          className="FooterLink"
+        >
+          <button type="button">
             <img data-testid="food-bottom-btn" src={ mealIcon } alt="Foods" />
-          </Link>
-        </button>
+          </button>
+        </Link>
       </footer>
     </section>
   );

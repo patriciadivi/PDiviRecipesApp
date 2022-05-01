@@ -18,15 +18,25 @@
 
 }
 
-.Footer button {
+.Footer .FooterLink {
   backdrop-filter: blur(4px);
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 10px;
   box-shadow: 0 8px 32px 0 rgba(22, 160, 133, 0.27);
   margin: 0.2rem;
+  width: 100%;
+}
+
+.Footer button {
+  backdrop-filter: blur(4px);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+  box-shadow: 0 8px 32px 0 rgba(22, 160, 133, 0.27);
   padding: 0.2rem;
   width: 100%;
+
 }
 
 
