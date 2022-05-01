@@ -1,7 +1,9 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+// import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
+import { actFetchByIngredients } from '../Redux/actions';
 // import randomIdNumber from '../services/randomIdNumber';
 
 export default function IngredientCard(props) {
@@ -11,10 +13,16 @@ export default function IngredientCard(props) {
     index,
     type,
   } = props;
+  // const history = useHistory();
+  const dispatch = useDispatch();
 
   const urlImage = type === 'foods'
     ? `https://www.themealdb.com/images/ingredients/${urlEndImage}.png`
     : `https://www.thecocktaildb.com/images/ingredients/${urlEndImage}.png`;
+
+  const handleClick = (ingredient) => {
+    dispatch(actFetchByIngredients(type, ingredient));
+  };
 
   return (
     <Card
@@ -22,7 +30,7 @@ export default function IngredientCard(props) {
       className="mt-3"
       // key={ `${title}${randomIdNumber()}` }
       data-testid={ `${index}-ingredient-card` }
-      onClick={ () => console.log(title) }
+      onClick={ () => handleClick(title) }
     >
       {/* <Link to={ `/${type}/${id}` } className="stretched-link" /> */}
       <Card.Img

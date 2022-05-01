@@ -1,3 +1,4 @@
+import fetchByIngredient from '../../services/fetchByIngredient';
 import fetchGenericRecepies from '../../services/fetchGenericRecepies';
 import fetchIngredients from '../../services/fetchIngredients';
 import fetchRecepiesByCategories from '../../services/fetchRecepiesByCategories';
@@ -93,9 +94,23 @@ export function actFetchIngredients(type) {
           .map((ing) => [ing.strIngredient1,
             ing.strIngredient1.concat('-Small')]);
       }
-
-      // console.log(ingredients);
       dispatch(saveSearchedIngredients(ingredients));
+    }
+  };
+}
+
+export function actFetchByIngredients(type, ingredient) {
+  return async (dispatch) => {
+    dispatch(loading());
+    const response = await fetchByIngredient(type, ingredient);
+    if (response.status === 'ok') {
+      const numberOfRecepies = 12;
+      let recepies = [];
+      if (type === 'foods') { recepies = response.data.meals.slice(0, numberOfRecepies); }
+      if (type === 'drinks') {
+        recepies = response.data.drinks.slice(0, numberOfRecepies);
+      }
+      dispatch(saveSearchedRecepies(recepies));
     }
   };
 }

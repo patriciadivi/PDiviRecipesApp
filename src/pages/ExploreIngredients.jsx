@@ -19,8 +19,6 @@ export default function ExploreIngredients() {
 
   useEffect(() => { dispatch(actFetchIngredients(type)); }, [dispatch, type]);
 
-  console.log(searchedIngredients);
-
   return (
     <div>
       <Header title="Explore Ingredients" searchEnabled={ false } />
