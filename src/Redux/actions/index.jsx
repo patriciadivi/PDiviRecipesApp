@@ -1,4 +1,5 @@
 import fetchGenericRecepies from '../../services/fetchGenericRecepies';
+import fetchIngredients from '../../services/fetchIngredients';
 import fetchRecepiesByCategories from '../../services/fetchRecepiesByCategories';
 // import fetchSurprise from '../../services/fetchSurprise';
 
@@ -8,6 +9,7 @@ import {
   SAVE_SEARCHED_RECEPIES,
   LOADING,
   // SAVE_RECEPIE_ID,
+  SAVE_SEARCHED_INGREDIENTS,
 } from './actionTypes';
 
 export const minhaAction = (value) => ({ type: USER_LOGIN, value });
@@ -69,3 +71,26 @@ export function actFetchRecepiesByCategories(type, category) {
 //     }
 //   };
 // }
+
+export const saveSearchedIngredients = (payload) => ({
+  type: SAVE_SEARCHED_INGREDIENTS, payload,
+});
+
+export function actFetchIngredients(type) {
+  return async (dispatch) => {
+    dispatch(loading());
+    const response = await fetchIngredients(type);
+    if (response.status === 'ok') {
+      const numberOfIngredients = 12;
+      let ingredients = [];
+      if (type === 'foods') {
+        ingredients = response.data.meals.slice(0, numberOfIngredients);
+      }
+      if (type === 'drinks') {
+        ingredients = response.data.drinks.slice(0, numberOfIngredients);
+      }
+      console.log(ingredients);
+      dispatch(saveSearchedRecepies(ingredients));
+    }
+  };
+}

@@ -3,6 +3,7 @@ import {
   LOADING,
   SAVE_SEARCHED_RECEPIES,
   // SAVE_RECEPIE_ID
+  SAVE_SEARCHED_INGREDIENTS,
 } from '../actions/actionTypes';
 
 const INITIAL_STATE = {
@@ -10,6 +11,7 @@ const INITIAL_STATE = {
   loading: false,
   searchedRecepies: [],
   // recepieId: '',
+  searchedIngredients: [],
 };
 
 export default function reducer1(state = INITIAL_STATE, action) {
@@ -35,6 +37,12 @@ export default function reducer1(state = INITIAL_STATE, action) {
   //     ...state,
   //     recepieId: action.payload,
   //   };
+  case SAVE_SEARCHED_INGREDIENTS:
+    return {
+      ...state,
+      searchedIngredients: action.payload,
+      loading: false,
+    };
   default:
     return state;
   }
