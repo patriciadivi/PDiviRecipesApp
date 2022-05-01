@@ -7,12 +7,17 @@ import { Link } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import { ACTIVE_SEARCH_BAR } from '../Redux/actions/actionTypes';
+import '../styles/components/Header.css';
 
 export default function Header({ title, searchEnabled }) {
   const dispatch = useDispatch();
+
   return (
-    <div className="d-flex justify-content-center">
-      <Button type="button">
+    <div className="Header">
+      <Button
+        type="button"
+        className="btnHeader"
+      >
         <Link to="/profile">
           <img data-testid="profile-top-btn" src={ profileIcon } alt="Perfil" />
         </Link>
@@ -21,6 +26,7 @@ export default function Header({ title, searchEnabled }) {
       { searchEnabled && (
         <Button
           type="button"
+          className="btnHeader"
           onClick={ () => dispatch({ type: ACTIVE_SEARCH_BAR }) }
         >
           <img
