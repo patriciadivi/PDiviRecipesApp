@@ -2,6 +2,7 @@ import fetchByIngredient from '../../services/fetchByIngredient';
 import fetchGenericRecepies from '../../services/fetchGenericRecepies';
 import fetchIngredients from '../../services/fetchIngredients';
 import fetchRecepiesByCategories from '../../services/fetchRecepiesByCategories';
+import fetchByNationality from '../../services/fetchByNationality';
 // import fetchSurprise from '../../services/fetchSurprise';
 
 import {
@@ -120,6 +121,19 @@ export function actFetchByIngredients(type, ingredient) {
       if (type === 'drinks') {
         recepies = response.data.drinks.slice(0, numberOfRecepies);
       }
+      dispatch(saveSearchedRecepies(recepies));
+    }
+  };
+}
+
+export function actFetchByNationality(type, nationality = 'French') {
+  return async (dispatch) => {
+    dispatch(loading());
+    const response = await fetchByNationality(type, nationality);
+    if (response.status === 'ok') {
+      const numberOfRecepies = 12;
+      let recepies = [];
+      if (type === 'foods') { recepies = response.data.meals.slice(0, numberOfRecepies); }
       dispatch(saveSearchedRecepies(recepies));
     }
   };
