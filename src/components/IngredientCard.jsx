@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 import { actFetchByIngredients } from '../Redux/actions';
@@ -13,7 +13,7 @@ export default function IngredientCard(props) {
     index,
     type,
   } = props;
-  // const history = useHistory();
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const urlImage = type === 'foods'
@@ -22,6 +22,7 @@ export default function IngredientCard(props) {
 
   const handleClick = (ingredient) => {
     dispatch(actFetchByIngredients(type, ingredient));
+    history.push(`/${type}`);
   };
 
   return (

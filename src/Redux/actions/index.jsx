@@ -11,6 +11,7 @@ import {
   LOADING,
   // SAVE_RECEPIE_ID,
   SAVE_SEARCHED_INGREDIENTS,
+  MAIN_PAGE_AVOID_FETCH,
 } from './actionTypes';
 
 export const minhaAction = (value) => ({ type: USER_LOGIN, value });
@@ -98,10 +99,14 @@ export function actFetchIngredients(type) {
     }
   };
 }
+export const setMainPageToAvoidFetch = () => ({
+  type: MAIN_PAGE_AVOID_FETCH,
+});
 
 export function actFetchByIngredients(type, ingredient) {
   return async (dispatch) => {
     dispatch(loading());
+    dispatch(setMainPageToAvoidFetch());
     const response = await fetchByIngredient(type, ingredient);
     if (response.status === 'ok') {
       const numberOfRecepies = 12;

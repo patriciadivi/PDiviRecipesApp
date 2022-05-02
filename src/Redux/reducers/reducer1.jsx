@@ -4,6 +4,7 @@ import {
   SAVE_SEARCHED_RECEPIES,
   // SAVE_RECEPIE_ID
   SAVE_SEARCHED_INGREDIENTS,
+  MAIN_PAGE_AVOID_FETCH,
 } from '../actions/actionTypes';
 
 const INITIAL_STATE = {
@@ -12,6 +13,7 @@ const INITIAL_STATE = {
   searchedRecepies: [],
   // recepieId: '',
   searchedIngredients: [],
+  avoidFetchAtMainPage: false,
 };
 
 export default function reducer1(state = INITIAL_STATE, action) {
@@ -42,6 +44,11 @@ export default function reducer1(state = INITIAL_STATE, action) {
       ...state,
       searchedIngredients: action.payload,
       loading: false,
+    };
+  case MAIN_PAGE_AVOID_FETCH:
+    return {
+      ...state,
+      avoidFetchAtMainPage: true,
     };
   default:
     return state;
