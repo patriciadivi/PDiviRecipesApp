@@ -1,4 +1,5 @@
 import React from 'react';
+// import { SAVE_SEARCHED_RECEPIES } from '../Redux/actions/actionTypes';
 
 export default function SearchBar() {
   return (
