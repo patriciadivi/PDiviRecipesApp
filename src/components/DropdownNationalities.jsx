@@ -1,7 +1,10 @@
 import React from 'react';
+import PropTypes, { string } from 'prop-types';
 import { DropdownButton, Dropdown } from 'react-bootstrap';
+import randomIdNumber from '../services/randomIdNumber';
 
-export default function DropdownNationalities() {
+export default function DropdownNationalities({ natList }) {
+  console.log(natList);
   return (
     <DropdownButton
       className="mt-3 mx-3 "
@@ -9,10 +12,20 @@ export default function DropdownNationalities() {
       size="lg"
       variant="light"
       data-testid="explore-by-nationality-dropdown"
+      renderMenuOnMount="true"
     >
-      <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-      <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-      <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+      {natList.map((nat) => (
+        <Dropdown.Item
+          key={ nat + randomIdNumber() }
+          data-testid={ `${nat}-option` }
+          value={ nat }
+        >
+          {nat}
+        </Dropdown.Item>))}
     </DropdownButton>
   );
 }
+
+DropdownNationalities.propTypes = {
+  natList: PropTypes.arrayOf(string).isRequired,
+};
