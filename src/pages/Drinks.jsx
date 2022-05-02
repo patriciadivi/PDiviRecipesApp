@@ -16,6 +16,7 @@ export default function Drinks() {
   const searchBarActive = useSelector((state) => state.reducer1.searchBarActive);
   const loading = useSelector((state) => state.reducer1.loading);
   const searchedRecepies = useSelector((state) => state.reducer1.searchedRecepies);
+  const avoidFetchAtLoad = useSelector((state) => state.reducer1.avoidFetchAtMainPage);
   const dispatch = useDispatch();
 
   const getCategories = async () => {
@@ -24,7 +25,11 @@ export default function Drinks() {
     if (status === 'ok') { setButtonList(() => data.drinks.slice(0, numOfCategores)); }
   };
 
-  useEffect(() => { dispatch(actFetchGenericRecepies('drinks')); }, [dispatch]);
+  useEffect(() => {
+    if (!avoidFetchAtLoad) {
+      dispatch(actFetchGenericRecepies('drinks'));
+    }
+  }, []);
   useEffect(() => { getCategories(); }, []);
 
   return (

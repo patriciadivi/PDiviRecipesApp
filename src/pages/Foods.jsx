@@ -19,6 +19,7 @@ export default function Foods() {
   const searchBarActive = useSelector((state) => state.reducer1.searchBarActive);
   const loading = useSelector((state) => state.reducer1.loading);
   const searchedRecepies = useSelector((state) => state.reducer1.searchedRecepies);
+  const avoidFetchAtLoad = useSelector((state) => state.reducer1.avoidFetchAtMainPage);
   const dispatch = useDispatch();
 
   const getCategories = async () => {
@@ -27,7 +28,11 @@ export default function Foods() {
     if (status === 'ok') { setButtonList(() => data.meals.slice(0, numOfCategores)); }
   };
 
-  useEffect(() => { dispatch(actFetchGenericRecepies('foods')); }, [dispatch]);
+  useEffect(() => {
+    if (!avoidFetchAtLoad) {
+      dispatch(actFetchGenericRecepies('foods'));
+    }
+  }, []);
   useEffect(() => { getCategories(); }, []);
 
   return (
