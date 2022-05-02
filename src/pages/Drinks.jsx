@@ -5,9 +5,10 @@ import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
 import RecepieCard from '../components/RecepieCard';
 import ButtonList from '../components/ButtonList';
-import { actFetchGenericRecepies } from '../Redux/actions/index';
+import { actFetchGenericRecepies, cancelAvoidFetch } from '../Redux/actions/index';
 import fetchCategories from '../services/fetchCategories';
 import Footer from '../components/Footer';
+import randomIdNumber from '../services/randomIdNumber';
 import '../styles/components/Header.css';
 
 export default function Drinks() {
@@ -15,6 +16,7 @@ export default function Drinks() {
   const searchBarActive = useSelector((state) => state.reducer1.searchBarActive);
   const loading = useSelector((state) => state.reducer1.loading);
   const searchedRecepies = useSelector((state) => state.reducer1.searchedRecepies);
+  const avoidFetchAtLoad = useSelector((state) => state.reducer1.avoidFetchAtMainPage);
   const dispatch = useDispatch();
 
   const getCategories = async () => {
@@ -23,11 +25,16 @@ export default function Drinks() {
     if (status === 'ok') { setButtonList(() => data.drinks.slice(0, numOfCategores)); }
   };
 
-  useEffect(() => { dispatch(actFetchGenericRecepies('drinks')); }, [dispatch]);
+  useEffect(() => {
+    if (!avoidFetchAtLoad) {
+      dispatch(actFetchGenericRecepies('drinks'));
+    }
+    if (avoidFetchAtLoad) { dispatch(cancelAvoidFetch()); }
+  }, []);
   useEffect(() => { getCategories(); }, []);
 
   return (
-    <div>
+    <section className="Drinks">
       <Header title="Drinks" searchEnabled />
       {searchBarActive && <SearchBar />}
       {buttonList.length > 0 && <ButtonList names={ buttonList } type="drinks" />}
@@ -36,7 +43,7 @@ export default function Drinks() {
         <div className="d-flex flex-wrap justify-content-around">
           {searchedRecepies.map((rec, index) => (
             <RecepieCard
-              key={ rec.idDrink }
+              key={ `${rec.idDrink}${randomIdNumber()}` }
               id={ rec.idDrink }
               imageSrc={ rec.strDrinkThumb }
               title={ rec.strDrink }
@@ -49,6 +56,6 @@ export default function Drinks() {
       <div>
         <Footer />
       </div>
-    </div>
+    </section>
   );
 }
