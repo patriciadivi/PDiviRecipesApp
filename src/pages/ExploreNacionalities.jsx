@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import DropdownNationalities from '../components/DropdownNationalities';
 import '../styles/components/Header.css';
-import fetchByNationality from '../services/fetchByNationalities';
+import fetchNationality from '../services/fetchNationalities';
 
 export default function ExploreNacionalities() {
   const location = useLocation();
@@ -13,7 +13,7 @@ export default function ExploreNacionalities() {
   const [natList, setNatList] = useState([]);
 
   const getNationalities = async () => {
-    const { status, data } = await fetchByNationality(type);
+    const { status, data } = await fetchNationality(type);
     if (status === 'ok') { setNatList(() => data); }
   };
 
