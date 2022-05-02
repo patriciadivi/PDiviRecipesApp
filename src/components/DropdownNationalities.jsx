@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import PropTypes, { string } from 'prop-types';
 // import { DropdownButton, Dropdown } from 'react-bootstrap';
 import randomIdNumber from '../services/randomIdNumber';
-import { actFetchByNationality } from '../Redux/actions';
+import { actFetchByNationality, actFetchGenericRecepies } from '../Redux/actions';
 
 export default function DropdownNationalities({ natList, type }) {
   const dispatch = useDispatch();
@@ -20,6 +20,13 @@ export default function DropdownNationalities({ natList, type }) {
 
       >
         <option value="default" disabled>Select Nationality</option>
+        <option
+          value="All"
+          data-testid="All-option"
+          onClick={ () => dispatch(actFetchGenericRecepies(type)) }
+        >
+          All Recepies
+        </option>
         {natList.map((nat) => (
           <option
             key={ nat + randomIdNumber() }
