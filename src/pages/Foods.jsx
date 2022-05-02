@@ -5,7 +5,7 @@ import Alert from 'react-bootstrap/Alert';
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
 import RecepieCard from '../components/RecepieCard';
-import { actFetchGenericRecepies } from '../Redux/actions/index';
+import { actFetchGenericRecepies, cancelAvoidFetch } from '../Redux/actions/index';
 import fetchCategories from '../services/fetchCategories';
 import randomIdNumber from '../services/randomIdNumber';
 import ButtonList from '../components/ButtonList';
@@ -32,6 +32,7 @@ export default function Foods() {
     if (!avoidFetchAtLoad) {
       dispatch(actFetchGenericRecepies('foods'));
     }
+    if (avoidFetchAtLoad) { dispatch(cancelAvoidFetch()); }
   }, []);
   useEffect(() => { getCategories(); }, []);
 

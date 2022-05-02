@@ -5,6 +5,7 @@ import {
   // SAVE_RECEPIE_ID
   SAVE_SEARCHED_INGREDIENTS,
   MAIN_PAGE_AVOID_FETCH,
+  CANCEL_AVOID_FETCH,
 } from '../actions/actionTypes';
 
 const INITIAL_STATE = {
@@ -49,6 +50,11 @@ export default function reducer1(state = INITIAL_STATE, action) {
     return {
       ...state,
       avoidFetchAtMainPage: true,
+    };
+  case CANCEL_AVOID_FETCH:
+    return {
+      ...state,
+      avoidFetchAtMainPage: false,
     };
   default:
     return state;

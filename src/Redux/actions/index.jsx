@@ -12,6 +12,7 @@ import {
   // SAVE_RECEPIE_ID,
   SAVE_SEARCHED_INGREDIENTS,
   MAIN_PAGE_AVOID_FETCH,
+  CANCEL_AVOID_FETCH,
 } from './actionTypes';
 
 export const minhaAction = (value) => ({ type: USER_LOGIN, value });
@@ -101,6 +102,10 @@ export function actFetchIngredients(type) {
 }
 export const setMainPageToAvoidFetch = () => ({
   type: MAIN_PAGE_AVOID_FETCH,
+});
+
+export const cancelAvoidFetch = () => ({
+  type: CANCEL_AVOID_FETCH,
 });
 
 export function actFetchByIngredients(type, ingredient) {

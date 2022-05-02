@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
 import RecepieCard from '../components/RecepieCard';
 import ButtonList from '../components/ButtonList';
-import { actFetchGenericRecepies } from '../Redux/actions/index';
+import { actFetchGenericRecepies, cancelAvoidFetch } from '../Redux/actions/index';
 import fetchCategories from '../services/fetchCategories';
 import Footer from '../components/Footer';
 import randomIdNumber from '../services/randomIdNumber';
@@ -29,6 +29,7 @@ export default function Drinks() {
     if (!avoidFetchAtLoad) {
       dispatch(actFetchGenericRecepies('drinks'));
     }
+    if (avoidFetchAtLoad) { dispatch(cancelAvoidFetch()); }
   }, []);
   useEffect(() => { getCategories(); }, []);
 
