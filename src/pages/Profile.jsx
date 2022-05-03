@@ -7,7 +7,7 @@ import '../styles/components/Header.css';
 
 export default function Profile() {
   const history = useHistory();
-  const [email, setMail] = useState('');
+  const [email, setMail] = useState('email');
 
   const cleanStorageAndRedirect = () => {
     window.localStorage.clear();
@@ -15,8 +15,10 @@ export default function Profile() {
   };
 
   useEffect(() => {
-    const user = JSON.parse(window.localStorage.getItem('user'));
-    setMail(() => user.email);
+    const tempData = window.localStorage.getItem('user');
+    let user = false;
+    if (tempData) { user = JSON.parse(tempData); }
+    if (user.email) { setMail(() => user.email); }
   }, []);
 
   return (
