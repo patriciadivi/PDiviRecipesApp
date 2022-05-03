@@ -12,6 +12,7 @@ import ExploreIngredients from '../pages/ExploreIngredients';
 import ExploreNacionalities from '../pages/ExploreNacionalities';
 import FavoriteRecipies from '../pages/FavoriteRecipies';
 import Recepie from '../pages/Recepie';
+import NotFound from '../pages/NotFound';
 
 export default function RouteApp() {
   return (
@@ -53,6 +54,7 @@ export default function RouteApp() {
           path="/favorite-recipes"
           component={ FavoriteRecipies }
         />
+        <Route path="/explore" component={ NotFound } />
       </Switch>
     </section>
   );
