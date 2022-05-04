@@ -6,6 +6,8 @@ import fetchByName from '../services/fetchByName';
 import { saveSearchedRecepies } from '../Redux/actions/index';
 import fetchFirstLetter from '../services/fetchFirstLetter';
 
+const FIRST_LETTER = 'first-letter';
+
 export default function SearchBar() {
   const [radioSelected, setRadioSelected] = useState('');
   const [searchInputValue, setSearchInputValue] = useState('');
@@ -15,8 +17,8 @@ export default function SearchBar() {
 
   const handleChange = ({ target: { value } }) => {
     setSearchInputValue(value);
-    // eslint-disable-next-line sonarjs/no-duplicate-string
-    if (value.length > 1 && radioSelected === 'first-letter') {
+
+    if (value.length > 1 && radioSelected === FIRST_LETTER) {
       global.alert('Your search must have only 1 (one) character');
     }
   };
@@ -34,7 +36,7 @@ export default function SearchBar() {
       dispatch(saveSearchedRecepies(searchByName));
       return searchInputValue;
     }
-    case 'first-letter': {
+    case FIRST_LETTER: {
       const searchByFirstLetter = await fetchFirstLetter(searchInputValue);
       console.log(searchByFirstLetter);
       dispatch(saveSearchedRecepies(searchByFirstLetter));
@@ -91,8 +93,7 @@ export default function SearchBar() {
             name="search-bar-radio"
             data-testid="first-letter-search-radio"
             id="first-letter"
-            value="first-letter"
-            onClick={ () => handleRadioClick('first-letter') }
+            onClick={ () => handleRadioClick(FIRST_LETTER) }
           />
           First Letter
         </label>
