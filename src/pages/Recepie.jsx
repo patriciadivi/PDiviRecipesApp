@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory, Link } from 'react-router-dom';
-import Card from 'react-bootstrap/Card';
-import { Carousel } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 import fetchByID from '../services/fetchByID';
-import randomIdNumber from '../services/randomIdNumber';
+import Carrosel from '../components/Carrosel';
 // import RecepieCard from '../components/RecepieCard';
 import { actFetchGenericRecepies } from '../Redux/actions/index';
 import indicationsList from '../services/indication';
 
 export default function Recepie() {
-  const numberOfIndications = 6;
+  // const numberOfIndications = 6;
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -38,13 +36,12 @@ export default function Recepie() {
   const getRecepies = async () => {
     const response = await fetchByID(type, id[1]);
     if (response.status === 'ok') {
+      console.log(response);
       setRecepie([response.recepie[0]]);
     }
   };
 
   const indications = indicationsList(searchedRecepies);
-
-  // console.log(indications);
 
   useEffect(() => {
     getRecepies();
@@ -53,13 +50,6 @@ export default function Recepie() {
     if (recepie[0]) { getIngredients(); }
   }, [recepie]);
   useEffect(() => { dispatch(actFetchGenericRecepies(typeSuggestion)); }, []);
-  // useEffect(() => {
-  //   setfilteredRecepie(recepie.filter((element) => element !== null
-  //     && element.length !== 0));
-  // }, [recepie]);
-  // useEffect(() => {
-  //   console.log(Object.keys(filteredRecepie[0]));
-  // }, [filteredRecepie]);
 
   return (
     <div>
@@ -89,75 +79,7 @@ export default function Recepie() {
                 {e}
               </p>))}
           </div>
-          <Carousel>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="holder.js/800x400?text=First slide&bg=373940"
-                alt="First slide"
-              />
-              <Carousel.Caption>
-                <h3>First slide label</h3>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-              </Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="holder.js/800x400?text=Second slide&bg=282c34"
-                alt="Second slide"
-              />
-
-              <Carousel.Caption>
-                <h3>Second slide label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="holder.js/800x400?text=Third slide&bg=20232a"
-                alt="Third slide"
-              />
-
-              <Carousel.Caption>
-                <h3>Third slide label</h3>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-              </Carousel.Caption>
-            </Carousel.Item>
-          </Carousel>
-          <div className="d-flex flex-wrap justify-content-around">
-            {indications.filter((e, i) => i < numberOfIndications)
-              .map((rec, index) => (
-                <Card
-                  style={ { width: '10rem' } }
-                  className="mt-3"
-                  key={ `${rec[0]}${randomIdNumber()}` }
-                  data-testid={ `${index}-recomendation-card` }
-                >
-                  <Link to={ `/${type}/${id}` } className="stretched-link" />
-                  <Card.Img
-                    variant="top"
-                    src={ rec[1] }
-                    data-testid={ `${index}-card-img` }
-                  />
-                  <Card.Body>
-                    <Card.Title data-testid={ `${index}-recomendation-title` }>
-                      { rec[2] }
-                    </Card.Title>
-                  </Card.Body>
-                </Card>
-                // <RecepieCard
-                //   key={ `${rec.idMeal}${randomIdNumber()}` }
-                //   id={ rec.idMeal }
-                //   imageSrc={ rec.strMealThumb }
-                //   title={ rec.strMeal }
-                //   index={ index }
-                //   type={ type }
-                //   data-testid={ `${index}-recomendation-card` }
-                // />
-              ))}
-          </div>
+          <Carrosel indications={ indications } type={ typeSuggestion } />
           <p data-testid="instructions">{ele.strInstructions}</p>
           <p data-testid="video">{ele.strYoutube}</p>
         </div>))}
