@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import fetchByID from '../services/fetchByID';
+// import randomIdNumber from '../services/randomIdNumber';
 
 export default function Recepie() {
   const history = useHistory();
@@ -40,10 +41,10 @@ export default function Recepie() {
   //   console.log(Object.keys(filteredRecepie[0]));
   // }, [filteredRecepie]);
 
-  console.log(ingredients);
+  ingredients.map((e, index) => console.log(e + index));
   return (
     <div>
-      {recepie?.map((ele) => (
+      {recepie !== [] && recepie.map((ele) => (
         <div key={ ele.idMeal || ele.idDrink }>
           <img
             data-testid="recipe-photo"
@@ -59,6 +60,15 @@ export default function Recepie() {
             {ele.strCategory
             || ele.strGlass}
           </p>
+          <div>
+            { ingredients.map((e, index) => (
+              <p
+                data-testid={ `${index}-ingredient-name-and-measure` }
+                key={ e + index }
+              >
+                {e}
+              </p>))}
+          </div>
           <p data-testid="instructions">{ele.strInstructions}</p>
           <p data-testid="video">{ele.strYoutube}</p>
         </div>))}
