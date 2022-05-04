@@ -7,10 +7,7 @@ const fetchByID = async (type, id) => {
     const data = await resolve.json();
     let recepie = [];
     if (type === 'foods') { recepie = data.meals; }
-    if (type === 'drinks') {
-      recepie = data.drinks;
-    }
-
+    if (type === 'drinks') { recepie = data.drinks; }
     return { status: 'ok', recepie };
   } catch (error) {
     console.log('fetchByID error');
