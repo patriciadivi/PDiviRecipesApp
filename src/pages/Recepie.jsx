@@ -21,10 +21,16 @@ export default function Recepie() {
 
   const getIngredients = () => {
     const entries = Object.entries(recepie[0]);
+    console.log(entries);
     const ingredientsList = entries
       .filter((e) => e[0].includes('strIngredient') && e[1])
       .map((e) => e[1]);
-    setIngredients(() => ingredientsList);
+    const measureList = entries
+      .filter((e) => e[0].includes('strMeasure') && e[1])
+      .map((e) => e[1]);
+    const ingredientsAndMeasure = ingredientsList
+      .map((ing, index) => `${ing} - ${measureList[index]}`);
+    setIngredients(() => ingredientsAndMeasure);
   };
 
   const getRecepies = async () => {
@@ -40,7 +46,7 @@ export default function Recepie() {
   useEffect(() => {
     if (recepie[0]) { getIngredients(); }
   }, [recepie]);
-  useEffect(() => { dispatch(actFetchGenericRecepies('foods')); }, []);
+  useEffect(() => { dispatch(actFetchGenericRecepies(type)); }, []);
   // useEffect(() => {
   //   setfilteredRecepie(recepie.filter((element) => element !== null
   //     && element.length !== 0));
