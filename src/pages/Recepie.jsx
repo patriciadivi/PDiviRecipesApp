@@ -17,6 +17,7 @@ export default function Recepie() {
   const searchedRecepies = useSelector((state) => state.reducer1.searchedRecepies);
   // const [filteredRecepie, setfilteredRecepie] = useState([]);
   const type = history.location.pathname.includes('/foods') ? 'foods' : 'drinks';
+  const typeSuggestion = type === 'foods' ? 'drinks' : 'foods';
   const id = history.location.pathname.split(`/${type}/`);
 
   const getIngredients = () => {
@@ -45,7 +46,7 @@ export default function Recepie() {
   useEffect(() => {
     if (recepie[0]) { getIngredients(); }
   }, [recepie]);
-  useEffect(() => { dispatch(actFetchGenericRecepies(type)); }, []);
+  useEffect(() => { dispatch(actFetchGenericRecepies(typeSuggestion)); }, []);
   // useEffect(() => {
   //   setfilteredRecepie(recepie.filter((element) => element !== null
   //     && element.length !== 0));
@@ -71,7 +72,7 @@ export default function Recepie() {
           <button data-testid="start-recipe-btn" type="button">Start Recepie</button>
           <p data-testid="recipe-category">
             {`${ele.strCategory
-            || ele.strGlass} ${type === 'drinks' && ele.strAlcoholic}`}
+            || ele.strGlass} - ${type === 'drinks' && ele.strAlcoholic}`}
           </p>
           <div>
             { ingredients.map((e, index) => (
