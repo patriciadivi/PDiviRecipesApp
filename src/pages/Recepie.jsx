@@ -21,7 +21,6 @@ export default function Recepie() {
 
   const getIngredients = () => {
     const entries = Object.entries(recepie[0]);
-    console.log(entries);
     const ingredientsList = entries
       .filter((e) => e[0].includes('strIngredient') && e[1])
       .map((e) => e[1]);
@@ -71,8 +70,8 @@ export default function Recepie() {
           <button data-testid="favorite-btn" type="button">Favoritar</button>
           <button data-testid="start-recipe-btn" type="button">Start Recepie</button>
           <p data-testid="recipe-category">
-            {ele.strCategory
-            || ele.strGlass}
+            {`${ele.strCategory
+            || ele.strGlass} ${type === 'drinks' && ele.strAlcoholic}`}
           </p>
           <div>
             { ingredients.map((e, index) => (
