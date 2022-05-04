@@ -6,6 +6,7 @@ import fetchByID from '../services/fetchByID';
 import randomIdNumber from '../services/randomIdNumber';
 // import RecepieCard from '../components/RecepieCard';
 import { actFetchGenericRecepies } from '../Redux/actions/index';
+import indicationsList from '../services/indication';
 
 export default function Recepie() {
   const numberOfIndications = 6;
@@ -39,6 +40,10 @@ export default function Recepie() {
       setRecepie([response.recepie[0]]);
     }
   };
+
+  const indications = indicationsList(searchedRecepies);
+
+  // console.log(indications);
 
   useEffect(() => {
     getRecepies();
@@ -84,25 +89,23 @@ export default function Recepie() {
               </p>))}
           </div>
           <div className="d-flex flex-wrap justify-content-around">
-            {searchedRecepies.filter((e, i) => i < numberOfIndications)
+            {indications.filter((e, i) => i < numberOfIndications)
               .map((rec, index) => (
                 <Card
                   style={ { width: '10rem' } }
                   className="mt-3"
-                  key={ `${rec.idMeal}${randomIdNumber()}` }
+                  key={ `${rec[0]}${randomIdNumber()}` }
                   data-testid={ `${index}-recomendation-card` }
                 >
                   <Link to={ `/${type}/${id}` } className="stretched-link" />
                   <Card.Img
                     variant="top"
-                    src={ rec.strMealThumb }
+                    src={ rec[1] }
                     data-testid={ `${index}-card-img` }
                   />
                   <Card.Body>
-                    <Card.Title>
-                      {' '}
-                      { rec.strMeal }
-                      {' '}
+                    <Card.Title data-testid={ `${index}-recomendation-title` }>
+                      { rec[2] }
                     </Card.Title>
                   </Card.Body>
                 </Card>
