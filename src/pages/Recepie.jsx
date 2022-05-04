@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory, Link } from 'react-router-dom';
+import Card from 'react-bootstrap/Card';
 import fetchByID from '../services/fetchByID';
-// import randomIdNumber from '../services/randomIdNumber';
+import randomIdNumber from '../services/randomIdNumber';
+// import RecepieCard from '../components/RecepieCard';
+import { actFetchGenericRecepies } from '../Redux/actions/index';
 
 export default function Recepie() {
+  const numberOfIndications = 6;
   const history = useHistory();
+  const dispatch = useDispatch();
+
   const [recepie, setRecepie] = useState([]);
   const [ingredients, setIngredients] = useState([]);
+  const searchedRecepies = useSelector((state) => state.reducer1.searchedRecepies);
   // const [filteredRecepie, setfilteredRecepie] = useState([]);
   const type = history.location.pathname.includes('/foods') ? 'foods' : 'drinks';
   const id = history.location.pathname.split(`/${type}/`);
@@ -30,9 +38,9 @@ export default function Recepie() {
     getRecepies();
   }, []);
   useEffect(() => {
-    // console.log(recepie);
     if (recepie[0]) { getIngredients(); }
   }, [recepie]);
+  useEffect(() => { dispatch(actFetchGenericRecepies('foods')); }, []);
   // useEffect(() => {
   //   setfilteredRecepie(recepie.filter((element) => element !== null
   //     && element.length !== 0));
@@ -41,7 +49,6 @@ export default function Recepie() {
   //   console.log(Object.keys(filteredRecepie[0]));
   // }, [filteredRecepie]);
 
-  ingredients.map((e, index) => console.log(e + index));
   return (
     <div>
       {recepie !== [] && recepie.map((ele) => (
@@ -56,6 +63,7 @@ export default function Recepie() {
           </p>
           <button data-testid="share-btn" type="button">Compartilhar</button>
           <button data-testid="favorite-btn" type="button">Favoritar</button>
+          <button data-testid="start-recipe-btn" type="button">Start Recepie</button>
           <p data-testid="recipe-category">
             {ele.strCategory
             || ele.strGlass}
@@ -68,6 +76,40 @@ export default function Recepie() {
               >
                 {e}
               </p>))}
+          </div>
+          <div className="d-flex flex-wrap justify-content-around">
+            {searchedRecepies.filter((e, i) => i < numberOfIndications)
+              .map((rec, index) => (
+                <Card
+                  style={ { width: '10rem' } }
+                  className="mt-3"
+                  key={ `${rec.idMeal}${randomIdNumber()}` }
+                  data-testid={ `${index}-recomendation-card` }
+                >
+                  <Link to={ `/${type}/${id}` } className="stretched-link" />
+                  <Card.Img
+                    variant="top"
+                    src={ rec.strMealThumb }
+                    data-testid={ `${index}-card-img` }
+                  />
+                  <Card.Body>
+                    <Card.Title>
+                      {' '}
+                      { rec.strMeal }
+                      {' '}
+                    </Card.Title>
+                  </Card.Body>
+                </Card>
+                // <RecepieCard
+                //   key={ `${rec.idMeal}${randomIdNumber()}` }
+                //   id={ rec.idMeal }
+                //   imageSrc={ rec.strMealThumb }
+                //   title={ rec.strMeal }
+                //   index={ index }
+                //   type={ type }
+                //   data-testid={ `${index}-recomendation-card` }
+                // />
+              ))}
           </div>
           <p data-testid="instructions">{ele.strInstructions}</p>
           <p data-testid="video">{ele.strYoutube}</p>
