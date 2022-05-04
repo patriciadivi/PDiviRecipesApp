@@ -1,0 +1,27 @@
+.ButtonList {
+  margin-top: 0.8rem;
+}
+
+.ButtonList .mr-2 {
+  height: 2.2rem;
+  margin-bottom: 0.5rem;
+  width: 12%;
+}
+
+.ButtonList .mr-2:hover {
+  backdrop-filter: blur(0.5px);
+  background-color: #1abc9c;
+  border: none;
+  border-radius: 8px 5px 8px 2px;
+  box-shadow: 0 8px 32px 0 rgba(22, 160, 133, 0.27);
+  color: aliceblue;
+  font-size: 1.1rem;
+}
+
+
+@media screen and ( max-width : 600px ) {
+
+  .ButtonList .mr-2 {
+    width: 120px;
+  }
+}
