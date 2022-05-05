@@ -74,7 +74,7 @@ export default function Recepie() {
     console.log('new page:', location.pathname);
     setId(() => history.location.pathname.split('/').pop());
   }), [history]);
-
+  console.log(recepie);
   return (
     <div className="mx-5">
       {recepie !== [] && recepie.map((ele) => (
