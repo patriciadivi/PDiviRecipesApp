@@ -1,56 +1,39 @@
 import React from 'react';
-// import { useDispatch } from 'react-redux';
-// import { useHistory } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-// import Card from 'react-bootstrap/Card';
-// import { actFetchByIngredients } from '../Redux/actions';
-// import randomIdNumber from '../services/randomIdNumber';
 
-export default function IngredientCard(props) {
+export default function ButtonStartContinue(props) {
   const {
-    title,
-    urlEndImage,
-    index,
+    recipieDone,
+    recipieStarted,
+    id,
     type,
   } = props;
-  const history = useHistory();
-  const dispatch = useDispatch();
+  // const history = useHistory();
+  // const dispatch = useDispatch();
 
-  const urlImage = type === 'foods'
-    ? `https://www.themealdb.com/images/ingredients/${urlEndImage}.png`
-    : `https://www.thecocktaildb.com/images/ingredients/${urlEndImage}.png`;
-
-  const handleClick = (ingredient) => {
-    dispatch(actFetchByIngredients(type, ingredient));
-    history.push(`/${type}`);
-  };
-
+  // const handleClick = (ingredient) => {
+  //   dispatch(actFetchByIngredients(type, ingredient));
+  //   history.push(`/${type}`);
+  // };
+  let btnText = 'Start Recepie';
+  if (recipieStarted) { btnText = 'Continue Recipe'; }
+  console.log(id);
+  console.log(type);
   return (
     <div>
-      {(!recipieDone && !recipieStarted)
+      {(!recipieDone)
           && (
             <Button data-testid="start-recipe-btn" type="button">
-              Start Recepie
-            </Button>)}
-      {(!recipieDone && recipieStarted)
-          && (
-            <Button data-testid="start-recipe-btn" type="button">
-              Continue Recipe
+              { btnText }
             </Button>)}
     </div>
   );
 }
 
-IngredientCard.propTypes = {
-  urlEndImage: PropTypes.string,
-  title: PropTypes.string,
-  index: PropTypes.number,
-  type: PropTypes.string,
-};
-
-IngredientCard.defaultProps = {
-  urlEndImage: '',
-  title: '',
-  index: 0,
-  type: '',
+ButtonStartContinue.propTypes = {
+  recipieDone: PropTypes.bool.isRequired,
+  recipieStarted: PropTypes.bool.isRequired,
+  id: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
 };

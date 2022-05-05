@@ -8,6 +8,7 @@ import { actFetchGenericRecepies } from '../Redux/actions/index';
 import indicationsList from '../services/indication';
 import checkRecepieStart from '../services/checkRecepieStarted';
 import checkRecepieDone from '../services/checkDoneRecepies';
+import ButtonStartContinue from '../components/ButtonStartContinue';
 
 export default function Recepie() {
   const history = useHistory();
@@ -105,11 +106,17 @@ export default function Recepie() {
           <Carrosel indications={ indications } type={ typeSuggestion } />
           <p data-testid="instructions">{ele.strInstructions}</p>
           <p data-testid="video">{ele.strYoutube}</p>
-          {(!recipieDone && !recipieStarted)
+          <ButtonStartContinue
+            type={ type }
+            id={ id }
+            recipieStarted={ recipieStarted }
+            recipieDone={ recipieDone }
+          />
+          {/* {(!recipieDone && !recipieStarted)
           && (
             <Button data-testid="start-recipe-btn" type="button">
               Start Recepie
-            </Button>)}
+            </Button>)} */}
         </div>))}
     </div>
 
