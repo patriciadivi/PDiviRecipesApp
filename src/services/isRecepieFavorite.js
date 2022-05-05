@@ -4,7 +4,6 @@ const isRecepieFavorite = (id) => {
   let favoriteRecepies = [];
   if (tempData) { favoriteRecepies = JSON.parse(tempData); }
   if (favoriteRecepies) {
-    // console.log(favoriteRecepies, id);
     favoriteRecepies.forEach((element) => {
       if (element.id === id) { isFavorite = true; }
     });

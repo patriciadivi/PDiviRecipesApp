@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import '../styles/components/ButtonStartContinue.css';
 
 export default function ButtonStartContinue(props) {
   const {
@@ -22,6 +23,7 @@ export default function ButtonStartContinue(props) {
       {(!recipieDone)
           && (
             <Button
+              className="ButtonStartContinue"
               data-testid="start-recipe-btn"
               type="button"
               onClick={ () => handleClick() }

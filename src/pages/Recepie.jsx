@@ -63,11 +63,7 @@ export default function Recepie() {
   };
 
   const handleFavoriteClick = () => {
-    // if (isFavorite) {
-    //   console.log('remove');
-    // } else {
     saveRecepieToFavorite(recepie[0], isFavorite);
-    // }
     setIsFavorite(() => !isFavorite);
   };
 
