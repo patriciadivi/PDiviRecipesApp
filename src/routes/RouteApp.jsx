@@ -11,6 +11,7 @@ import ExploreDrinks from '../pages/ExploreDrinks';
 import ExploreIngredients from '../pages/ExploreIngredients';
 import ExploreNacionalities from '../pages/ExploreNacionalities';
 import FavoriteRecipies from '../pages/FavoriteRecipies';
+import RecepieInProgres from '../pages/RecepieInProgres';
 import Recepie from '../pages/Recepie';
 import NotFound from '../pages/NotFound';
 
@@ -25,6 +26,8 @@ export default function RouteApp() {
         <Route exact path="/foods/:id" component={ Recepie } />
         <Route exact path="/drinks/:id" component={ Recepie } />
         {/* recepies in progress  */}
+        <Route exact path="/foods/:id/in-progress" component={ RecepieInProgres } />
+        <Route exact path="/drinks/:id/in-progress" component={ RecepieInProgres } />
         {/* utilizar o id e o path para identificar a API que deve ser chamada. */}
         {/* <Route exact path="/foods/{id-da-receita}/in-progress" component={ InProgress } />
     <Route exact path="/drinks/{id-da-receita}/in-progress"

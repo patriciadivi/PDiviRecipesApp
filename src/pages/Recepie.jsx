@@ -20,7 +20,13 @@ export default function Recepie() {
   const [ingredients, setIngredients] = useState([]);
   const [recipieStarted, setRecepieStarted] = useState(false);
   const [recipieDone, setRecepieDone] = useState(false);
+  const [showText, setShowText] = useState(false);
   const searchedRecepies = useSelector((state) => state.reducer1.searchedRecepies);
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(window.location.href);
+    setShowText(() => true);
+  };
 
   const getIngredients = () => {
     const entries = Object.entries(recepie[0]);
@@ -57,8 +63,6 @@ export default function Recepie() {
     setId(() => history.location.pathname.split('/').pop());
   }), [history]);
 
-  // console.log(recipieStarted);
-  // console.log(recipieDone);
   return (
     <div className="mx-5">
       {recepie !== [] && recepie.map((ele) => (
@@ -78,18 +82,16 @@ export default function Recepie() {
             <Button
               variant="light"
               data-testid="share-btn"
+              onClick={ () => copyToClipboard() }
               type="button"
             >
               Compartilhar
             </Button>
-            <Button
-              variant="light"
-              data-testid="favorite-btn"
-              type="button"
-            >
+            <Button variant="light" data-testid="favorite-btn" type="button">
               Favoritar
             </Button>
           </div>
+          {showText && <p>Link copied!</p>}
           <p data-testid="recipe-category" className="mt-3">
             {`${ele.strCategory
             || ele.strGlass} - ${type === 'drinks' && ele.strAlcoholic}`}
