@@ -15,6 +15,7 @@ const INITIAL_STATE = {
   // recepieId: '',
   searchedIngredients: [],
   avoidFetchAtMainPage: false,
+  recepieID: '',
 };
 
 export default function reducer1(state = INITIAL_STATE, action) {
