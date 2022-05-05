@@ -28,18 +28,19 @@ export default function SearchBar() {
     case 'ingredient': {
       const searchByIngredient = await fetchByIngredient(type, searchInputValue);
       console.log(searchByIngredient);
-      dispatch(saveSearchedRecepies(searchByIngredient.data.meals));
+      dispatch(saveSearchedRecepies(type, searchByIngredient.data.meals));
       return searchByIngredient;
     }
     case 'name': {
-      const searchByName = await fetchByName(searchInputValue);
+      const searchByName = await fetchByName(type, searchInputValue);
+      console.log(searchByName);
       dispatch(saveSearchedRecepies(searchByName));
       return searchInputValue;
     }
     case FIRST_LETTER: {
-      const searchByFirstLetter = await fetchFirstLetter(searchInputValue);
+      const searchByFirstLetter = await fetchFirstLetter(type, searchInputValue);
       console.log(searchByFirstLetter);
-      dispatch(saveSearchedRecepies(searchByFirstLetter));
+      dispatch(saveSearchedRecepies(type, searchByFirstLetter));
       return searchInputValue;
     }
     default: break;
