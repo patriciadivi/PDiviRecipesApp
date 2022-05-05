@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { Button, ListGroup } from 'react-bootstrap';
 import fetchByID from '../services/fetchByID';
 import Carrosel from '../components/Carrosel';
-// import RecepieCard from '../components/RecepieCard';
 import { actFetchGenericRecepies } from '../Redux/actions/index';
 import indicationsList from '../services/indication';
 
@@ -17,8 +17,6 @@ export default function Recepie() {
   const [recepie, setRecepie] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const searchedRecepies = useSelector((state) => state.reducer1.searchedRecepies);
-  // const [filteredRecepie, setfilteredRecepie] = useState([]);
-  // const id = history.location.pathname.split(`/${type}/`);
 
   const getIngredients = () => {
     const entries = Object.entries(recepie[0]);
@@ -52,36 +50,53 @@ export default function Recepie() {
   }), [history]);
 
   return (
-    <div>
+    <div className="mx-5">
       {recepie !== [] && recepie.map((ele) => (
-        <div key={ ele.idMeal || ele.idDrink }>
+        <div
+          key={ ele.idMeal || ele.idDrink }
+          className="d-flex flex-column"
+        >
           <img
             data-testid="recipe-photo"
             src={ ele.strMealThumb || ele.strDrinkThumb }
             alt="aaa"
           />
-          <p data-testid="recipe-title">
+          <h2 data-testid="recipe-title" className="mt-3">
             {ele.strMeal || ele.strDrink}
-          </p>
-          <button data-testid="share-btn" type="button">Compartilhar</button>
-          <button data-testid="favorite-btn" type="button">Favoritar</button>
-          <button data-testid="start-recipe-btn" type="button">Start Recepie</button>
-          <p data-testid="recipe-category">
+          </h2>
+          <div className="mt-3">
+            <Button
+              variant="light"
+              data-testid="share-btn"
+              type="button"
+            >
+              Compartilhar
+            </Button>
+            <Button
+              variant="light"
+              data-testid="favorite-btn"
+              type="button"
+            >
+              Favoritar
+            </Button>
+          </div>
+          <span data-testid="recipe-category" className="mt-3">
             {`${ele.strCategory
             || ele.strGlass} - ${type === 'drinks' && ele.strAlcoholic}`}
-          </p>
-          <div>
+          </span>
+          <ListGroup variant="flush" className="mt-3">
             { ingredients.map((e, index) => (
-              <p
+              <ListGroup.Item
                 data-testid={ `${index}-ingredient-name-and-measure` }
                 key={ e + index }
               >
                 {e}
-              </p>))}
-          </div>
+              </ListGroup.Item>))}
+          </ListGroup>
           <Carrosel indications={ indications } type={ typeSuggestion } />
           <p data-testid="instructions">{ele.strInstructions}</p>
           <p data-testid="video">{ele.strYoutube}</p>
+          <Button data-testid="start-recipe-btn" type="button">Start Recepie</Button>
         </div>))}
     </div>
 

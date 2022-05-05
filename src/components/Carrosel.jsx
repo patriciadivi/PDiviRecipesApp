@@ -51,19 +51,19 @@ export default function Carrosel({ indications, type }) {
         }
       })} */}
       <Carousel.Item>
-        <div className="d-flex flex-wrap justify-content-around">
+        <div className="d-flex mx-3">
           {indications.filter((e, i) => i < dois)
             .map((rec, index) => testCard(rec, index))}
         </div>
       </Carousel.Item>
       <Carousel.Item>
-        <div className="d-flex flex-wrap justify-content-around">
+        <div className="d-flex">
           {indications.filter((e, i) => i >= dois && i < quatro)
             .map((rec, index) => testCard(rec, index + dois))}
         </div>
       </Carousel.Item>
       <Carousel.Item>
-        <div className="d-flex flex-wrap justify-content-around">
+        <div className="d-flex">
           {indications.filter((e, i) => i >= quatro && i < seis)
             .map((rec, index) => testCard(rec, index + quatro))}
         </div>
