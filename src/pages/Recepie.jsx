@@ -8,17 +8,17 @@ import { actFetchGenericRecepies } from '../Redux/actions/index';
 import indicationsList from '../services/indication';
 
 export default function Recepie() {
-  // const numberOfIndications = 6;
   const history = useHistory();
   const dispatch = useDispatch();
-
+  const type = history.location.pathname.includes('/foods') ? 'foods' : 'drinks';
+  const typeSuggestion = type === 'foods' ? 'drinks' : 'foods';
+  const [id, setId] = useState(history.location.pathname.split('/').pop());
+  console.log(id);
   const [recepie, setRecepie] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const searchedRecepies = useSelector((state) => state.reducer1.searchedRecepies);
   // const [filteredRecepie, setfilteredRecepie] = useState([]);
-  const type = history.location.pathname.includes('/foods') ? 'foods' : 'drinks';
-  const typeSuggestion = type === 'foods' ? 'drinks' : 'foods';
-  const id = history.location.pathname.split(`/${type}/`);
+  // const id = history.location.pathname.split(`/${type}/`);
 
   const getIngredients = () => {
     const entries = Object.entries(recepie[0]);
@@ -34,7 +34,7 @@ export default function Recepie() {
   };
 
   const getRecepies = async () => {
-    const response = await fetchByID(type, id[1]);
+    const response = await fetchByID(type, id);
     if (response.status === 'ok') {
       console.log(response);
       setRecepie([response.recepie[0]]);
@@ -43,13 +43,13 @@ export default function Recepie() {
 
   const indications = indicationsList(searchedRecepies);
 
-  useEffect(() => {
-    getRecepies();
-  }, []);
-  useEffect(() => {
-    if (recepie[0]) { getIngredients(); }
-  }, [recepie]);
-  useEffect(() => { dispatch(actFetchGenericRecepies(typeSuggestion)); }, []);
+  useEffect(() => { getRecepies(); }, [id]);
+  useEffect(() => { if (recepie[0]) { getIngredients(); } }, [recepie, id]);
+  useEffect(() => { dispatch(actFetchGenericRecepies(typeSuggestion)); }, [id]);
+  useEffect(() => history.listen((location) => {
+    console.log('new page:', location.pathname);
+    setId(() => history.location.pathname.split('/').pop());
+  }), [history]);
 
   return (
     <div>
