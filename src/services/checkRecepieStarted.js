@@ -1,14 +1,14 @@
 const checkRecepieStart = (id) => {
-  let doneRecepie = false;
-  const tempData = window.localStorage.getItem('doneRecipes');
-  let doneRecepies = [];
-  if (tempData) { doneRecepies = JSON.parse(tempData); }
-  if (doneRecepies) {
-    doneRecepies.forEach((element) => {
-      if (element.id === id) { doneRecepie = true; }
+  let startedRecepie = false;
+  const tempData = window.localStorage.getItem('inProgressRecipes');
+  let startedRecepies = [];
+  if (tempData) { startedRecepies = JSON.parse(tempData); }
+  if (startedRecepies) {
+    startedRecepies.forEach((element) => {
+      if (element.id === id) { startedRecepie = true; }
     });
   }
-  return doneRecepie;
+  return startedRecepie;
 };
 
 export default checkRecepieStart;

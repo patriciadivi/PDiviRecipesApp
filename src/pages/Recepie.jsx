@@ -6,6 +6,7 @@ import fetchByID from '../services/fetchByID';
 import Carrosel from '../components/Carrosel';
 import { actFetchGenericRecepies } from '../Redux/actions/index';
 import indicationsList from '../services/indication';
+import checkRecepieStart from '../services/checkRecepieStarted';
 
 export default function Recepie() {
   const history = useHistory();
@@ -13,9 +14,9 @@ export default function Recepie() {
   const type = history.location.pathname.includes('/foods') ? 'foods' : 'drinks';
   const typeSuggestion = type === 'foods' ? 'drinks' : 'foods';
   const [id, setId] = useState(history.location.pathname.split('/').pop());
-  console.log(id);
   const [recepie, setRecepie] = useState([]);
   const [ingredients, setIngredients] = useState([]);
+  const [recipieStarted, setRecepieStarted] = useState(false);
   const searchedRecepies = useSelector((state) => state.reducer1.searchedRecepies);
 
   const getIngredients = () => {
@@ -44,11 +45,13 @@ export default function Recepie() {
   useEffect(() => { getRecepies(); }, [id]);
   useEffect(() => { if (recepie[0]) { getIngredients(); } }, [recepie, id]);
   useEffect(() => { dispatch(actFetchGenericRecepies(typeSuggestion)); }, [id]);
+  useEffect(() => { setRecepieStarted(() => checkRecepieStart(id)); }, [id]);
   useEffect(() => history.listen((location) => {
     console.log('new page:', location.pathname);
     setId(() => history.location.pathname.split('/').pop());
   }), [history]);
 
+  console.log(recipieStarted);
   return (
     <div className="mx-5">
       {recepie !== [] && recepie.map((ele) => (
@@ -80,10 +83,10 @@ export default function Recepie() {
               Favoritar
             </Button>
           </div>
-          <span data-testid="recipe-category" className="mt-3">
+          <p data-testid="recipe-category" className="mt-3">
             {`${ele.strCategory
             || ele.strGlass} - ${type === 'drinks' && ele.strAlcoholic}`}
-          </span>
+          </p>
           <ListGroup variant="flush" className="mt-3">
             { ingredients.map((e, index) => (
               <ListGroup.Item
