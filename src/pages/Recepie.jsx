@@ -15,6 +15,7 @@ import isRecepieFavorite from '../services/isRecepieFavorite';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import returnValidValue from '../services/returnValidValue';
+import saveRecepieToFavorite from '../services/saveRecepieToFavorite';
 
 export default function Recepie() {
   const history = useHistory();
@@ -61,6 +62,15 @@ export default function Recepie() {
     }
   };
 
+  const handleFavoriteClick = () => {
+    // if (isFavorite) {
+    //   console.log('remove');
+    // } else {
+    saveRecepieToFavorite(recepie[0], isFavorite);
+    // }
+    setIsFavorite(() => !isFavorite);
+  };
+
   const indications = indicationsList(searchedRecepies);
 
   useEffect(() => { getRecepies(); }, [id]);
@@ -74,7 +84,7 @@ export default function Recepie() {
     console.log('new page:', location.pathname);
     setId(() => history.location.pathname.split('/').pop());
   }), [history]);
-  console.log(recepie);
+
   return (
     <div className="mx-5">
       {recepie !== [] && recepie.map((ele) => (
@@ -103,7 +113,7 @@ export default function Recepie() {
               variant="light"
               // data-testid="favorite-btn"
               type="button"
-              onClick={ () => setIsFavorite(() => !isFavorite) }
+              onClick={ () => handleFavoriteClick() }
             >
               <img
                 data-testid="favorite-btn"
