@@ -27,7 +27,7 @@ export default function Recepie() {
   const [recipieStarted, setRecepieStarted] = useState(false);
   const [recipieDone, setRecepieDone] = useState(false);
   const [showText, setShowText] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(isRecepieFavorite());
+  const [isFavorite, setIsFavorite] = useState(isRecepieFavorite(id));
   const searchedRecepies = useSelector((state) => state.reducer1.searchedRecepies);
   const timeShowingText = 3000;
 
