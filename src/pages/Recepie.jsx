@@ -11,8 +11,10 @@ import checkRecepieDone from '../services/checkDoneRecepies';
 import ButtonStartContinue from '../components/ButtonStartContinue';
 import shareIcon from '../images/shareIcon.svg';
 import randomIdNumber from '../services/randomIdNumber';
-// import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-// import blackHeartIcon from '../images/blackHeartIcon.svg';
+import isRecepieFavorite from '../services/isRecepieFavorite';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
+import returnValidValue from '../services/returnValidValue';
 
 export default function Recepie() {
   const history = useHistory();
@@ -25,6 +27,7 @@ export default function Recepie() {
   const [recipieStarted, setRecepieStarted] = useState(false);
   const [recipieDone, setRecepieDone] = useState(false);
   const [showText, setShowText] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(isRecepieFavorite());
   const searchedRecepies = useSelector((state) => state.reducer1.searchedRecepies);
   const timeShowingText = 3000;
 
@@ -54,7 +57,6 @@ export default function Recepie() {
   const getRecepies = async () => {
     const response = await fetchByID(type, id);
     if (response.status === 'ok') {
-      // console.log(response);
       setRecepie([response.recepie[0]]);
     }
   };
@@ -78,16 +80,15 @@ export default function Recepie() {
       {recepie !== [] && recepie.map((ele) => (
         <div
           key={ randomIdNumber() }
-          // key={ ele.idMeal || ele.idDrink }
           className="d-flex flex-column"
         >
           <img
             data-testid="recipe-photo"
-            src={ ele.strMealThumb || ele.strDrinkThumb }
+            src={ returnValidValue(ele.strMealThumb, ele.strDrinkThumb) }
             alt="aaa"
           />
           <h2 data-testid="recipe-title" className="mt-3">
-            {ele.strMeal || ele.strDrink}
+            {returnValidValue(ele.strMeal, ele.strDrink)}
           </h2>
           <div className="mt-3">
             <Button
@@ -98,14 +99,23 @@ export default function Recepie() {
             >
               <img src={ shareIcon } alt="share" />
             </Button>
-            <Button variant="light" data-testid="favorite-btn" type="button">
-              Favoritar
+            <Button
+              variant="light"
+              // data-testid="favorite-btn"
+              type="button"
+              onClick={ () => setIsFavorite(() => !isFavorite) }
+            >
+              <img
+                data-testid="favorite-btn"
+                src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
+                alt="share"
+              />
             </Button>
           </div>
           {showText && <p>Link copied!</p>}
           <p data-testid="recipe-category" className="mt-3">
-            {`${ele.strCategory
-            || ele.strGlass} - ${type === 'drinks' && ele.strAlcoholic}`}
+            {`${returnValidValue(ele.strCategory, ele.strGlass)} 
+            - ${type === 'drinks' && ele.strAlcoholic}`}
           </p>
           <ListGroup variant="flush" className="mt-3">
             { ingredients.map((e, index) => (
@@ -125,11 +135,6 @@ export default function Recepie() {
             recipieStarted={ recipieStarted }
             recipieDone={ recipieDone }
           />
-          {/* {(!recipieDone && !recipieStarted)
-          && (
-            <Button data-testid="start-recipe-btn" type="button">
-              Start Recepie
-            </Button>)} */}
         </div>))}
     </div>
 
