@@ -1,3 +1,8 @@
+
+import React from 'react';
+import Header from '../components/Header';
+import DescriptionOfRecipes from '../components/DescriptionOfRecipes';
+import '../styles/components/Header.css';
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -8,6 +13,7 @@ import { actFetchGenericRecepies } from '../Redux/actions/index';
 import indicationsList from '../services/indication';
 import checkRecepieStart from '../services/checkRecepieStarted';
 import checkRecepieDone from '../services/checkDoneRecepies';
+
 
 export default function Recepie() {
   const history = useHistory();
@@ -59,6 +65,11 @@ export default function Recepie() {
   // console.log(recipieStarted);
   // console.log(recipieDone);
   return (
+
+    <section>
+      <Header title="Recepie" />
+      <DescriptionOfRecipes />
+
     <div className="mx-5">
       {recepie !== [] && recepie.map((ele) => (
         <div
@@ -111,7 +122,8 @@ export default function Recepie() {
               Start Recepie
             </Button>)}
         </div>))}
-    </div>
-
+      </div>
+    
   );
 }
+</section>
