@@ -7,6 +7,7 @@ import Carrosel from '../components/Carrosel';
 import { actFetchGenericRecepies } from '../Redux/actions/index';
 import indicationsList from '../services/indication';
 import checkRecepieStart from '../services/checkRecepieStarted';
+import checkRecepieDone from '../services/checkDoneRecepies';
 
 export default function Recepie() {
   const history = useHistory();
@@ -17,6 +18,7 @@ export default function Recepie() {
   const [recepie, setRecepie] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [recipieStarted, setRecepieStarted] = useState(false);
+  const [recipieDone, setRecepieDone] = useState(false);
   const searchedRecepies = useSelector((state) => state.reducer1.searchedRecepies);
 
   const getIngredients = () => {
@@ -35,7 +37,7 @@ export default function Recepie() {
   const getRecepies = async () => {
     const response = await fetchByID(type, id);
     if (response.status === 'ok') {
-      console.log(response);
+      // console.log(response);
       setRecepie([response.recepie[0]]);
     }
   };
@@ -45,13 +47,17 @@ export default function Recepie() {
   useEffect(() => { getRecepies(); }, [id]);
   useEffect(() => { if (recepie[0]) { getIngredients(); } }, [recepie, id]);
   useEffect(() => { dispatch(actFetchGenericRecepies(typeSuggestion)); }, [id]);
-  useEffect(() => { setRecepieStarted(() => checkRecepieStart(id)); }, [id]);
+  useEffect(() => {
+    setRecepieStarted(() => checkRecepieStart(id));
+    setRecepieDone(() => checkRecepieDone(id));
+  }, [id]);
   useEffect(() => history.listen((location) => {
     console.log('new page:', location.pathname);
     setId(() => history.location.pathname.split('/').pop());
   }), [history]);
 
-  console.log(recipieStarted);
+  // console.log(recipieStarted);
+  // console.log(recipieDone);
   return (
     <div className="mx-5">
       {recepie !== [] && recepie.map((ele) => (
@@ -99,7 +105,11 @@ export default function Recepie() {
           <Carrosel indications={ indications } type={ typeSuggestion } />
           <p data-testid="instructions">{ele.strInstructions}</p>
           <p data-testid="video">{ele.strYoutube}</p>
-          <Button data-testid="start-recipe-btn" type="button">Start Recepie</Button>
+          {(!recipieDone && !recipieStarted)
+          && (
+            <Button data-testid="start-recipe-btn" type="button">
+              Start Recepie
+            </Button>)}
         </div>))}
     </div>
 

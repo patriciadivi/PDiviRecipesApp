@@ -6,7 +6,6 @@ const fetchByID = async (type, id) => {
     const resolve = await fetch(url);
     const data = await resolve.json();
     let recepie = [];
-    console.log(data);
     if (type === 'foods') { recepie = data.meals; }
     if (type === 'drinks') { recepie = data.drinks; }
     return { status: 'ok', recepie };
