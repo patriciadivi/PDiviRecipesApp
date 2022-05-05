@@ -9,6 +9,10 @@ import indicationsList from '../services/indication';
 import checkRecepieStart from '../services/checkRecepieStarted';
 import checkRecepieDone from '../services/checkDoneRecepies';
 import ButtonStartContinue from '../components/ButtonStartContinue';
+import shareIcon from '../images/shareIcon.svg';
+import randomIdNumber from '../services/randomIdNumber';
+// import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+// import blackHeartIcon from '../images/blackHeartIcon.svg';
 
 export default function Recepie() {
   const history = useHistory();
@@ -22,10 +26,16 @@ export default function Recepie() {
   const [recipieDone, setRecepieDone] = useState(false);
   const [showText, setShowText] = useState(false);
   const searchedRecepies = useSelector((state) => state.reducer1.searchedRecepies);
+  const timeShowingText = 3000;
+
+  const removeText = () => {
+    setShowText(() => false);
+  };
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(window.location.href);
     setShowText(() => true);
+    setTimeout(removeText, timeShowingText);
   };
 
   const getIngredients = () => {
@@ -67,7 +77,8 @@ export default function Recepie() {
     <div className="mx-5">
       {recepie !== [] && recepie.map((ele) => (
         <div
-          key={ ele.idMeal || ele.idDrink }
+          key={ randomIdNumber() }
+          // key={ ele.idMeal || ele.idDrink }
           className="d-flex flex-column"
         >
           <img
@@ -85,7 +96,7 @@ export default function Recepie() {
               onClick={ () => copyToClipboard() }
               type="button"
             >
-              Compartilhar
+              <img src={ shareIcon } alt="share" />
             </Button>
             <Button variant="light" data-testid="favorite-btn" type="button">
               Favoritar
