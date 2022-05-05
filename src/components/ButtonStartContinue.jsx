@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
@@ -9,13 +10,11 @@ export default function ButtonStartContinue(props) {
     id,
     type,
   } = props;
-  // const history = useHistory();
-  // const dispatch = useDispatch();
+  const history = useHistory();
 
-  // const handleClick = (ingredient) => {
-  //   dispatch(actFetchByIngredients(type, ingredient));
-  //   history.push(`/${type}`);
-  // };
+  const handleClick = () => {
+    history.push(`/${type}/${id}/in-progress`);
+  };
   let btnText = 'Start Recepie';
   if (recipieStarted) { btnText = 'Continue Recipe'; }
   console.log(id);
@@ -24,7 +23,11 @@ export default function ButtonStartContinue(props) {
     <div>
       {(!recipieDone)
           && (
-            <Button data-testid="start-recipe-btn" type="button">
+            <Button
+              data-testid="start-recipe-btn"
+              type="button"
+              onClick={ () => handleClick() }
+            >
               { btnText }
             </Button>)}
     </div>
