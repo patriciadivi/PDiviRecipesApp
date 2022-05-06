@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import { actFetchRecepiesByCategories, actFetchGenericRecepies } from '../Redux/actions';
+import '../styles/components/ButtonList.css';
 
 export default function ButtonList(props) {
   const [lastSelection, setLastSelection] = useState('');
@@ -23,7 +24,7 @@ export default function ButtonList(props) {
   };
 
   return (
-    <div className="d-flex flex-wrap justify-content-center">
+    <div className="ButtonList d-flex flex-wrap justify-content-center">
       <Button
         variant="light"
         size="sm"
