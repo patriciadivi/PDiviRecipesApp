@@ -31,7 +31,7 @@ export default function RecepieInProgres() {
   };
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(window.location.href);
+    navigator.clipboard.writeText(window.location.href.replace('/in-progress', ''));
     setShowText(() => true);
     setTimeout(removeText, timeShowingText);
   };
