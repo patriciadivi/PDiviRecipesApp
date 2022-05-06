@@ -107,11 +107,17 @@ export default function RecepieInProgres() {
           </p>
           <ListGroup variant="flush" className="mt-3">
             { ingredients.map((e, index) => (
-              <ListGroup.Item
-                data-testid={ `${index}-ingredient-step` }
-                key={ e + index + randomIdNumber }
-              >
-                {e}
+              <ListGroup.Item key={ e + index + randomIdNumber }>
+                <label htmlFor={ e } data-testid={ `${index}-ingredient-step` }>
+                  <input
+                    name="isGoing"
+                    type="checkbox"
+                    id={ e }
+                    // checked={ this.state.isGoing }
+                    // onChange={ this.handleInputChange }
+                  />
+                  {e}
+                </label>
               </ListGroup.Item>))}
           </ListGroup>
           <p data-testid="instructions">{ele.strInstructions}</p>
