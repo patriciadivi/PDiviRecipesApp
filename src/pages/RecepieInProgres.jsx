@@ -13,6 +13,7 @@ import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import '../styles/components/Header.css';
 import saveProgress from '../services/saveProgress';
+import getProgress from '../services/getProgress';
 
 export default function RecepieInProgres() {
   const history = useHistory();
@@ -23,6 +24,8 @@ export default function RecepieInProgres() {
   const [isFavorite, setIsFavorite] = useState(isRecepieFavorite(id));
   const [showText, setShowText] = useState(false);
   const [ingredients, setIngredients] = useState([]);
+  const [usedIngredients, setUsedIngredients] = useState([]);
+  // const usedIngredients = getProgress(type, id);
   // const [checkedIng, setCheckedIng] =
   // const [id, setId] = useState(history.location.pathname.split('/').at(idLocation));
   // setId(() => id);
@@ -52,8 +55,9 @@ export default function RecepieInProgres() {
 
   const handleCheck = ({ target }) => {
     const { name, checked } = target;
-    console.log(name, checked);
+    // console.log(name, checked);
     saveProgress(type, id, name, checked);
+    setUsedIngredients(() => getProgress(type, id));
   };
 
   const getIngredients = () => {
@@ -69,7 +73,10 @@ export default function RecepieInProgres() {
     setIngredients(() => ingredientsAndMeasure);
   };
 
-  useEffect(() => { getRecepies(); }, [id]);
+  useEffect(() => {
+    setUsedIngredients(() => getProgress(type, id));
+    getRecepies();
+  }, [id]);
   useEffect(() => { if (recepie[0]) { getIngredients(); } }, [recepie, id]);
   return (
     <div className="mx-5">
@@ -121,7 +128,7 @@ export default function RecepieInProgres() {
                     name={ e }
                     type="checkbox"
                     id={ e }
-                    // checked={ this.state.isGoing }
+                    checked={ usedIngredients.includes(e) }
                     onChange={ handleCheck }
                   />
                   {e}

@@ -3,7 +3,7 @@ const getProgress = (type, id) => {
   const savedData = window.localStorage.getItem('inProgressRecipes');
   let doneIngredients = [];
   if (savedData) {
-    tempObj = JSON.parse(savedData);
+    const tempObj = JSON.parse(savedData);
     if (tempObj[key][id]) {
       doneIngredients = tempObj[key][id];
     }
