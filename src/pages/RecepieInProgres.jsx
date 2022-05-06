@@ -57,7 +57,11 @@ export default function RecepieInProgres() {
     const { name, checked } = target;
     // console.log(name, checked);
     saveProgress(type, id, name, checked);
-    setUsedIngredients(() => getProgress(type, id));
+    // setUsedIngredients(() => getProgress(type, id));
+  };
+
+  const handleFinish = () => {
+    console.log('foi');
   };
 
   const getIngredients = () => {
@@ -128,7 +132,7 @@ export default function RecepieInProgres() {
                     name={ e }
                     type="checkbox"
                     id={ e }
-                    checked={ usedIngredients.includes(e) }
+                    defaultChecked={ usedIngredients.includes(e) }
                     onChange={ handleCheck }
                   />
                   {e}
@@ -136,7 +140,13 @@ export default function RecepieInProgres() {
               </ListGroup.Item>))}
           </ListGroup>
           <p data-testid="instructions">{ele.strInstructions}</p>
-          <Button data-testid="finish-recipe-btn"> Finish Recipe</Button>
+          <Button
+            data-testid="finish-recipe-btn"
+            disabled={ usedIngredients.length !== ingredients.length }
+            onClick={ () => handleFinish() }
+          >
+            Finish Recipe
+          </Button>
         </div>))}
     </div>
   );
