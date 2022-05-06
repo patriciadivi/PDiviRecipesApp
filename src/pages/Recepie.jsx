@@ -155,7 +155,7 @@ export default function Recepie() {
   //   <DescriptionOfRecipes />
 
   //   <div className="mx-5">
-  //     {recepie !== [] && recepie.map((ele) => (
+  //     {recepie === [] && recepie.map((ele) => (
   //       <div
   //         key={ ele.idMeal || ele.idDrink }
   //         className="d-flex flex-column"
