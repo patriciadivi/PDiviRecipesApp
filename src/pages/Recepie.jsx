@@ -79,8 +79,8 @@ export default function Recepie() {
     setRecepieStarted(() => checkRecepieStart(id));
     setRecepieDone(() => checkRecepieDone(id));
   }, [id]);
-  useEffect(() => history.listen((location) => {
-    console.log('new page:', location.pathname);
+  useEffect(() => history.listen(() => {
+    // console.log('new page:', location.pathname);
     setId(() => history.location.pathname.split('/').pop());
   }), [history]);
 
