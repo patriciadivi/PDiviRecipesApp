@@ -25,6 +25,7 @@ export default function RecepieInProgres() {
   const [showText, setShowText] = useState(false);
   const [ingredients, setIngredients] = useState([]);
   const [usedIngredients, setUsedIngredients] = useState([]);
+  const [isFinishAvailable, setIsFinishAvailable] = useState(false);
   // const usedIngredients = getProgress(type, id);
   // const [checkedIng, setCheckedIng] =
   // const [id, setId] = useState(history.location.pathname.split('/').at(idLocation));
@@ -53,15 +54,28 @@ export default function RecepieInProgres() {
     }
   };
 
+  const setBtnFinishAvailable = (numOfIng) => {
+    console.log(`numOfIng ${numOfIng}`);
+    console.log(`isFinishAvailable ${isFinishAvailable}`);
+    if (isFinishAvailable && (numOfIng < ingredients.length)) {
+      console.log('1');
+      setIsFinishAvailable(() => false);
+    } else if (numOfIng >= ingredients.length) {
+      console.log('2');
+      setIsFinishAvailable(() => true);
+    }
+  };
+
   const handleCheck = ({ target }) => {
     const { name, checked } = target;
     // console.log(name, checked);
-    saveProgress(type, id, name, checked);
+    const numOfIng = saveProgress(type, id, name, checked);
+    setBtnFinishAvailable(numOfIng);
     // setUsedIngredients(() => getProgress(type, id));
   };
 
   const handleFinish = () => {
-    console.log('foi');
+    history.push('/done-recipes');
   };
 
   const getIngredients = () => {
@@ -80,6 +94,8 @@ export default function RecepieInProgres() {
   useEffect(() => {
     setUsedIngredients(() => getProgress(type, id));
     getRecepies();
+    // console.log(usedIngredients.length);
+    // setBtnFinishAvailable(usedIngredients.length);
   }, [id]);
   useEffect(() => { if (recepie[0]) { getIngredients(); } }, [recepie, id]);
   return (
@@ -142,7 +158,8 @@ export default function RecepieInProgres() {
           <p data-testid="instructions">{ele.strInstructions}</p>
           <Button
             data-testid="finish-recipe-btn"
-            disabled={ usedIngredients.length !== ingredients.length }
+            // disabled={ usedIngredients.length !== ingredients.length }
+            disabled={ !isFinishAvailable }
             onClick={ () => handleFinish() }
           >
             Finish Recipe

@@ -12,11 +12,12 @@ const saveProgress = (type, id, ingredient, checked) => {
       newObj[key][id] = newArray;
     }
     window.localStorage.setItem('inProgressRecipes', JSON.stringify(newObj));
+    return newObj[key][id].length;
     // }
-  } else {
-    const newObj = { [key]: { [id]: [ingredient] } };
-    window.localStorage.setItem('inProgressRecipes', JSON.stringify(newObj));
   }
+  const newObj = { [key]: { [id]: [ingredient] } };
+  window.localStorage.setItem('inProgressRecipes', JSON.stringify(newObj));
+  return newObj[key][id].length;
 };
 
 export default saveProgress;
