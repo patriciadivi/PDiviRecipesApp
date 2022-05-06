@@ -38,51 +38,51 @@ export default function FavoriteRecipies() {
             height="100"
             data-testid={ `${index}-horizontal-image` }
           />
-          <p>{ (like.type === 'drink') ? like.type : 'food'}</p>
+          { like.type === 'drink' && (
+            <p
+              data-testid={ `${index}-horizontal-top-text` }
+              type={ like.type }
+            >
+              {like.alcoholicOrNot}
+            </p>
+          )}
           <h4
             data-testid={ `${index}-horizontal-name` }
           >
             {like.name}
           </h4>
-          <p
-            data-testid={ `${index}-horizontal-top-text` }
-          >
-            {` ${like.nationality} - ${like.category}`}
-          </p>
 
-          { like.type === 'drink' ? (
+          {like.type === 'food' && (
             <p
-              data-testid={ `${index}-horizontal-description` }
-              type={ like.type }
-              display="none"
+              data-testid={ `${index}-horizontal-top-text` }
             >
-              {like.alcoholicOrNot}
+              {` ${like.nationality} - ${like.category}`}
             </p>
-          ) : null}
+          )}
 
           <button
-            type={ like.type === 'drinks' ? 'button' : 'submit' }
-            data-testid={ `${index}-horizontal-share-btn` }
+            type="button"
+
           >
             <img
               src={ shareIcon }
               alt="Imagem para compartilhas a receita"
+              data-testid={ `${index}-horizontal-share-btn` }
             />
           </button>
 
           <button
             type="button"
-            data-testid={ `${index}-horizontal-favorite-btn` }
 
           >
             <img
               src={ blackHeartIcon }
               alt="Imagem para favoritar receita"
+              data-testid={ `${index}-horizontal-favorite-btn` }
             />
           </button>
         </div>
       ))}
-      ;
     </div>
   );
 }
