@@ -3,16 +3,18 @@ const saveProgress = (type, id, ingredient, checked) => {
   const savedData = window.localStorage.getItem('inProgressRecipes');
   if (savedData) {
     // if (tempData[key][id]) {
+    const newObj = JSON.parse(savedData);
     if (checked) {
-      savedData[key][id] = [...savedData[key][id], ingredient];
+      console.log(newObj[key][id]);
+      newObj[key][id] = [...newObj[key][id], ingredient];
     } else {
-      const newArray = savedData[key][id].filter((e) => e !== ingredient);
-      savedData[key][id] = newArray;
+      const newArray = newObj[key][id].filter((e) => e !== ingredient);
+      newObj[key][id] = newArray;
     }
-    window.localStorage.setItem('inProgressRecipes', JSON.stringify(savedData));
+    window.localStorage.setItem('inProgressRecipes', JSON.stringify(newObj));
     // }
   } else {
-    newObj = { [key]: { [id]: [ingredient] } };
+    const newObj = { [key]: { [id]: [ingredient] } };
     window.localStorage.setItem('inProgressRecipes', JSON.stringify(newObj));
   }
 };

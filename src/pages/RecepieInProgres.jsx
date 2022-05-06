@@ -12,6 +12,7 @@ import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import '../styles/components/Header.css';
+import saveProgress from '../services/saveProgress';
 
 export default function RecepieInProgres() {
   const history = useHistory();
@@ -52,6 +53,7 @@ export default function RecepieInProgres() {
   const handleCheck = ({ target }) => {
     const { name, checked } = target;
     console.log(name, checked);
+    saveProgress(type, id, name, checked);
   };
 
   const getIngredients = () => {
