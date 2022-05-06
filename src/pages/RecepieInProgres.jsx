@@ -14,6 +14,7 @@ import blackHeartIcon from '../images/blackHeartIcon.svg';
 import '../styles/components/Header.css';
 import saveProgress from '../services/saveProgress';
 import getProgress from '../services/getProgress';
+import saveDoneRecipe from '../services/saveDoneRecipe';
 
 export default function RecepieInProgres() {
   const history = useHistory();
@@ -75,6 +76,7 @@ export default function RecepieInProgres() {
   };
 
   const handleFinish = () => {
+    saveDoneRecipe(recepie[0]);
     history.push('/done-recipes');
   };
 
@@ -95,7 +97,7 @@ export default function RecepieInProgres() {
     setUsedIngredients(() => getProgress(type, id));
     getRecepies();
     // console.log(usedIngredients.length);
-    // setBtnFinishAvailable(usedIngredients.length);
+    // setBtnFinishAvailable(getProgress(type, id).length);
   }, [id]);
   useEffect(() => { if (recepie[0]) { getIngredients(); } }, [recepie, id]);
   return (

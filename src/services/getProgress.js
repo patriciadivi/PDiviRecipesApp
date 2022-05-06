@@ -4,7 +4,7 @@ const getProgress = (type, id) => {
   let usedIngredients = [];
   if (savedData) {
     const tempObj = JSON.parse(savedData);
-    if (tempObj[key][id]) {
+    if (tempObj[key] && tempObj[key][id]) {
       usedIngredients = tempObj[key][id];
     }
   }
