@@ -22,6 +22,7 @@ export default function RecepieInProgres() {
   const [isFavorite, setIsFavorite] = useState(isRecepieFavorite(id));
   const [showText, setShowText] = useState(false);
   const [ingredients, setIngredients] = useState([]);
+  // const [checkedIng, setCheckedIng] =
   // const [id, setId] = useState(history.location.pathname.split('/').at(idLocation));
   // setId(() => id);
   const timeShowingText = 3000;
@@ -46,6 +47,11 @@ export default function RecepieInProgres() {
     if (response.status === 'ok') {
       setRecepie([response.recepie[0]]);
     }
+  };
+
+  const handleCheck = ({ target }) => {
+    const { name, checked } = target;
+    console.log(name, checked);
   };
 
   const getIngredients = () => {
@@ -110,11 +116,11 @@ export default function RecepieInProgres() {
               <ListGroup.Item key={ e + index + randomIdNumber }>
                 <label htmlFor={ e } data-testid={ `${index}-ingredient-step` }>
                   <input
-                    name="isGoing"
+                    name={ e }
                     type="checkbox"
                     id={ e }
                     // checked={ this.state.isGoing }
-                    // onChange={ this.handleInputChange }
+                    onChange={ handleCheck }
                   />
                   {e}
                 </label>
