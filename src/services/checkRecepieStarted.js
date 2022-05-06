@@ -4,8 +4,10 @@ const checkRecepieStart = (id) => {
   let startedRecepies = [];
   if (tempData) { startedRecepies = JSON.parse(tempData); }
   if (startedRecepies) {
-    startedRecepies.forEach((element) => {
-      if (element.id === id) { startedRecepie = true; }
+    const keys = Object.keys(startedRecepies);
+    keys.forEach((e) => {
+      console.log(e);
+      if (startedRecepies[e][id]) { startedRecepie = true; }
     });
   }
   return startedRecepie;
