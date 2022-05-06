@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 
 export default function ButtonFavorite() {
   // const {
@@ -9,29 +10,29 @@ export default function ButtonFavorite() {
 
   return (
     <section>
-      <button
+      <Button
         type="button"
         // data-testid={ `${index}-horizontal-share-btn` }
         data-testid="filter-by-all-btn"
       >
         All
-      </button>
+      </Button>
 
-      <button
+      <Button
         type="button"
         // data-testid={ `${index}-horizontal-share-btn` }
         data-testid="filter-by-food-btn"
       >
         Foods
-      </button>
+      </Button>
 
-      <button
+      <Button
         type="button"
         // data-testid={ `${index}-horizontal-share-btn` }
         data-testid="filter-by-drink-btn"
       >
         Drinks
-      </button>
+      </Button>
     </section>
 
   );

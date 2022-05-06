@@ -150,7 +150,6 @@ export default function Recepie() {
     </div>
 
   // <section>
-
   //   <Header title="Recepie" />
   //   <DescriptionOfRecipes />
 

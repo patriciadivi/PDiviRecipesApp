@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 // import Button from 'react-bootstrap';
+import shareIcon from '../images/shareIcon.svg';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
+
 import Header from '../components/Header';
 import ButtonFavoriteCategory from '../components/ButtonFavoriteCategory';
 
@@ -35,54 +38,48 @@ export default function FavoriteRecipies() {
             height="100"
             data-testid={ `${index}-horizontal-image` }
           />
-          <p
-            data-testid={ `${index}-horizontal-top-text` }
-          >
-            {like.category}
-          </p>
+          <p>{ (like.type === 'drink') ? like.type : 'food'}</p>
           <h4
             data-testid={ `${index}-horizontal-name` }
           >
             {like.name}
           </h4>
           <p
-            data-testid={ `${index}-horizontal-done-date` }
+            data-testid={ `${index}-horizontal-top-text` }
           >
-            {like.title}
+            {` ${like.nationality} - ${like.category}`}
           </p>
-          <p
-            data-testid={ `${index}-horizontal-description` }
-          >
-            {like.alcoholic}
-          </p>
-          <p>{like.nationality}</p>
+
+          { like.type === 'drink' ? (
+            <p
+              data-testid={ `${index}-horizontal-description` }
+              type={ like.type }
+              display="none"
+            >
+              {like.alcoholicOrNot}
+            </p>
+          ) : null}
 
           <button
-            type="button"
+            type={ like.type === 'drinks' ? 'button' : 'submit' }
             data-testid={ `${index}-horizontal-share-btn` }
-
           >
-            compartilhar
+            <img
+              src={ shareIcon }
+              alt="Imagem para compartilhas a receita"
+            />
           </button>
 
           <button
             type="button"
             data-testid={ `${index}-horizontal-favorite-btn` }
-          >
-            Favorite
-          </button>
 
-          {/* <Button
-            variant="light"
-            // data-testid="favorite-btn"
-            type="button"
           >
             <img
-              data-testid="favorite-btn"
-              // src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
-              alt="share"
+              src={ blackHeartIcon }
+              alt="Imagem para favoritar receita"
             />
-          </Button> */}
+          </button>
         </div>
       ))}
       ;
