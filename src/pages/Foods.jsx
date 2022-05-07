@@ -36,6 +36,10 @@ export default function Foods() {
   }, []);
   useEffect(() => { getCategories(); }, []);
 
+  useEffect(() => {
+    console.log('searchedRecepies', searchedRecepies);
+  }, [searchedRecepies]);
+
   return (
     <section className="Foods">
       <Header title="Foods" searchEnabled />

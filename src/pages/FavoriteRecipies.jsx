@@ -10,15 +10,34 @@ import '../styles/components/Header.css';
 
 export default function FavoriteRecipies() {
   const [favoriteSave, setFavoriteSave] = useState([]);
+  const [copyTextToShow, setCopyTextToShow] = useState(false);
+  const numberRemoveTextToScreen = 3000;
+
+  const removeTextToScreen = () => {
+    setCopyTextToShow(() => false);
+  };
+
+  const showCopyToScreen = () => {
+    setCopyTextToShow(true);
+    setTimeout(removeTextToScreen, numberRemoveTextToScreen);
+  };
+
+  const copyToClipboard01 = (e) => {
+    // Pega o endereço da página atual
+    const { id } = e.target;
+    const data = `http://localhost:3000/foods/${id}`;
+    navigator.clipboard.writeText(data).then(() => {
+      showCopyToScreen();
+    }, () => {
+      console.error('Unable to write to clipboard. :-(');
+    });
+  };
 
   useEffect(() => {
     const favorite = localStorage.getItem('favoriteRecipes');
-    // console.log(favorite);
     setFavoriteSave(JSON.parse(favorite));
   },
   []);
-
-  console.log(favoriteSave);
 
   return (
     <div>
@@ -31,6 +50,7 @@ export default function FavoriteRecipies() {
           key={ like.id }
         >
           <img
+            id={ like.id }
             src={ like.image }
             alt={ `Receita de
               ${like.name}` }
@@ -60,12 +80,15 @@ export default function FavoriteRecipies() {
             </p>
           )}
 
+          {copyTextToShow
+          && <div><p>Link copied!</p></div>}
           <button
             type="button"
-
+            onClick={ copyToClipboard01 }
           >
             <img
               src={ shareIcon }
+              id={ like.id }
               alt="Imagem para compartilhas a receita"
               data-testid={ `${index}-horizontal-share-btn` }
             />
@@ -73,7 +96,6 @@ export default function FavoriteRecipies() {
 
           <button
             type="button"
-
           >
             <img
               src={ blackHeartIcon }
