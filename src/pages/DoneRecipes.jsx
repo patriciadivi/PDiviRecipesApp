@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
+// import { Button } from 'react-bootstrap';
+import ButtonDoneSelectType from '../components/ButtonDoneSelectType';
 import Header from '../components/Header';
 import getDoneRecipes from '../services/getDoneRecipes';
 import '../styles/components/Header.css';
@@ -18,7 +19,8 @@ export default function DoneRecipes() {
   return (
     <div>
       <Header title="Done Recipes" searchEnabled={ false } />
-      <div className="ButtonList d-flex flex-wrap justify-content-center">
+      <ButtonDoneSelectType handleClick={ handleType } />
+      {/* <div className="ButtonList d-flex flex-wrap justify-content-center">
         <Button
           data-testid="filter-by-all-btn"
           variant="light"
@@ -46,7 +48,7 @@ export default function DoneRecipes() {
         >
           Drinks
         </Button>
-      </div>
+      </div> */}
     </div>
   );
 }
