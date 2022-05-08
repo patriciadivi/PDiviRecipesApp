@@ -33,9 +33,28 @@ export default function FavoriteRecipies() {
     });
   };
 
+  const unfavoriteFromLocalStorange = ({ target }) => {
+    const { id } = target;
+    console.log(id);
+    const favorite = localStorage.getItem('favoriteRecipes');
+
+    const result = JSON.parse(favorite);
+    console.log(result);
+
+    const newFavorite = result.filter((e) => e.id !== id);
+    console.log(newFavorite);
+    localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorite));
+    setFavoriteSave(newFavorite);
+
+    return newFavorite;
+  };
+
   useEffect(() => {
     const favorite = localStorage.getItem('favoriteRecipes');
-    setFavoriteSave(JSON.parse(favorite));
+    if (favorite) {
+      console.log(favorite);
+      setFavoriteSave(JSON.parse(favorite));
+    }
   },
   []);
 
@@ -96,9 +115,11 @@ export default function FavoriteRecipies() {
 
           <button
             type="button"
+            onClick={ unfavoriteFromLocalStorange }
           >
             <img
               src={ blackHeartIcon }
+              id={ like.id }
               alt="Imagem para favoritar receita"
               data-testid={ `${index}-horizontal-favorite-btn` }
             />
