@@ -8,7 +8,7 @@ const getDoneRecipes = (type = 'all') => {
       doneRecepies = doneRecepies.filter((e) => e.type === type);
     }
   }
-  console.log(doneRecepies);
+  // console.log(doneRecepies);
   return doneRecepies;
 };
 
