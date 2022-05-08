@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, ListGroup } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
-import Header from '../components/Header';
+// import Header from '../components/Header';
 import randomIdNumber from '../services/randomIdNumber';
 import fetchByID from '../services/fetchByID';
 import returnValidValue from '../services/returnValidValue';
@@ -19,8 +19,10 @@ import saveDoneRecipe from '../services/saveDoneRecipe';
 export default function RecepieInProgres() {
   const history = useHistory();
   const type = history.location.pathname.includes('/foods') ? 'foods' : 'drinks';
+  const pathArray = history.location.pathname.split('/');
   const idLocation = -2;
-  const id = history.location.pathname.split('/').at(idLocation);
+  const id = pathArray[pathArray.length + idLocation];
+  console.log(id);
   const [recepie, setRecepie] = useState([]);
   const [isFavorite, setIsFavorite] = useState(isRecepieFavorite(id));
   const [showText, setShowText] = useState(false);
@@ -102,7 +104,7 @@ export default function RecepieInProgres() {
   useEffect(() => { if (recepie[0]) { getIngredients(); } }, [recepie, id]);
   return (
     <div className="mx-5">
-      <Header title="RecepieInProgres" searchEnabled={ false } />
+      {/* <Header title="RecepieInProgres" searchEnabled={ false } /> */}
       {recepie !== [] && recepie.map((ele) => (
         <div
           key={ randomIdNumber() }

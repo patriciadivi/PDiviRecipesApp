@@ -6,7 +6,7 @@ import { Button, ListGroup } from 'react-bootstrap';
 import fetchByID from '../services/fetchByID';
 import Carrosel from '../components/Carrosel';
 import { actFetchGenericRecepies } from '../Redux/actions/index';
-import Header from '../components/Header';
+// import Header from '../components/Header';
 import indicationsList from '../services/indication';
 import checkRecepieStart from '../services/checkRecepieStarted';
 import checkRecepieDone from '../services/checkDoneRecepies';
@@ -86,7 +86,7 @@ export default function Recepie() {
 
   return (
     <div className="mx-5">
-      <Header title="Recepie" />
+      {/* <Header title="Recepie" /> */}
       <DescriptionOfRecipes />
       {recepie !== [] && recepie.map((ele) => (
         <div

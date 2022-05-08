@@ -33,7 +33,7 @@ export default function Profile() {
           className="mt-3 mx-auto"
           onClick={ () => history.push('/done-recipes') }
         >
-          Done Recepies
+          Done Recipes
         </Button>
         <Button
           variant="light"
@@ -42,7 +42,7 @@ export default function Profile() {
           className="mt-3 mx-auto"
           onClick={ () => history.push('/favorite-recipes') }
         >
-          Favorite Recepies
+          Favorite Recipes
         </Button>
         <Button
           variant="light"
