@@ -19,7 +19,7 @@ export default function ButtonDoneSelectType({ handleClick }) {
         All
       </Button>
       <Button
-        data-testid="filter-by-all-btn"
+        data-testid="filter-by-food-btn"
         variant="light"
         size="lg"
         className="mx-2"
@@ -28,7 +28,7 @@ export default function ButtonDoneSelectType({ handleClick }) {
         Foods
       </Button>
       <Button
-        data-testid="filter-by-all-btn"
+        data-testid="filter-by-drink-btn"
         variant="light"
         size="lg"
         className="mx-2"
