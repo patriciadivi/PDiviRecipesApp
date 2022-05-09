@@ -5,6 +5,7 @@ const fetchByIngredient = async (type, ingredient) => {
   try {
     const resolve = await fetch(url);
     const data = await resolve.json();
+    console.log(data);
     return { status: 'ok', data };
   } catch (error) {
     console.log('fetchByIngredient error');

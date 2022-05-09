@@ -33,7 +33,7 @@ export default function Foods() {
       dispatch(actFetchGenericRecepies('foods'));
     }
     if (avoidFetchAtLoad) { dispatch(cancelAvoidFetch()); }
-  }, []);
+  }, [avoidFetchAtLoad, dispatch]);
   useEffect(() => { getCategories(); }, []);
 
   return (

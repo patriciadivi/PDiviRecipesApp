@@ -4,9 +4,9 @@ import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
+import { ACTIVE_SEARCH_BAR } from '../Redux/actions/actionTypes';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
-import { ACTIVE_SEARCH_BAR } from '../Redux/actions/actionTypes';
 import '../styles/components/Header.css';
 
 export default function Header({ title, searchEnabled }) {
