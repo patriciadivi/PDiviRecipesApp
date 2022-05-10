@@ -36,10 +36,6 @@ export default function Foods() {
   }, [avoidFetchAtLoad, dispatch]);
   useEffect(() => { getCategories(); }, []);
 
-  useEffect(() => {
-    console.log('searchedRecepies', searchedRecepies);
-  }, [searchedRecepies]);
-
   return (
     <section className="Foods">
       <Header title="Foods" searchEnabled />

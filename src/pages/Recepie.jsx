@@ -84,6 +84,10 @@ export default function Recepie() {
     setId(() => history.location.pathname.split('/').pop());
   }), [history]);
 
+  useEffect(() => {
+    console.log('recepie', recepie);
+  }, [recepie]);
+
   return (
     <div className="mx-5">
       {/* <Header title="Recepie" /> */}
