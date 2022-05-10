@@ -26,6 +26,7 @@ export default function reducer1(state = INITIAL_STATE, action) {
       loading: true,
     };
   case SAVE_SEARCHED_RECEPIES:
+    console.log(action.payload);
     return {
       ...state,
       searchedRecepies: action.payload,

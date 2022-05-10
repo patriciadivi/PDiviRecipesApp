@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
-import fetchByIngredient from '../services/fetchByIngredient';
+import { useLocation, useHistory } from 'react-router-dom';
+import fetchIngredient from '../services/fetchIngredient';
 import fetchByName from '../services/fetchByName';
 import { saveSearchedRecepies } from '../Redux/actions/index';
 import fetchFirstLetter from '../services/fetchFirstLetter';
@@ -9,6 +9,7 @@ import fetchFirstLetter from '../services/fetchFirstLetter';
 const FIRST_LETTER = 'first-letter';
 
 export default function SearchBar() {
+  const history = useHistory();
   const [radioSelected, setRadioSelected] = useState('');
   const [searchInputValue, setSearchInputValue] = useState('');
   const location = useLocation();
@@ -22,31 +23,34 @@ export default function SearchBar() {
       global.alert('Your search must have only 1 (one) character');
     }
   };
-
+  // função refatorada com ajuda da monitoria, com instrução do
+  // Edu e participação dos colegas de grupo Pérsio e Patrícia
   const handleSearchClick = async () => {
+    let requestFetch;
     switch (radioSelected) {
     case 'ingredient': {
-      const searchByIngredient = await fetchByIngredient(type, searchInputValue);
-      console.log(searchByIngredient);
-      dispatch(saveSearchedRecepies(type, searchByIngredient.data.meals));
-      return searchByIngredient;
+      requestFetch = fetchIngredient;
+      break;
     }
     case 'name': {
-      const searchByName = await fetchByName(type, searchInputValue);
-      console.log(searchByName);
-      dispatch(saveSearchedRecepies(searchByName));
-      return searchInputValue;
+      requestFetch = fetchByName;
+      break;
     }
     case FIRST_LETTER: {
-      const searchByFirstLetter = await fetchFirstLetter(type, searchInputValue);
-      console.log(searchByFirstLetter);
-      dispatch(saveSearchedRecepies(type, searchByFirstLetter));
-      return searchInputValue;
+      requestFetch = fetchFirstLetter;
+      break;
     }
     default: break;
     }
+    const result = await requestFetch(type, searchInputValue);
+    if (result.length === 1 && type === 'foods') {
+      history.push(`/foods/${result[0].idMeal}`);
+    } if (result.length === 1 && type === 'drinks') {
+      history.push(`/drinks/${result[0].idDrink}`);
+    }
+    dispatch(saveSearchedRecepies(result));
+    return result;
   };
-
   const handleRadioClick = (value) => {
     setRadioSelected(value);
   };
