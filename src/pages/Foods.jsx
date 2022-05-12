@@ -43,7 +43,7 @@ export default function Foods() {
       {buttonList.length > 0 && <ButtonList names={ buttonList } type="foods" />}
       {loading && <Alert variant="warning">Loading</Alert>}
       {searchedRecepies.length > 0 && !loading && (
-        <div className="d-flex flex-wrap justify-content-around">
+        <div className="d-flex flex-wrap justify-content-around DivCard">
           {searchedRecepies.map((rec, index) => (
             <RecepieCard
               key={ `${rec.idMeal}${randomIdNumber()}` }

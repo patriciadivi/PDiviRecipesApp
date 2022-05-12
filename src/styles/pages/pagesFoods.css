@@ -6,6 +6,7 @@
 .Foods {
   background-color: rgba(0, 0, 0, 0.9);
   color: rgb(245, 242, 238);
+  padding-bottom: 5rem;
   width: 100%;
 }
 
@@ -18,4 +19,13 @@
   height: 100vh;
   justify-content: center;
   width: 100%;
+}
+
+.Foods .DivCard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  width: 80%;
+
 }
