@@ -5,6 +5,7 @@ import fetchIngredient from '../services/fetchIngredient';
 import fetchByName from '../services/fetchByName';
 import { saveSearchedRecepies } from '../Redux/actions/index';
 import fetchFirstLetter from '../services/fetchFirstLetter';
+import '../styles/components/SearchBar.css';
 
 const FIRST_LETTER = 'first-letter';
 
@@ -56,7 +57,7 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="d-flex flex-column align-items-center">
+    <div className="d-flex flex-column align-items-center SearchBar">
       <input
         data-testid="search-input"
         type="text"
