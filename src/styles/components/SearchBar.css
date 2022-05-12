@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.SearchBar {
+
+  /* border: 1px solid #EB3F3C; */
+  display: flex;
+  justify-content: center;
+  margin: 0.8rem 0;
+}
+
+.SearchBar input {
+  border: 0;
+  border-radius: 0.2rem;
+  height: 2rem;
+  outline: none;
+  padding-left: 0.4rem;
+}
