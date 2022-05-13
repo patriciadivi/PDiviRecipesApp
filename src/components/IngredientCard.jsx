@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 import { actFetchByIngredients } from '../Redux/actions';
 // import randomIdNumber from '../services/randomIdNumber';
+import '../styles/components/IngredientCard.css';
 
 export default function IngredientCard(props) {
   const {
@@ -28,7 +29,7 @@ export default function IngredientCard(props) {
   return (
     <Card
       style={ { width: '10rem' } }
-      className="mt-3"
+      className="mt-3 IngredientDrinksCard"
       // key={ `${title}${randomIdNumber()}` }
       data-testid={ `${index}-ingredient-card` }
       onClick={ () => handleClick(title) }
@@ -38,9 +39,13 @@ export default function IngredientCard(props) {
         variant="top"
         src={ urlImage }
         data-testid={ `${index}-card-img` }
+        className="IngredientCardDrinksImg"
       />
       <Card.Body>
-        <Card.Title data-testid={ `${index}-card-name` }>
+        <Card.Title
+          data-testid={ `${index}-card-name` }
+          className="IngredientCardDrinksTitle"
+        >
           { title }
         </Card.Title>
       </Card.Body>
