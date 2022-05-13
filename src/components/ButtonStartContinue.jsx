@@ -19,7 +19,7 @@ export default function ButtonStartContinue(props) {
   let btnText = 'Start Recepie';
   if (recipieStarted) { btnText = 'Continue Recipe'; }
   return (
-    <div>
+    <div className="BtnContinue">
       {(!recipieDone)
           && (
             <Button
