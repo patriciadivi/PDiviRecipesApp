@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.Profile {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: rgb(245, 242, 238);
+  height: 100vh;
+  padding-bottom: 5rem;
+  width: 100%;
+}
+
+.Profile .BtnProfile {
+  background-color: transparent;
+  border: 1px solid #eb3f3c;
+  border-radius: 0.2rem;
+  color: aliceblue;
+  outline: none;
+  transition: 0.2s;
+
+}
+
+.Profile .BtnProfile:hover {
+  background-color: #eb3f3c;
+  color: aliceblue;
+  font-size: 1.5rem;
+
+}
