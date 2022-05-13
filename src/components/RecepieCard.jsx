@@ -23,12 +23,16 @@ export default function RecepieCard(props) {
       >
         <Link to={ `/${type}/${id}` } className="stretched-link" />
         <Card.Img
+          className="CardImg"
           variant="top"
           src={ imageSrc }
           data-testid={ `${index}-card-img` }
         />
         <Card.Body>
-          <Card.Title data-testid={ `${index}-card-name` }>
+          <Card.Title
+            data-testid={ `${index}-card-name` }
+            className="CardTitle"
+          >
             { title }
           </Card.Title>
         </Card.Body>
