@@ -20,6 +20,7 @@ export default function Footer() {
             <img data-testid="drinks-bottom-btn" src={ drinkIcon } alt="Drinks" />
           </button>
         </Link>
+
         <Link
           to="/explore"
           className="FooterLink"
@@ -28,6 +29,7 @@ export default function Footer() {
             <img data-testid="explore-bottom-btn" src={ exploreIcon } alt="Explore" />
           </button>
         </Link>
+
         <Link
           to="/foods"
           className="FooterLink"

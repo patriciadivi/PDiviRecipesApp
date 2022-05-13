@@ -56,9 +56,7 @@ export default function Foods() {
           ))}
         </div>
       )}
-      <div>
-        <Footer />
-      </div>
+      <Footer />
     </section>
   );
 }

@@ -3,14 +3,24 @@
   padding: 0;
 }
 
-.Footer {
-  backdrop-filter: blur(4px);
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+/* .SectionFooter {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: rgb(245, 242, 238);
+} */
 
-  /* border-radius: 0.6rem 0.6rem 0 0; */
+.Footer {
+
+  /* backdrop-filter: blur(8px); */
+
+  /* background: rgba(255, 255, 255, 0.2); */
+  background-color: rgba(82, 81, 81, 0.2);
+
+  /* background-color: aliceblue; */
+  border: 1px solid rgba(255, 255, 255, 0.18);
   bottom: 0;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+
+  /* color: rgb(245, 242, 238); */
   display: flex;
   left: 0;
   padding: 0.2em;
@@ -19,22 +29,38 @@
 
 }
 
-.Footer .FooterLink {
-  backdrop-filter: blur(4px);
-  background-color: transparent;
+.FooterLink {
+
+  /* backdrop-filter: blur(4px); */
+
+  /* background: rgba(255, 255, 255, 0.2); */
+  background-color: aliceblue;
+
+  /* background-color: transparent; */
+
+  /* border: 1px solid rgba(255, 255, 255, 0.18); */
   border-radius: 10px;
-  margin: 0.2rem;
+  margin: 0.3rem;
   width: 100%;
+}
+
+.FooterLink img {
+
+  /* background-color: #eb3f3c; */
+
+  /* padding: 0 42%; */
+
+  /* width: 100px; */
 }
 
 .Footer button {
   backdrop-filter: blur(4px);
+  background: rgba(255, 255, 255, 0.6);
 
-  /* background: rgba(255, 255, 255, 0.6); */
-  background-color: transparent;
+  /* background-color: transparent; */
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 10px;
-  box-shadow: 0 8px 32px 0 transparent;
+  box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.6);
   padding: 0.2rem;
   width: 100%;
 
