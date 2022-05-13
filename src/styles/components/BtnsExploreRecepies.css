@@ -1,4 +1,98 @@
 * {
   margin: 0;
   padding: 0;
+
+}
+
+.BtnsExploreRecepies {
+  border: 1px solid wheat;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+}
+
+.BtnsExploreRecepies button {
+  border: 1px solid #eb3f3c;
+  color: rgb(245, 242, 238);
+  font-size: 2rem;
+  height: 9.5rem;
+  margin: 0.3rem 0;
+  width: 100%;
+
+}
+
+.BtnsExploreRecepies button:hover {
+  background-color: #eb3f3c;
+  border-radius: 3rem 0;
+  color: white;
+  font-size: 2.2rem;
+  opacity: 0.7;
+
+}
+
+.BtnsExploreRecepies .btnIngredient {
+
+  /* background-image: url('https://thumbs.dreamstime.com/b/especiarias-e-ervas-diferentes-na-opini%C3%A3o-de-tampo-da-mesa-pedra-preta-ingredientes-para-cozinhar-fundo-do-alimento-120232209.jpg'); */
+  background-image: url('https://st3.depositphotos.com/1558912/18800/i/600/depositphotos_188000004-stock-photo-ingredients-for-cooking-food-background.jpgjpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.BtnsExploreRecepies .btnNationality {
+  background-image: url('https://www.englishexperts.com.br/wp-content/uploads/2017/03/hands-world-map-640x350.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: rgba(0, 0, 0, 0.9);
+
+}
+
+.BtnsExploreRecepies .btnSurprise {
+
+  /* background-image: url('https://img.freepik.com/foto-gratis/comida-ingredientes_1220-4884.jpg?w=360'); */
+  background-image: url('https://thumbs.dreamstime.com/b/comida-que-cocina-el-fondo-los-ingredientes-para-platos-del-vegano-de-la-preparaci%C3%B3n-las-verduras-ra%C3%ADces-especias-setas-y-140717802.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+@media screen and ( min-width : 700px ) {
+
+  .BtnsExploreRecepies {
+
+    /* align-items: center; */
+    flex-direction: row;
+    height: 0;
+
+    /* height: 100vh; */
+  }
+
+  .BtnsExploreRecepies button {
+    border: 1px solid #3cebdd;
+    height: 23rem;
+    margin: 3.5rem auto;
+    width: 13rem;
+
+    /* border: 1px solid #eb3f3c;
+    color: rgb(245, 242, 238);
+    font-size: 2rem; */
+
+    /* margin: 0.3rem 0;
+    width: 100%; */
+  }
+
+  .BtnsExploreRecepies .btnIngredient, .BtnsExploreRecepies .btnNationality {
+    background-position: center;
+  }
+}
+
+@media screen and ( min-width : 900px ) {
+
+  .BtnsExploreRecepies button {
+    height: 25rem;
+    width: 16rem;
+
+  }
+
 }
