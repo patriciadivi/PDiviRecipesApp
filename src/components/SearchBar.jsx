@@ -64,7 +64,7 @@ export default function SearchBar() {
         value={ searchInputValue }
         onChange={ handleChange }
       />
-      <div className="d-flex justify-content-evenly">
+      <div className="RadioSearchBar d-flex justify-content-evenly ">
         <label
           htmlFor="ingredient"
         >
