@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 // import { useDispatch } from 'react-redux';
 // import { actFetchSuprise } from '../Redux/actions';
 import fetchSurprise from '../services/fetchSurprise';
+import '../styles/components/BtnsExploreRecepies.css';
 
 export default function BtnsExploreRecepies(props) {
   const {
