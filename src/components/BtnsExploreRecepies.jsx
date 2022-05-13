@@ -27,7 +27,7 @@ export default function BtnsExploreRecepies(props) {
         variant="light"
         data-testid="explore-by-ingredient"
         size="lg"
-        className="btnIngredient"
+        className={ type === 'foods' ? 'btnIngredient' : 'btnIngredientDrinks' }
         onClick={ () => history.push(`/explore/${type}/ingredients`) }
       >
         By Ingredient
@@ -47,7 +47,7 @@ export default function BtnsExploreRecepies(props) {
         variant="light"
         data-testid="explore-surprise"
         size="lg"
-        className="btnSurprise"
+        className={ type === 'foods' ? 'btnSurprise' : 'btnSurpriseDrinks' }
         onClick={ () => gerRandomRecepie() }
       >
         Surprise me!

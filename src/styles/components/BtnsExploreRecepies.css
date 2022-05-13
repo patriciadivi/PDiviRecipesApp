@@ -4,6 +4,7 @@
 
 }
 
+/* Página ExploreFoods  */
 .BtnsExploreRecepies {
   border: 1px solid wheat;
   display: flex;
@@ -69,17 +70,9 @@
   }
 
   .BtnsExploreRecepies button {
-    border: 1px solid #3cebdd;
     height: 23rem;
     margin: 3.5rem auto;
     width: 13rem;
-
-    /* border: 1px solid #eb3f3c;
-    color: rgb(245, 242, 238);
-    font-size: 2rem; */
-
-    /* margin: 0.3rem 0;
-    width: 100%; */
   }
 
   .BtnsExploreRecepies .btnIngredient, .BtnsExploreRecepies .btnNationality {
@@ -96,3 +89,22 @@
   }
 
 }
+
+
+/* Página Drinks */
+.btnIngredientDrinks {
+  background-image: url('https://img.freepik.com/fotos-gratis/vista-frontal-diferentes-bebidas-coloridas-dentro-de-garrafas_140725-14407.jpg?w=2000');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.btnSurpriseDrinks {
+  background-image: url('http://blog.bancadoramon.com.br/wp-content/uploads/2021/05/shutterstock_370472597.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: rgba(0, 0, 0, 0.9);
+}
+
