@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
+// import { Button } from 'react-bootstrap';
 import { useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionsFavoriteConvertLocalStorage } from '../Redux/actions/index';
@@ -8,6 +8,7 @@ import blackHeartIcon from '../images/blackHeartIcon.svg';
 import Header from '../components/Header';
 // import ButtonFavoriteCategory from '../components/ButtonFavoriteCategory';
 import '../styles/components/Header.css';
+import '../styles/pages/PagesFavoriteRecipies.css';
 
 export default function FavoriteRecipies() {
   const favoriteLocalStorange = useSelector((state) => state
@@ -97,111 +98,130 @@ export default function FavoriteRecipies() {
   };
 
   return (
-    <section>
+    <section className="FavoriteRecipies">
       <Header title="Favorite Recipes" searchEnabled={ false } />
-      <h2>Suas Comidas Favoritas</h2>
+
       {/* <ButtonFavoriteCategory /> */}
-      <div>
+      <div className="FavoriteRecipiesDIV">
 
-        <Button
-          type="button"
-          data-testid="filter-by-all-btn"
-          onClick={ () => handleClick('all') }
-        >
-          All
-        </Button>
-
-        <Button
-          type="button"
-          data-testid="filter-by-food-btn"
-          onClick={ () => handleClick('food') }
-        >
-          Foods
-        </Button>
-
-        <Button
-          type="button"
-          data-testid="filter-by-drink-btn"
-          onClick={ () => handleClick('drink') }
-        >
-          Drinks
-        </Button>
-      </div>
-
-      {favoriteSave.map((like, index) => (
-        <div
-          key={ like.id }
-        >
+        <div className="FavoriteRecipiesButton">
           <button
             type="button"
-            onClick={ () => toDateions(like.id, like.type) }
+            data-testid="filter-by-all-btn"
+            className="BtnFavoriteFilter"
+            onClick={ () => handleClick('all') }
           >
-            <img
-              id={ like.id }
-              type={ like.type }
-              src={ like.image }
-              alt={ `Receita de
-            ${like.name}` }
-              width="100"
-              height="100"
-              data-testid={ `${index}-horizontal-image` }
-            />
-          </button>
-          { like.type === 'drink' && (
-            <p
-              data-testid={ `${index}-horizontal-top-text` }
-              type={ like.type }
-            >
-              {like.alcoholicOrNot}
-            </p>
-          )}
-          <Link to={ `/${like.type}s/${like.id}` }>
-            {/* type="button"
-            onClick={ () => toDateions(like.id, like.type) } */}
-            <h4
-              data-testid={ `${index}-horizontal-name` }
-              id={ like.id }
-              type={ like.type }
-            >
-              {like.name}
-            </h4>
-          </Link>
-
-          {like.type === 'food' && (
-            <p
-              data-testid={ `${index}-horizontal-top-text` }
-            >
-              {` ${like.nationality} - ${like.category}`}
-            </p>
-          )}
-
-          {copyTextToShow
-          && <div><p>Link copied!</p></div>}
-          <button
-            type="button"
-            onClick={ copyToClipboard01 }
-          >
-            <img
-              src={ shareIcon }
-              id={ like.id }
-              alt="Imagem para compartilhas a receita"
-              data-testid={ `${index}-horizontal-share-btn` }
-            />
+            All
           </button>
 
           <button
             type="button"
-            onClick={ unfavoriteFromLocalStorange }
+            data-testid="filter-by-food-btn"
+            className="BtnFavoriteFilter"
+            onClick={ () => handleClick('food') }
           >
-            <img
-              src={ blackHeartIcon }
-              id={ like.id }
-              alt="Imagem para favoritar receita"
-              data-testid={ `${index}-horizontal-favorite-btn` }
-            />
+            Foods
+          </button>
+
+          <button
+            type="button"
+            data-testid="filter-by-drink-btn"
+            className="BtnFavoriteFilter"
+            onClick={ () => handleClick('drink') }
+          >
+            Drinks
           </button>
         </div>
-      ))}
+
+        {favoriteSave.map((like, index) => (
+          <div
+            key={ like.id }
+            className="FavoriteRecipiesCardDIV"
+          >
+            <button
+              type="button"
+              onClick={ () => toDateions(like.id, like.type) }
+              className="BtnFavoriteCardIMG"
+
+            >
+              <img
+                id={ like.id }
+                type={ like.type }
+                src={ like.image }
+                alt={ `Receita de
+            ${like.name}` }
+                width="100"
+                height="100"
+                data-testid={ `${index}-horizontal-image` }
+              />
+            </button>
+            <div>
+
+              { like.type === 'drink' && (
+                <p
+                  data-testid={ `${index}-horizontal-top-text` }
+                  type={ like.type }
+                >
+                  {like.alcoholicOrNot}
+                </p>
+              )}
+              <Link
+                to={ `/${like.type}s/${like.id}` }
+                className="FavoriteRecipiesCardLink"
+              >
+                {/* type="button"
+            onClick={ () => toDateions(like.id, like.type) } */}
+                <h4
+                  data-testid={ `${index}-horizontal-name` }
+                  id={ like.id }
+                  type={ like.type }
+                >
+                  {like.name}
+                </h4>
+              </Link>
+
+              {like.type === 'food' && (
+                <p
+                  data-testid={ `${index}-horizontal-top-text` }
+                >
+                  {` ${like.nationality} - ${like.category}`}
+                </p>
+              )}
+            </div>
+
+            {copyTextToShow
+          && <div><p>Link copied!</p></div>}
+            <div className="FavoriteLikeDIV">
+
+              <button
+                type="button"
+                onClick={ copyToClipboard01 }
+                className="copyToClipboard"
+              >
+                <img
+                  src={ shareIcon }
+                  id={ like.id }
+                  alt="Imagem para compartilhas a receita"
+                  data-testid={ `${index}-horizontal-share-btn` }
+                />
+              </button>
+
+              <button
+                type="button"
+                onClick={ unfavoriteFromLocalStorange }
+                className="LikeButton"
+              >
+                <img
+                  src={ blackHeartIcon }
+                  id={ like.id }
+                  alt="Imagem para favoritar receita"
+                  data-testid={ `${index}-horizontal-favorite-btn` }
+                />
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }

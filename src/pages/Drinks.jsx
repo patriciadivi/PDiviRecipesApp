@@ -10,6 +10,7 @@ import fetchCategories from '../services/fetchCategories';
 import Footer from '../components/Footer';
 import randomIdNumber from '../services/randomIdNumber';
 import '../styles/components/Header.css';
+import '../styles/pages/PagesDrinks.css';
 
 export default function Drinks() {
   const [buttonList, setButtonList] = useState([]);
@@ -40,7 +41,7 @@ export default function Drinks() {
       {buttonList.length > 0 && <ButtonList names={ buttonList } type="drinks" />}
       {loading && <Alert variant="warning">Loading</Alert>}
       {searchedRecepies.length > 0 && !loading && (
-        <div className="d-flex flex-wrap justify-content-around">
+        <div className="d-flex flex-wrap justify-content-around DivCard">
           {searchedRecepies.map((rec, index) => (
             <RecepieCard
               key={ `${rec.idDrink}${randomIdNumber()}` }

@@ -44,14 +44,11 @@
   width: 100%;
 }
 
-.FooterLink img {
-
-  /* background-color: #eb3f3c; */
-
-  /* padding: 0 42%; */
-
-  /* width: 100px; */
-}
+/* .FooterLink img {
+  background-color: #eb3f3c;
+  padding: 0 42%;
+  width: 100px;
+} */
 
 .Footer button {
   backdrop-filter: blur(4px);
