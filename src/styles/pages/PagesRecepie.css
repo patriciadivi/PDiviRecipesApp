@@ -45,7 +45,7 @@
 
 .LikeRecipe button {
   background-color: transparent;
-  border: 1px solid red;
+  border: 1px solid #eb3f3c;
   margin: 0.7rem;
   transition: 0.2s;
   width: 4rem;
@@ -53,7 +53,7 @@
 
 .LikeRecipe button:hover {
   background-color: transparent;
-  color: white;
+  color: #ee3f3c;
 }
 
 .list-group-item {
@@ -87,7 +87,6 @@ p {
     display: flex;
     height: 400px;
     margin: 0 auto;
-    width: 80%;
 
   }
 
@@ -107,10 +106,10 @@ p {
 }
 
 
-@media screen and ( max-width : 1104 ) {
+@media screen and ( max-width : 1024 ) {
 
   .RecepieDescriptionDIV .recipieImg {
-    width: 70%;
+    width: 61%;
   }
 
   .LikeRecipe button {
