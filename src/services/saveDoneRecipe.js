@@ -14,11 +14,9 @@ const saveDoneRecipe = (recipe) => {
     tags: returnValidValue(recipe.strTags, recipe.strTags).split(',') || [],
     doneDate: getDate(),
   };
-  // console.log(newDone.tags);
-  // console.log(typeof newDone.tags);
-  // console.log(newDone);
+  console.log('foi');
   let doneRecipes = [];
-  const tempData = window.localStorage.getItem('favoriteRecipes');
+  const tempData = window.localStorage.getItem('doneRecipes');
   if (tempData) {
     doneRecipes = [...JSON.parse(tempData), newDone];
   } else {

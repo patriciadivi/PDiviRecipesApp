@@ -57,8 +57,8 @@ export default function RecepieInProgres() {
   };
 
   const setBtnFinishAvailable = (numOfIng) => {
-    console.log(`numOfIng ${numOfIng}`);
-    console.log(`isFinishAvailable ${isFinishAvailable}`);
+    // console.log(`numOfIng ${numOfIng}`);
+    // console.log(`isFinishAvailable ${isFinishAvailable}`);
     if (isFinishAvailable && (numOfIng < ingredients.length)) {
       console.log('1');
       setIsFinishAvailable(() => false);

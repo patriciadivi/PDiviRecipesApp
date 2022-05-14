@@ -1,5 +1,5 @@
 const getDoneRecipes = (type = 'all') => {
-  console.log(`getDoneRecipes: ${type}`);
+  // console.log(`getDoneRecipes: ${type}`);
   const tempData = window.localStorage.getItem('doneRecipes');
   let doneRecepies = [];
   if (tempData) {

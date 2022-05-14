@@ -22,7 +22,7 @@ export default function DoneRecipes() {
     setRecipes(() => doneRecipesLocal);
   }, []);
 
-  console.log(recipes);
+  // console.log(recipes);
   return (
     <div>
       <Header title="Done Recipes" searchEnabled={ false } />
