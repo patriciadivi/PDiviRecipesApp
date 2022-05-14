@@ -22,7 +22,6 @@ export default function RecepieInProgres() {
   const pathArray = history.location.pathname.split('/');
   const idLocation = -2;
   const id = pathArray[pathArray.length + idLocation];
-  console.log(id);
   const [recepie, setRecepie] = useState([]);
   const [isFavorite, setIsFavorite] = useState(isRecepieFavorite(id));
   const [showText, setShowText] = useState(false);

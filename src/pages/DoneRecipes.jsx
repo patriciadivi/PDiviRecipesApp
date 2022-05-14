@@ -36,6 +36,8 @@ export default function DoneRecipes() {
             title={ e.name }
             index={ i }
             category={ e.category }
+            nationality={ e.nationality }
+            alcoholicOrNot={ e.alcoholicOrNot }
             date={ e.doneDate }
             tags={ e.tags }
           />))}

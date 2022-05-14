@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Card, Button } from 'react-bootstrap';
 import shareIcon from '../images/shareIcon.svg';
+import randomIdNumber from '../services/randomIdNumber';
 
 export default function DoneCards(
-  { id, imageSrc, title, index, category, date, tags },
+  { id, imageSrc, title, index, category, nationality, date, tags, alcoholicOrNot },
 ) {
   const [showText, setShowText] = useState(false);
   const timeShowingText = 3000;
@@ -34,7 +35,8 @@ export default function DoneCards(
         />
         <Card.Body>
           <p data-testid={ `${index}-horizontal-top-text` }>
-            {category}
+            {nationality && `${nationality} - ${category}`}
+            {alcoholicOrNot && `${category} - ${alcoholicOrNot}`}
           </p>
           <Card.Title data-testid={ `${index}-horizontal-name` }>
             { title }
@@ -43,16 +45,24 @@ export default function DoneCards(
             {`Done in: ${date}`}
           </p>
           <br />
-          <p data-testid={ `${index}-${tags}-horizontal-tag` }>
-            {tags}
-          </p>
+          {tags.length > 0
+            && tags.map((e) => (
+              <p
+                key={ `${e}${randomIdNumber()}` }
+                data-testid={ `${index}-${e}-horizontal-tag` }
+              >
+                {e}
+              </p>))}
           <Button
             variant="light"
-            data-testid={ `${index}-horizontal-share-btn` }
             onClick={ () => copyToClipboard() }
             type="button"
           >
-            <img src={ shareIcon } alt="share" />
+            <img
+              src={ shareIcon }
+              data-testid={ `${index}-horizontal-share-btn` }
+              alt="share"
+            />
           </Button>
           {showText && <p>Link copied!</p>}
         </Card.Body>
@@ -67,6 +77,8 @@ DoneCards.propTypes = {
   title: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   category: PropTypes.string.isRequired,
+  nationality: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  tags: PropTypes.string.isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+  alcoholicOrNot: PropTypes.string.isRequired,
 };
