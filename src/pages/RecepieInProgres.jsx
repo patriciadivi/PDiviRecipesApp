@@ -22,7 +22,6 @@ export default function RecepieInProgres() {
   const pathArray = history.location.pathname.split('/');
   const idLocation = -2;
   const id = pathArray[pathArray.length + idLocation];
-  console.log(id);
   const [recepie, setRecepie] = useState([]);
   const [isFavorite, setIsFavorite] = useState(isRecepieFavorite(id));
   const [showText, setShowText] = useState(false);
@@ -58,8 +57,8 @@ export default function RecepieInProgres() {
   };
 
   const setBtnFinishAvailable = (numOfIng) => {
-    console.log(`numOfIng ${numOfIng}`);
-    console.log(`isFinishAvailable ${isFinishAvailable}`);
+    // console.log(`numOfIng ${numOfIng}`);
+    // console.log(`isFinishAvailable ${isFinishAvailable}`);
     if (isFinishAvailable && (numOfIng < ingredients.length)) {
       console.log('1');
       setIsFinishAvailable(() => false);
