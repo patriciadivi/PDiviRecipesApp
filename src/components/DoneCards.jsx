@@ -6,15 +6,17 @@ import shareIcon from '../images/shareIcon.svg';
 import randomIdNumber from '../services/randomIdNumber';
 
 export default function DoneCards(
-  { id, imageSrc, title, index, category, nationality, date, tags, alcoholicOrNot },
+  { type, id, imageSrc, title, index, category, nationality, date, tags, alcoholicOrNot },
 ) {
   const [showText, setShowText] = useState(false);
   const timeShowingText = 3000;
   const removeText = () => {
     setShowText(() => false);
   };
+  console.log(type);
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(window.location.href);
+    navigator.clipboard.writeText(window.location.href
+      .replace('done-recipes', `${alcoholicOrNot ? 'drinks' : 'foods'}/${id}`));
     setShowText(() => true);
     setTimeout(removeText, timeShowingText);
   };
@@ -72,6 +74,7 @@ export default function DoneCards(
 }
 
 DoneCards.propTypes = {
+  type: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   imageSrc: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
