@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.ExploreIngredients {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: rgb(245, 242, 238);
+
+  /* height: 100vh; */
+}
+
+.ExploreIngredients .alert {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: rgb(245, 242, 238);
+  display: flex;
+  font-size: 2.5rem;
+  height: 100vh;
+  justify-content: center;
+  width: 100%;
+}
+
+.ExploreIngredients .DivCardIngredients {
+
+  /* border: 1px solid #eb3f3c; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  padding-bottom: 5rem;
+  width: 80%;
+}
+

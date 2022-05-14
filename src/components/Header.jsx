@@ -2,11 +2,11 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 // import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
+import { ACTIVE_SEARCH_BAR } from '../Redux/actions/actionTypes';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
-import { ACTIVE_SEARCH_BAR } from '../Redux/actions/actionTypes';
 import '../styles/components/Header.css';
 
 export default function Header({ title, searchEnabled }) {
@@ -14,19 +14,19 @@ export default function Header({ title, searchEnabled }) {
 
   return (
     <div className="Header">
-      <Button
+      <button
         type="button"
-        className="btnHeader"
+        className="btnHeaderProfile"
       >
         <Link to="/profile">
           <img data-testid="profile-top-btn" src={ profileIcon } alt="Perfil" />
         </Link>
-      </Button>
+      </button>
       <h2 data-testid="page-title">{title}</h2>
       { searchEnabled && (
-        <Button
+        <button
           type="button"
-          className="btnHeader"
+          className="btnHeaderProfile"
           onClick={ () => dispatch({ type: ACTIVE_SEARCH_BAR }) }
         >
           <img
@@ -34,7 +34,7 @@ export default function Header({ title, searchEnabled }) {
             src={ searchIcon }
             alt="Explore Icon"
           />
-        </Button>)}
+        </button>)}
     </div>
   );
 }

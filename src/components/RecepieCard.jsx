@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
+import '../styles/components/RecepieCard.css';
 
 export default function RecepieCard(props) {
   const {
@@ -13,25 +14,30 @@ export default function RecepieCard(props) {
   } = props;
 
   return (
-
-    <Card
-      style={ { width: '10rem' } }
-      className="mt-3"
-      key={ id }
-      data-testid={ `${index}-recipe-card` }
-    >
-      <Link to={ `/${type}/${id}` } className="stretched-link" />
-      <Card.Img
-        variant="top"
-        src={ imageSrc }
-        data-testid={ `${index}-card-img` }
-      />
-      <Card.Body>
-        <Card.Title data-testid={ `${index}-card-name` }>
-          { title }
-        </Card.Title>
-      </Card.Body>
-    </Card>
+    <div className="RecepieCard">
+      <Card
+        style={ { width: '10rem' } }
+        className="mt-3 Card"
+        key={ id }
+        data-testid={ `${index}-recipe-card` }
+      >
+        <Link to={ `/${type}/${id}` } className="stretched-link" />
+        <Card.Img
+          className="CardImg"
+          variant="top"
+          src={ imageSrc }
+          data-testid={ `${index}-card-img` }
+        />
+        <Card.Body>
+          <Card.Title
+            data-testid={ `${index}-card-name` }
+            className="CardTitle"
+          >
+            { title }
+          </Card.Title>
+        </Card.Body>
+      </Card>
+    </div>
   );
 }
 

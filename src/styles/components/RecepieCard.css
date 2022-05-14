@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.RecepieCard {
+  text-align: center;
+}
+
+.RecepieCard .Card {
+  background-color: #eb3f3c;
+  justify-content: space-around;
+}

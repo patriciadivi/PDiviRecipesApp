@@ -19,6 +19,7 @@ import blackHeartIcon from '../images/blackHeartIcon.svg';
 import returnValidValue from '../services/returnValidValue';
 import saveRecepieToFavorite from '../services/saveRecepieToFavorite';
 import DescriptionOfRecipes from '../components/DescriptionOfRecipes';
+import '../styles/pages/PagesRecepie.css';
 
 export default function Recepie() {
   const history = useHistory();
@@ -84,50 +85,58 @@ export default function Recepie() {
     setId(() => history.location.pathname.split('/').pop());
   }), [history]);
 
+  useEffect(() => {
+    console.log('recepie', recepie);
+  }, [recepie]);
+
   return (
-    <div className="mx-5">
+    <div className="Recipes">
+
       {/* <Header title="Recepie" /> */}
       <DescriptionOfRecipes />
       {recepie !== [] && recepie.map((ele) => (
         <div
           key={ randomIdNumber() }
-          className="d-flex flex-column"
+          className="RecepieDescriptionDIV"
         >
           <img
             data-testid="recipe-photo"
             src={ returnValidValue(ele.strMealThumb, ele.strDrinkThumb) }
             alt="aaa"
+            className="recipieImg"
           />
-          <h2 data-testid="recipe-title" className="mt-3">
-            {returnValidValue(ele.strMeal, ele.strDrink)}
-          </h2>
-          <div className="mt-3">
-            <Button
-              variant="light"
-              data-testid="share-btn"
-              onClick={ () => copyToClipboard() }
-              type="button"
-            >
-              <img src={ shareIcon } alt="share" />
-            </Button>
-            <Button
-              variant="light"
-              // data-testid="favorite-btn"
-              type="button"
-              onClick={ () => handleFavoriteClick() }
-            >
-              <img
-                data-testid="favorite-btn"
-                src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
-                alt="share"
-              />
-            </Button>
-          </div>
-          {showText && <p>Link copied!</p>}
-          <p data-testid="recipe-category" className="mt-3">
-            {`${returnValidValue(ele.strCategory, ele.strGlass)} 
+          <div className="recipeDescription">
+            <h2 data-testid="recipe-title" className="mt-3">
+              {returnValidValue(ele.strMeal, ele.strDrink)}
+            </h2>
+            <div className="LikeRecipe">
+              <Button
+                variant="light"
+                data-testid="share-btn"
+                onClick={ () => copyToClipboard() }
+                type="button"
+              >
+                <img src={ shareIcon } alt="share" />
+              </Button>
+              <Button
+                variant="light"
+                // data-testid="favorite-btn"
+                type="button"
+                onClick={ () => handleFavoriteClick() }
+              >
+                <img
+                  data-testid="favorite-btn"
+                  src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
+                  alt="share"
+                />
+              </Button>
+            </div>
+            {showText && <p>Link copied!</p>}
+            <p data-testid="recipe-category" className="mt-3">
+              {`${returnValidValue(ele.strCategory, ele.strGlass)} 
             - ${type === 'drinks' && ele.strAlcoholic}`}
-          </p>
+            </p>
+          </div>
           <ListGroup variant="flush" className="mt-3">
             { ingredients.map((e, index) => (
               <ListGroup.Item
@@ -138,7 +147,13 @@ export default function Recepie() {
               </ListGroup.Item>))}
           </ListGroup>
           <Carrosel indications={ indications } type={ typeSuggestion } />
-          <p data-testid="instructions">{ele.strInstructions}</p>
+          <p
+            className="RecipeStepByStep"
+            data-testid="instructions"
+          >
+            {ele.strInstructions}
+
+          </p>
           <p data-testid="video">{ele.strYoutube}</p>
           <ButtonStartContinue
             type={ type }

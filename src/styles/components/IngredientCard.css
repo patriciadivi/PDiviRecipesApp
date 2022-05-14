@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+
+}
+
+.card {
+  background-color: #eb3f3c;
+  justify-content: space-around;
+
+}
+
+
+.card:hover {
+  backdrop-filter: blur(8px);
+  background: transparent;
+  border: 1px solid #eb3f3c;
+  border-radius: 1.2rem 0;
+  color: #eb3f3c;
+  overflow: hidden;
+  transform: scale(1.1);
+  transition: 0.2s;
+
+}
+
+.card .IngredientDrinksCard .IngredientCardDrinksImg {
+  background-color: #eb3f3c;
+  border: 1px solid #fdf6f6;
+
+}
+
+.card .IngredientCardDrinksTitle {
+  text-align: center;
+
+}
+

@@ -3,14 +3,18 @@
   padding: 0;
 }
 
-.Foods {
+.Drinks {
+  align-items: center;
   background-color: rgba(0, 0, 0, 0.9);
   color: rgb(245, 242, 238);
+
+  /* height: 100vh; */
+  justify-content: center;
   padding-bottom: 5rem;
-  width: 100%;
+
 }
 
-.Foods .alert {
+.Drinks .alert {
   align-items: center;
   background-color: rgba(0, 0, 0, 0.9);
   color: rgb(245, 242, 238);
@@ -19,24 +23,25 @@
   height: 100vh;
   justify-content: center;
   width: 100%;
+
 }
 
-.Foods .DivCard {
+.Drinks .DivCard {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin: 0 auto;
-  width: 80%;
+  width: 82%;
 
 }
 
-.Foods .Card {
+.Drinks .Card {
   margin: 0 0.1rem;
   transition: 0.2s;
 
 }
 
-.Foods .Card:hover, .CardTitle:hover {
+.Drinks .Card:hover, .CardTitle:hover {
   backdrop-filter: blur(8px);
   background: transparent;
 

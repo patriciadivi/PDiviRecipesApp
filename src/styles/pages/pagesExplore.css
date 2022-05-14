@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.Explore {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: rgb(245, 242, 238);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
+.ExploreDiv {
+  display: block;
+  padding: 0.5rem 0;
+
+}
+
+.Explore .backGroundFoods {
+  background-image: url('https://img.freepik.com/fotos-gratis/deliciosa-pizza-em-uma-tabua-de-madeira-e-ketchup-de-pimenta-em-uma-superficie-escura-isolada-em-visao-vertical_179666-42201.jpg?w=2000');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Explore .backGroundDrinks {
+
+  /* background-image: url('https://thumbs.dreamstime.com/b/cold-fruit-berry-beverages-assortment-dark-background-cold-fruit-berry-beverages-assortment-dark-background-118085476.jpg'); */
+  background-image: url('https://cdn.shortpixel.ai/spai/w_1003+q_lossy+ret_img+to_webp/https://www.plural.jor.br/wp-content/uploads/2021/12/caipirinha-love-drink-reveillon-812x1024.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.ExploreDiv button {
+  border: 1px solid #eb3f3c;
+  border-radius: 0 0.4rem;
+  color: rgba(224, 211, 211, 0.9);
+  display: flex;
+  font-size: 1.6rem;
+  height: 15rem;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+  padding: 0.3rem 0.6rem 0 0;
+  transition: 0.2s;
+  width: 100%;
+}
+
+.ExploreDiv button:hover {
+  background-color: #eb3f3c;
+  border-radius: 3rem 0;
+  color: aliceblue;
+  opacity: 0.7;
+
+}
+
+@media screen and ( min-width : 300px ) {
+
+  .ExploreDiv button {
+    font-size: 1.9rem;
+  }
+}
+
+@media screen and ( min-width : 500px ) and ( max-width : 1124px ) {
+
+  .Explore {
+    display: block;
+  }
+
+  .ExploreDiv {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0;
+  }
+
+  .ExploreDiv button {
+    align-items: end;
+    border: 1px solid wheat;
+    border-radius: 0 1rem;
+    font-size: 2.1rem;
+    height: 29rem;
+    justify-content: initial;
+    margin: 0.5rem;
+    padding: 0 0 0.8rem 0.7rem;
+    width: 45%;
+  }
+
+  .ExploreDiv button:hover {
+    padding-left: 1.5rem;
+  }
+
+}
+
+@media screen and ( min-width : 1124px ) {
+
+  .Explore {
+    display: block;
+  }
+
+  .ExploreDiv {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0;
+  }
+
+  .ExploreDiv button {
+    align-items: end;
+    border-radius: 0 1rem;
+    font-size: 2.5rem;
+    height: 28.5rem;
+    margin: 1rem 2rem;
+    width: 30%;
+
+  }
+
+  .ExploreDiv button:hover {
+    padding-right: 1.2rem;
+  }
+
+}

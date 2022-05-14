@@ -1,17 +1,23 @@
 import React, { useEffect, useState } from 'react';
-// import Button from 'react-bootstrap';
+// import { Button } from 'react-bootstrap';
+import { useHistory, Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { actionsFavoriteConvertLocalStorage } from '../Redux/actions/index';
 import shareIcon from '../images/shareIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
-
 import Header from '../components/Header';
-import ButtonFavoriteCategory from '../components/ButtonFavoriteCategory';
-
+// import ButtonFavoriteCategory from '../components/ButtonFavoriteCategory';
 import '../styles/components/Header.css';
+import '../styles/pages/PagesFavoriteRecipies.css';
 
 export default function FavoriteRecipies() {
+  const favoriteLocalStorange = useSelector((state) => state
+    .reducer1.favoriteLocalStorange);
   const [favoriteSave, setFavoriteSave] = useState([]);
   const [copyTextToShow, setCopyTextToShow] = useState(false);
   const numberRemoveTextToScreen = 3000;
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const removeTextToScreen = () => {
     setCopyTextToShow(() => false);
@@ -49,83 +55,173 @@ export default function FavoriteRecipies() {
     return newFavorite;
   };
 
+  const dispatchConvertLocalStorage = (favoriteConvertLocalStorage) => {
+    console.log('dispatchConvertLocalStorage');
+    dispatch(actionsFavoriteConvertLocalStorage(favoriteConvertLocalStorage));
+  };
+
   useEffect(() => {
     const favorite = localStorage.getItem('favoriteRecipes');
     if (favorite) {
-      console.log(favorite);
-      setFavoriteSave(JSON.parse(favorite));
+      const favoriteConvertLocalStorage = JSON.parse(favorite);
+      setFavoriteSave(favoriteConvertLocalStorage);
+      dispatchConvertLocalStorage(favoriteConvertLocalStorage);
     }
-  },
-  []);
+  }, []);
+
+  const handleClick = (paramentButton) => {
+    const favoriteSaveFilter = favoriteSave;
+    const filterCategory = favoriteSaveFilter
+      .filter((e) => e.type === paramentButton);
+
+    const filterCategoryAll = favoriteLocalStorange.filter((e) => e);
+
+    if (paramentButton === 'food' || paramentButton === 'drink') {
+      console.log(paramentButton);
+      console.log('filterCategory', filterCategory);
+      return setFavoriteSave(filterCategory);
+    } if (paramentButton === 'all') {
+      console.log('filterCategoryAll', filterCategoryAll);
+      return setFavoriteSave(filterCategoryAll);
+    }
+  };
+
+  const toDateions = (id, type) => {
+    // const { id } = e.target;
+    // console.log(target);
+    console.log(type);
+    console.log(id);
+    if (type === 'drink') {
+      return history.push(`/drinks/${id}`);
+    }
+    return history.push(`/foods/${id}`);
+  };
 
   return (
-    <div>
+    <section className="FavoriteRecipies">
       <Header title="Favorite Recipes" searchEnabled={ false } />
-      <h2>Suas Comidas Favoritas</h2>
-      <ButtonFavoriteCategory />
 
-      {favoriteSave.map((like, index) => (
-        <div
-          key={ like.id }
-        >
-          <img
-            id={ like.id }
-            src={ like.image }
-            alt={ `Receita de
-              ${like.name}` }
-            width="100"
-            height="100"
-            data-testid={ `${index}-horizontal-image` }
-          />
-          { like.type === 'drink' && (
-            <p
-              data-testid={ `${index}-horizontal-top-text` }
-              type={ like.type }
-            >
-              {like.alcoholicOrNot}
-            </p>
-          )}
-          <h4
-            data-testid={ `${index}-horizontal-name` }
-          >
-            {like.name}
-          </h4>
+      {/* <ButtonFavoriteCategory /> */}
+      <div className="FavoriteRecipiesDIV">
 
-          {like.type === 'food' && (
-            <p
-              data-testid={ `${index}-horizontal-top-text` }
-            >
-              {` ${like.nationality} - ${like.category}`}
-            </p>
-          )}
-
-          {copyTextToShow
-          && <div><p>Link copied!</p></div>}
+        <div className="FavoriteRecipiesButton">
           <button
             type="button"
-            onClick={ copyToClipboard01 }
+            data-testid="filter-by-all-btn"
+            className="BtnFavoriteFilter"
+            onClick={ () => handleClick('all') }
           >
-            <img
-              src={ shareIcon }
-              id={ like.id }
-              alt="Imagem para compartilhas a receita"
-              data-testid={ `${index}-horizontal-share-btn` }
-            />
+            All
           </button>
 
           <button
             type="button"
-            onClick={ unfavoriteFromLocalStorange }
+            data-testid="filter-by-food-btn"
+            className="BtnFavoriteFilter"
+            onClick={ () => handleClick('food') }
           >
-            <img
-              src={ blackHeartIcon }
-              id={ like.id }
-              alt="Imagem para favoritar receita"
-              data-testid={ `${index}-horizontal-favorite-btn` }
-            />
+            Foods
+          </button>
+
+          <button
+            type="button"
+            data-testid="filter-by-drink-btn"
+            className="BtnFavoriteFilter"
+            onClick={ () => handleClick('drink') }
+          >
+            Drinks
           </button>
         </div>
-      ))}
-    </div>
+
+        {favoriteSave.map((like, index) => (
+          <div
+            key={ like.id }
+            className="FavoriteRecipiesCardDIV"
+          >
+            <button
+              type="button"
+              onClick={ () => toDateions(like.id, like.type) }
+              className="BtnFavoriteCardIMG"
+
+            >
+              <img
+                id={ like.id }
+                type={ like.type }
+                src={ like.image }
+                alt={ `Receita de
+            ${like.name}` }
+                width="100"
+                height="100"
+                data-testid={ `${index}-horizontal-image` }
+              />
+            </button>
+            <div>
+
+              { like.type === 'drink' && (
+                <p
+                  data-testid={ `${index}-horizontal-top-text` }
+                  type={ like.type }
+                >
+                  {like.alcoholicOrNot}
+                </p>
+              )}
+              <Link
+                to={ `/${like.type}s/${like.id}` }
+                className="FavoriteRecipiesCardLink"
+              >
+                {/* type="button"
+            onClick={ () => toDateions(like.id, like.type) } */}
+                <h4
+                  data-testid={ `${index}-horizontal-name` }
+                  id={ like.id }
+                  type={ like.type }
+                >
+                  {like.name}
+                </h4>
+              </Link>
+
+              {like.type === 'food' && (
+                <p
+                  data-testid={ `${index}-horizontal-top-text` }
+                >
+                  {` ${like.nationality} - ${like.category}`}
+                </p>
+              )}
+            </div>
+
+            {copyTextToShow
+          && <div><p>Link copied!</p></div>}
+            <div className="FavoriteLikeDIV">
+
+              <button
+                type="button"
+                onClick={ copyToClipboard01 }
+                className="copyToClipboard"
+              >
+                <img
+                  src={ shareIcon }
+                  id={ like.id }
+                  alt="Imagem para compartilhas a receita"
+                  data-testid={ `${index}-horizontal-share-btn` }
+                />
+              </button>
+
+              <button
+                type="button"
+                onClick={ unfavoriteFromLocalStorange }
+                className="LikeButton"
+              >
+                <img
+                  src={ blackHeartIcon }
+                  id={ like.id }
+                  alt="Imagem para favoritar receita"
+                  data-testid={ `${index}-horizontal-favorite-btn` }
+                />
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }

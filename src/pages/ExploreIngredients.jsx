@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 import IngredientCard from '../components/IngredientCard';
 import '../styles/components/Header.css';
 import { actFetchIngredients } from '../Redux/actions';
+import '../styles/pages/ExploreIngredients.css';
 
 export default function ExploreIngredients() {
   const location = useLocation();
@@ -20,12 +21,12 @@ export default function ExploreIngredients() {
   useEffect(() => { dispatch(actFetchIngredients(type)); }, [dispatch, type]);
 
   return (
-    <div>
+    <div className="ExploreIngredients">
       <Header title="Explore Ingredients" searchEnabled={ false } />
       {loading && <Alert variant="warning">Loading</Alert>}
       {searchedIngredients.length > 0 && !loading && (
         // <div>Teste</div>
-        <div className="d-flex flex-wrap justify-content-around">
+        <div className="d-flex flex-wrap justify-content-around DivCardIngredients">
           {searchedIngredients.map((ing, index) => (
             <IngredientCard
               key={ `${ing[0]}${randomIdNumber()}` }

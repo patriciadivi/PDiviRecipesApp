@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.DescriptionOfRecipes {
+  margin-bottom: 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+.DescriptionOfRecipes img {
+  width: 100%;
+}
+
+@media screen and ( max-width : 600px ) {
+
+  .Descriptionofrecipes h1 {
+    font-size: 4rem;
+  }
+
+}

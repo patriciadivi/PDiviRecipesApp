@@ -3,6 +3,17 @@
   padding: 0;
 }
 
+.BtnContinue button {
+  background-color: #ee3c3c;
+  border: 1px solid #ee3c3c;
+
+}
+
+.BtnContinue button:hover {
+  background-color: #f1e3e3;
+  border: 1px solid #eb3c3c;
+}
+
 .ButtonStartContinue {
   bottom: 0;
   left: 0;

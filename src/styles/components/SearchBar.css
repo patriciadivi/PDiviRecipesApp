@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.SearchBar {
+  display: flex;
+  justify-content: center;
+  margin: 0.8rem 0;
+}
+
+.SearchBar input {
+  border: 0;
+  border-radius: 0.2rem;
+  height: 2rem;
+  outline: none;
+  padding-left: 0.4rem;
+}
+
+.RadioSearchBar {
+
+  /* border: 1px solid #eb3f3c; */
+  display: flex;
+  margin: 0.3rem 0;
+}
+
+.RadioSearchBar label {
+  align-items: center;
+  display: flex;
+  padding: 0.2rem;
+}
+
+
+.RadioSearchBar input {
+  border: 1px solid #eb3f3c;
+  color: #eb3f3c;
+  height: 1rem;
+  margin-right: 0.3rem;
+  width: 1rem;
+}
+
+.SearchBar button {
+  background-color: transparent;
+  border: 1px solid #eb3f3c;
+  border-radius: 0.2rem;
+  color: aliceblue;
+  height: 2.1rem;
+  outline: none;
+  width: 6rem;
+}
+
+.SearchBar button:hover {
+  background-color: #eb3f3c;
+  color: aliceblue;
+}

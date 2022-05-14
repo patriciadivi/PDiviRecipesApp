@@ -6,6 +6,7 @@ import {
   SAVE_SEARCHED_INGREDIENTS,
   MAIN_PAGE_AVOID_FETCH,
   CANCEL_AVOID_FETCH,
+  FAVORITE_CONVERT_LOCALSTORANGE,
 } from '../actions/actionTypes';
 
 const INITIAL_STATE = {
@@ -16,6 +17,7 @@ const INITIAL_STATE = {
   searchedIngredients: [],
   avoidFetchAtMainPage: false,
   recepieID: '',
+  favoriteLocalStorange: [],
 };
 
 export default function reducer1(state = INITIAL_STATE, action) {
@@ -26,6 +28,7 @@ export default function reducer1(state = INITIAL_STATE, action) {
       loading: true,
     };
   case SAVE_SEARCHED_RECEPIES:
+    console.log(action.payload);
     return {
       ...state,
       searchedRecepies: action.payload,
@@ -56,6 +59,11 @@ export default function reducer1(state = INITIAL_STATE, action) {
     return {
       ...state,
       avoidFetchAtMainPage: false,
+    };
+  case FAVORITE_CONVERT_LOCALSTORANGE:
+    return {
+      ...state,
+      favoriteLocalStorange: action.value,
     };
   default:
     return state;

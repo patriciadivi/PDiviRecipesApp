@@ -14,6 +14,7 @@ import {
   SAVE_SEARCHED_INGREDIENTS,
   MAIN_PAGE_AVOID_FETCH,
   CANCEL_AVOID_FETCH,
+  FAVORITE_CONVERT_LOCALSTORANGE,
 } from './actionTypes';
 
 export const minhaAction = (value) => ({ type: USER_LOGIN, value });
@@ -138,3 +139,7 @@ export function actFetchByNationality(type, nationality = 'French') {
     }
   };
 }
+
+export const actionsFavoriteConvertLocalStorage = (value) => ({
+  type: FAVORITE_CONVERT_LOCALSTORANGE, value,
+});

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 // import { useDispatch } from 'react-redux';
 // import { actFetchSuprise } from '../Redux/actions';
 import fetchSurprise from '../services/fetchSurprise';
+import '../styles/components/BtnsExploreRecepies.css';
 
 export default function BtnsExploreRecepies(props) {
   const {
@@ -21,12 +22,12 @@ export default function BtnsExploreRecepies(props) {
   };
 
   return (
-    <div>
+    <div className="BtnsExploreRecepies">
       <Button
         variant="light"
         data-testid="explore-by-ingredient"
         size="lg"
-        className="mt-3 mx-3"
+        className={ type === 'foods' ? 'btnIngredient' : 'btnIngredientDrinks' }
         onClick={ () => history.push(`/explore/${type}/ingredients`) }
       >
         By Ingredient
@@ -37,7 +38,7 @@ export default function BtnsExploreRecepies(props) {
           variant="light"
           data-testid="explore-by-nationality"
           size="lg"
-          className="mt-3 mx-3"
+          className="btnNationality"
           onClick={ () => history.push(`/explore/${type}/nationalities`) }
         >
           By Nationality
@@ -46,7 +47,7 @@ export default function BtnsExploreRecepies(props) {
         variant="light"
         data-testid="explore-surprise"
         size="lg"
-        className="mt-3 mx-3"
+        className={ type === 'foods' ? 'btnSurprise' : 'btnSurpriseDrinks' }
         onClick={ () => gerRandomRecepie() }
       >
         Surprise me!

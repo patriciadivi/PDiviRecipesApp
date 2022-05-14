@@ -1,0 +1,96 @@
+* {
+  margin: 0;
+  outline: none;
+  padding: 0;
+}
+
+
+.FavoriteRecipies {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: rgb(245, 242, 238);
+
+  /* height: 100vh; */
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+.FavoriteRecipiesDIV {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  /* margin: 0.5rem 0; */
+}
+
+.FavoriteRecipiesButton {
+  align-items: center;
+
+  /* border: 1px solid #eb3f3c; */
+  margin: 0 auto;
+}
+
+.FavoriteRecipies .BtnFavoriteFilter {
+  border: none;
+  height: 2.2rem;
+  margin: 0.5rem;
+  transition: 0.2s;
+  width: 8rem;
+
+}
+
+.FavoriteRecipies .BtnFavoriteFilter:hover {
+  background-color: #eb3f3c;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 1rem 0.2rem;
+  color: rgb(245, 242, 238);
+}
+
+.FavoriteRecipiesCardDIV {
+  align-items: center;
+  align-self: center;
+  background-color: #eb3f3c;
+  border: 1px solid #eb3f3c;
+  display: flex;
+
+  /* flex-wrap: wrap; */
+  justify-content: space-between;
+  margin: 0.3rem auto;
+  width: 25rem;
+}
+
+.FavoriteRecipiesCardDIV .BtnFavoriteCardIMG {
+  border-style: none;
+  outline: none;
+
+}
+
+/*
+.FavoriteRecipiesCardDIV {
+  border: none;
+  border-style: none;
+  outline: none;
+
+}
+ */
+
+.FavoriteRecipies .FavoriteRecipiesCardLink {
+  color: rgb(245, 242, 238);
+  list-style: none;
+  outline: none;
+  text-decoration: none;
+
+}
+
+.FavoriteLikeDIV button {
+  margin: 0 0.5rem;
+}
+
+.copyToClipboard {
+  background: transparent;
+  border-style: none;
+}
+
+.LikeButton {
+  background: transparent;
+  border-style: none;
+}

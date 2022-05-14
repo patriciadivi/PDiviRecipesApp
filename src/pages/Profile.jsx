@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../styles/components/Header.css';
+import '../styles/pages/PagesProfile.css';
 
 export default function Profile() {
   const history = useHistory();
@@ -22,7 +23,7 @@ export default function Profile() {
   }, []);
 
   return (
-    <div>
+    <div className="Profile">
       <Header title="Profile" />
       <div className="d-flex flex-column">
         <h2 className="mx-auto my-5" data-testid="profile-email">{email}</h2>
@@ -30,7 +31,7 @@ export default function Profile() {
           variant="light"
           data-testid="profile-done-btn"
           size="lg"
-          className="mt-3 mx-auto"
+          className="mt-3 mx-auto BtnProfile"
           onClick={ () => history.push('/done-recipes') }
         >
           Done Recipes
@@ -39,7 +40,7 @@ export default function Profile() {
           variant="light"
           data-testid="profile-favorite-btn"
           size="lg"
-          className="mt-3 mx-auto"
+          className="mt-3 mx-auto BtnProfile"
           onClick={ () => history.push('/favorite-recipes') }
         >
           Favorite Recipes
@@ -48,7 +49,7 @@ export default function Profile() {
           variant="light"
           data-testid="profile-logout-btn"
           size="lg"
-          className="mt-3 mx-auto"
+          className="mt-3 mx-auto BtnProfile"
           onClick={ () => cleanStorageAndRedirect() }
         >
           Logout
