@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 // import { Button } from 'react-bootstrap';
 import ButtonDoneSelectType from '../components/ButtonDoneSelectType';
+import DoneCards from '../components/DoneCards';
 import Header from '../components/Header';
+import getDate from '../services/getDate';
 import getDoneRecipes from '../services/getDoneRecipes';
+import randomIdNumber from '../services/randomIdNumber';
 import '../styles/components/Header.css';
 
 export default function DoneRecipes() {
+  getDate();
   const [recipes, setRecipes] = useState([]);
 
   const handleType = (type = 'all') => {
@@ -13,42 +17,28 @@ export default function DoneRecipes() {
     setRecipes(() => recipesList);
   };
 
-  useEffect(() => { getDoneRecipes(); setRecipes(() => []); }, []);
+  useEffect(() => {
+    const doneRecipesLocal = getDoneRecipes();
+    setRecipes(() => doneRecipesLocal);
+  }, []);
 
   console.log(recipes);
   return (
     <div>
       <Header title="Done Recipes" searchEnabled={ false } />
       <ButtonDoneSelectType handleClick={ handleType } />
-      {/* <div className="ButtonList d-flex flex-wrap justify-content-center">
-        <Button
-          data-testid="filter-by-all-btn"
-          variant="light"
-          size="lg"
-          className="mx-2"
-          onClick={ () => handleType() }
-        >
-          All
-        </Button>
-        <Button
-          data-testid="filter-by-all-btn"
-          variant="light"
-          size="lg"
-          className="mx-2"
-          onClick={ () => handleType('food') }
-        >
-          Foods
-        </Button>
-        <Button
-          data-testid="filter-by-all-btn"
-          variant="light"
-          size="lg"
-          className="mx-2"
-          onClick={ () => handleType('drink') }
-        >
-          Drinks
-        </Button>
-      </div> */}
+      {recipes.length > 0
+        && recipes.map((e, i) => (
+          <DoneCards
+            key={ e.id + randomIdNumber() }
+            id={ e.id }
+            imageSrc={ e.image }
+            title={ e.name }
+            index={ i }
+            category={ e.category }
+            date={ e.doneDate }
+            tags={ e.tags }
+          />))}
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import returnValidValue from './returnValidValue';
+import getDate from './getDate';
 
 const saveDoneRecipe = (recipe) => {
   console.log(recipe);
@@ -10,8 +11,8 @@ const saveDoneRecipe = (recipe) => {
     alcoholicOrNot: recipe.strAlcoholic || '',
     name: returnValidValue(recipe.strMeal, recipe.strDrink),
     image: returnValidValue(recipe.strMealThumb, recipe.strDrinkThumb),
-    tags: returnValidValue(recipe.strTags, recipe.strTags) || '',
-    doneDate: Date(),
+    tags: returnValidValue(recipe.strTags, recipe.strTags) || [],
+    doneDate: getDate(),
   };
   console.log(newDone);
   let doneRecipes = [];

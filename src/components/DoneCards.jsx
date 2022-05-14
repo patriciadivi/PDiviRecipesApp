@@ -1,46 +1,67 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Card, ListGroup } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
+import shareIcon from '../images/shareIcon.svg';
 
-export default function RecepieCard(
+export default function DoneCards(
   { id, imageSrc, title, index, category, date, tags },
 ) {
+  const [showText, setShowText] = useState(false);
+  const timeShowingText = 3000;
+  const removeText = () => {
+    setShowText(() => false);
+  };
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(window.location.href);
+    setShowText(() => true);
+    setTimeout(removeText, timeShowingText);
+  };
   return (
 
     <Card
-      style={ { width: '10rem' } }
-      className="mt-3 d-flex"
+      style={ { width: '20rem' } }
+      className="mt-3"
       key={ id }
       data-testid={ `${index}-recipe-card` }
     >
       {/* <Link to={ `/${type}/${id}` } className="stretched-link" /> */}
-      <Card.Img
-        variant="top"
-        src={ imageSrc }
-        data-testid={ `${index}-horizontal-image` }
-      />
-      <Card.Body>
-        <p data-testid={ `${index}-horizontal-top-text` }>
-          {category}
-        </p>
-        <Card.Title data-testid={ `${index}-horizontal-name` }>
-          { title }
-        </Card.Title>
-        <ListGroup variant="flush">
-          <ListGroup.Item data-testid={ `${index}-horizontal-done-date` }>
-            {date}
-          </ListGroup.Item>
-          <ListGroup.Item data-testid={ `${index}-${tagName}-horizontal-tag` }>
+      <div className="d-flex">
+        <Card.Img
+          // variant="top"
+          src={ imageSrc }
+          data-testid={ `${index}-horizontal-image` }
+        />
+        <Card.Body>
+          <p data-testid={ `${index}-horizontal-top-text` }>
+            {category}
+          </p>
+          <Card.Title data-testid={ `${index}-horizontal-name` }>
+            { title }
+          </Card.Title>
+          <p data-testid={ `${index}-horizontal-done-date` }>
+            {`Done in: ${date}`}
+          </p>
+          <br />
+          <p data-testid={ `${index}-${tags}-horizontal-tag` }>
             {tags}
-          </ListGroup.Item>
-        </ListGroup>
-      </Card.Body>
+          </p>
+          <Button
+            variant="light"
+            data-testid={ `${index}-horizontal-share-btn` }
+            onClick={ () => copyToClipboard() }
+            type="button"
+          >
+            <img src={ shareIcon } alt="share" />
+          </Button>
+          {showText && <p>Link copied!</p>}
+        </Card.Body>
+      </div>
     </Card>
   );
 }
 
-RecepieCard.propTypes = {
+DoneCards.propTypes = {
   id: PropTypes.string.isRequired,
   imageSrc: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
