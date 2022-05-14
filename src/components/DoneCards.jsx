@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 // import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Card, Button } from 'react-bootstrap';
 import shareIcon from '../images/shareIcon.svg';
@@ -8,6 +9,7 @@ import randomIdNumber from '../services/randomIdNumber';
 export default function DoneCards(
   { type, id, imageSrc, title, index, category, nationality, date, tags, alcoholicOrNot },
 ) {
+  const history = useHistory();
   const [showText, setShowText] = useState(false);
   const timeShowingText = 3000;
   const removeText = () => {
@@ -19,6 +21,9 @@ export default function DoneCards(
       .replace('done-recipes', `${alcoholicOrNot ? 'drinks' : 'foods'}/${id}`));
     setShowText(() => true);
     setTimeout(removeText, timeShowingText);
+  };
+  const redirectToDatails = () => {
+    history.push(`/${alcoholicOrNot ? 'drinks' : 'foods'}/${id}`);
   };
   return (
 
@@ -34,13 +39,17 @@ export default function DoneCards(
           // variant="top"
           src={ imageSrc }
           data-testid={ `${index}-horizontal-image` }
+          onClick={ () => redirectToDatails() }
         />
         <Card.Body>
           <p data-testid={ `${index}-horizontal-top-text` }>
             {nationality && `${nationality} - ${category}`}
             {alcoholicOrNot && `${category} - ${alcoholicOrNot}`}
           </p>
-          <Card.Title data-testid={ `${index}-horizontal-name` }>
+          <Card.Title
+            data-testid={ `${index}-horizontal-name` }
+            onClick={ () => redirectToDatails() }
+          >
             { title }
           </Card.Title>
           <p data-testid={ `${index}-horizontal-done-date` }>
